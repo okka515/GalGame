@@ -23,29 +23,11 @@ docker compose up -d --build
 
 ブラウザで http://localhost:5173 を開く。
 
-### 2回目以降の起動
-
-```bash
-docker compose up -d
-```
-
-`package.json` を変更した場合のみ `--build` を付けて再ビルドしてください。
-
 ### 停止
 
 ```bash
 docker compose down
 ```
-
-## IDE の補完を有効にする（初回のみ）
-
-コンテナ外でも型補完が効くよう、ローカルに一度インストールします。
-
-```bash
-npm install
-```
-
-> `node_modules` はコンテナ内のものを使うため、開発自体はこの手順なしでも動作します。
 
 ## ディレクトリ構成
 
