@@ -4,6 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ギャルゲー</title>
+    <style>
+      /* NarraLeaf がセリフに color: rgb(0,0,0) をセットするため白に上書き
+         キャラ名は NarraLeaf がインラインで色をセットするためそちらを優先 */
+      [style*="color: rgb(0, 0, 0)"] {
+        color: #fff !important;
+      }
+      /* セリフのフォントサイズを大きく */
+      span {
+        font-size: 24px !important;
+      }
+      /* ダイアログエリアの左余白を調整 */
+      .absolute.bottom-0 {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+      }
+      html, body, #root {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #000;
+        font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

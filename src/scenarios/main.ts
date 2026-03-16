@@ -1,15 +1,7 @@
-import { Story, Scene } from "narraleaf-react";
-import { aoi } from "../characters";
+import { Story } from "narraleaf-react";
+import { prologueScene } from "./prologue";
 
-// メインシナリオのスケルトン
-// 好感度の加算はシーン遷移のコールバックで行う（NarraLeaf の action は専用オブジェクトのみ受け付ける）
-const openingScene = new Scene("opening", {
-  background: "#1a1a2e",
-});
-
-openingScene.action([
-  aoi.say("ねえ、ちょっと相談に乗ってほしいんだけど…"),
-]);
-
+// 全シーンはプロローグから jumpTo で連鎖しているため、
+// entry にプロローグを設定するだけでストーリー全体が動く
 export const mainStory = new Story("main");
-mainStory.entry(openingScene);
+mainStory.entry(prologueScene);

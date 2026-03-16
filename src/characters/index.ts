@@ -1,28 +1,25 @@
 import { Character } from "narraleaf-react";
 
-// 6人の友達キャラクター定義
-// 画像パスは後で assets/ に追加する
+// 主人公（友人）- 内心モノローグ用
+export const yuujin = new Character(null);
 
-export const aoi = new Character("蒼井 葵", {
-  color: "#4a90e2",
+// 5人の友達
+export const pack = new Character("ぱっく", {
+  color: "#f59e0b",
 });
 
-export const hana = new Character("花田 花", {
-  color: "#e24a7a",
+export const massu = new Character("まっすー", {
+  color: "#ec4899",
 });
 
-export const sora = new Character("空野 空", {
-  color: "#e2c84a",
+export const saasan = new Character("さーさん", {
+  color: "#10b981",
 });
 
-export const kotone = new Character("琴音 琴音", {
-  color: "#7ae24a",
+export const haruchiro = new Character("はるちろ", {
+  color: "#6366f1",
 });
 
-export const riko = new Character("里子 里子", {
-  color: "#e27a4a",
-});
-
-export const yuki = new Character("雪村 雪", {
-  color: "#4ae2d0",
+export const tonapi = new Character("となっぴー", {
+  color: "#06b6d4",
 });
