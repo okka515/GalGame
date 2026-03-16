@@ -1,8 +1,17 @@
-import { Scene, Menu } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../characters";
 import { chapter1Scene } from "./common/chapter1";
+import { gameFlags } from "../store/gameState";
 
 export const prologueScene = new Scene("prologue", {
+  background: "#0f172a",
+});
+
+const prologueMenu = new Scene("prologue-menu", {
+  background: "#0f172a",
+});
+
+const prologuePrompt = new Scene("prologue-prompt", {
   background: "#0f172a",
 });
 
@@ -19,26 +28,50 @@ prologueScene.action([
   yuujin.say("その約束をした翌日から、5人全員が厄介な相談を持ち込んできた。"),
   yuujin.say("当然のように。"),
   yuujin.say("これが、6人組最後の春の始まりだった。"),
-  // gameFlags.set() が有効なアクションか未確認のため一旦除外し、jumpTo のみで動作確認
-  Menu.prompt("誰の相談から最初に聞く？（進行順は変わらないが最初の印象が変わる）")
-    .choose("ぱっく（恋愛・起業・転向、全部同時進行）", [
-      yuujin.say("まずはぱっくの話を聞くことにした。"),
-      prologueScene.jumpTo(chapter1Scene),
+  
+  prologueScene.jumpTo(prologueMenu),
+]);
+
+prologueMenu.action([
+  Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) >= 5), [
+    yuujin.say("……なんとか全員の初期症状（？）を聞き終えた。"),
+    yuujin.say("ここから本当に全員無事に卒業できるのだろうか……。"),
+    prologueMenu.jumpTo(chapter1Scene),
+  ]).Else([
+    prologueMenu.jumpTo(prologuePrompt),
+  ]),
+]);
+
+prologuePrompt.action([
+  Menu.prompt("誰の相談から聞く？（早く話を聞いてあげた人ほど、後の展開で有利になるかも…？）")
+    .showWhen(gameFlags.evaluate("prologue_talked_pack", (v) => (v || 0) === 0), "ぱっく（恋愛・起業・転向、全部同時進行）", [
+      yuujin.say("自分から首を絞めにいっているとしか思えないぱっくの話を聞くことにした。"),
+      gameFlags.assign((state) => ({ prologue_talked_pack: 5 - state.prologue_talk_count })),
+      gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      prologuePrompt.jumpTo(prologueMenu),
     ])
-    .choose("まっすー（遠距離・就活・カメラ、時間感覚が死んでいる）", [
-      yuujin.say("まずはまっすーの話を聞くことにした。"),
-      prologueScene.jumpTo(chapter1Scene),
+    .showWhen(gameFlags.evaluate("prologue_talked_massu", (v) => (v || 0) === 0), "まっすー（遠距離・就活・カメラ、時間感覚が死んでいる）", [
+      yuujin.say("一番時間が迫っていそうなまっすーの話を聞くことにした。"),
+      gameFlags.assign((state) => ({ prologue_talked_massu: 5 - state.prologue_talk_count })),
+      gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      prologuePrompt.jumpTo(prologueMenu),
     ])
-    .choose("さーさん（会社・車・炒り卵カルボナーラ）", [
-      yuujin.say("まずはさーさんの話を聞くことにした。"),
-      prologueScene.jumpTo(chapter1Scene),
+    .showWhen(gameFlags.evaluate("prologue_talked_saasan", (v) => (v || 0) === 0), "さーさん（会社・車・炒り卵カルボナーラ）", [
+      yuujin.say("方向性が三次元に散らかっているさーさんの話を聞くことにした。"),
+      gameFlags.assign((state) => ({ prologue_talked_saasan: 5 - state.prologue_talk_count })),
+      gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      prologuePrompt.jumpTo(prologueMenu),
     ])
-    .choose("はるちろ（マチアプ脳、DroidKaigiの出会い）", [
-      yuujin.say("まずははるちろの話を聞くことにした。"),
-      prologueScene.jumpTo(chapter1Scene),
+    .showWhen(gameFlags.evaluate("prologue_talked_haruchiro", (v) => (v || 0) === 0), "はるちろ（マチアプ脳、DroidKaigiの出会い）", [
+      yuujin.say("完全に技術より色恋沙汰に向かっているはるちろの話を聞くことにした。"),
+      gameFlags.assign((state) => ({ prologue_talked_haruchiro: 5 - state.prologue_talk_count })),
+      gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      prologuePrompt.jumpTo(prologueMenu),
     ])
-    .choose("となっぴー（カビ・石積み・バレー）", [
-      yuujin.say("まずはとなっぴーの話を聞くことにした。"),
-      prologueScene.jumpTo(chapter1Scene),
+    .showWhen(gameFlags.evaluate("prologue_talked_tonapi", (v) => (v || 0) === 0), "となっぴー（カビ・石積み・バレー）", [
+      yuujin.say("一番底知れない闇を感じるとなっぴーの話を聞くことにした。"),
+      gameFlags.assign((state) => ({ prologue_talked_tonapi: 5 - state.prologue_talk_count })),
+      gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      prologuePrompt.jumpTo(prologueMenu),
     ]),
 ]);
