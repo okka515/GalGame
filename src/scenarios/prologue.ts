@@ -1,5 +1,5 @@
 import { Scene, Menu, Condition } from "narraleaf-react";
-import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../characters";
+import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saasanImg, haruchiroImg, tonapiImg } from "../characters";
 import { chapter1Scene } from "./common/chapter1";
 import { gameFlags } from "../store/gameState";
 
@@ -45,33 +45,43 @@ prologueMenu.action([
 prologuePrompt.action([
   Menu.prompt("誰の相談から聞く？（早く話を聞いてあげた人ほど、後の展開で有利になるかも…？）")
     .showWhen(gameFlags.evaluate("prologue_talked_pack", (v) => (v || 0) === 0), "ぱっく（恋愛・起業・転向、全部同時進行）", [
+      packImg.show(),
       yuujin.say("自分から首を絞めにいっているとしか思えないぱっくの話を聞くことにした。"),
       gameFlags.assign((state) => ({ prologue_talked_pack: 5 - state.prologue_talk_count })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      packImg.hide(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_massu", (v) => (v || 0) === 0), "まっすー（遠距離・就活・カメラ、時間感覚が死んでいる）", [
+      massuImg.show(),
       yuujin.say("一番時間が迫っていそうなまっすーの話を聞くことにした。"),
       gameFlags.assign((state) => ({ prologue_talked_massu: 5 - state.prologue_talk_count })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      massuImg.hide(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_saasan", (v) => (v || 0) === 0), "さーさん（会社・車・炒り卵カルボナーラ）", [
+      saasanImg.show(),
       yuujin.say("方向性が三次元に散らかっているさーさんの話を聞くことにした。"),
       gameFlags.assign((state) => ({ prologue_talked_saasan: 5 - state.prologue_talk_count })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      saasanImg.hide(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_haruchiro", (v) => (v || 0) === 0), "はるちろ（マチアプ脳、DroidKaigiの出会い）", [
+      haruchiroImg.show(),
       yuujin.say("完全に技術より色恋沙汰に向かっているはるちろの話を聞くことにした。"),
       gameFlags.assign((state) => ({ prologue_talked_haruchiro: 5 - state.prologue_talk_count })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      haruchiroImg.hide(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_tonapi", (v) => (v || 0) === 0), "となっぴー（カビ・石積み・バレー）", [
+      tonapiImg.show(),
       yuujin.say("一番底知れない闇を感じるとなっぴーの話を聞くことにした。"),
       gameFlags.assign((state) => ({ prologue_talked_tonapi: 5 - state.prologue_talk_count })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
+      tonapiImg.hide(),
       prologuePrompt.jumpTo(prologueMenu),
     ]),
 ]);
