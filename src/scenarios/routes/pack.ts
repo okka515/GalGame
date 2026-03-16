@@ -1,4 +1,4 @@
-import { Scene, Menu, Condition } from "narraleaf-react";
+import { Scene, Menu } from "narraleaf-react";
 import { yuujin, pack } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { groupTrueEnd } from "../endings/group";
