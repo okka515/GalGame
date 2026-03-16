@@ -1,5 +1,5 @@
 import { Scene, Menu } from "narraleaf-react";
-import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../../characters";
+import { yuujin, massu, saasan, haruchiro } from "../../characters";
 import { chapter4Scene } from "./chapter4";
 
 // 第3章: ミニゲーム・修羅場

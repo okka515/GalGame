@@ -2,6 +2,14 @@ import { Persistent } from "narraleaf-react";
 
 // ゲーム全体のフラグ管理（NarraLeaf の Persistent API を使用）
 type GameFlags = {
+  // プロローグ: 話を聞いたキャラの記録
+  prologue_talk_count: number;
+  prologue_talked_pack: number;
+  prologue_talked_massu: number;
+  prologue_talked_saasan: number;
+  prologue_talked_haruchiro: number;
+  prologue_talked_tonapi: number;
+
   // 第1章: 最初に助けるキャラ
   ch1_first_pack: boolean;
   ch1_first_massu: boolean;
@@ -37,6 +45,12 @@ type GameFlags = {
 };
 
 export const gameFlags = new Persistent<GameFlags>("galgame_flags", {
+  prologue_talk_count: 0,
+  prologue_talked_pack: 0,
+  prologue_talked_massu: 0,
+  prologue_talked_saasan: 0,
+  prologue_talked_haruchiro: 0,
+  prologue_talked_tonapi: 0,
   ch1_first_pack: false,
   ch1_first_massu: false,
   ch1_first_saasan: false,
