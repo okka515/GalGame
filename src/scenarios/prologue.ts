@@ -4,15 +4,15 @@ import { chapter1Scene } from "./common/chapter1";
 import { gameFlags } from "../store/gameState";
 
 export const prologueScene = new Scene("prologue", {
-  background: "#0f172a",
+  background: "/backgrounds/university_outside.jpg",
 });
 
 const prologueMenu = new Scene("prologue-menu", {
-  background: "#0f172a",
+  background: "/backgrounds/university_outside.jpg",
 });
 
 const prologuePrompt = new Scene("prologue-prompt", {
-  background: "#0f172a",
+  background: "/backgrounds/university_outside.jpg",
 });
 
 prologueScene.action([
@@ -28,14 +28,12 @@ prologueScene.action([
   yuujin.say("その約束をした翌日から、5人全員が厄介な相談を持ち込んできた。"),
   yuujin.say("当然のように。"),
   yuujin.say("これが、6人組最後の春の始まりだった。"),
-  
+
   prologueScene.jumpTo(prologueMenu),
 ]);
 
 prologueMenu.action([
   Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) >= 5), [
-    yuujin.say("……なんとか全員の初期症状（？）を聞き終えた。"),
-    yuujin.say("ここから本当に全員無事に卒業できるのだろうか……。"),
     prologueMenu.jumpTo(chapter1Scene),
   ]).Else([
     prologueMenu.jumpTo(prologuePrompt),
