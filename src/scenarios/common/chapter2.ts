@@ -12,9 +12,9 @@ const tonapiFlashback = new Scene("tonapi-flashback", {
 tonapiFlashback.action([
   yuujin.say("【回想: となっぴーの旅行】"),
   yuujin.say("となっぴーが旅行に行ったとき、河原で石を積みすぎたらしい。"),
-  tonapi.say("なんとなく積みたくなって"),
+  tonapi.say("なんとなく積みたくなって。フフ、崩れていて少し残念でした"),
   yuujin.say("バレーボール観戦では、推しチームの一点で顔色が大きく変わった。"),
-  tonapi.say("あれは感情が動いただけです"),
+  tonapi.say("あれは感情が動いただけです。推し活ですから！"),
   yuujin.say("研究室では、カビの培養速度が「理論値を超えた」という謎の報告がされていた。"),
   yuujin.say("となっぴーは静かに危なかった。"),
   tonapiFlashback.jumpTo(chapter3Scene),
@@ -27,9 +27,9 @@ const haruchiroFlashback = new Scene("haruchiro-flashback", {
 haruchiroFlashback.action([
   yuujin.say("【回想: はるちろとマチアプ】"),
   yuujin.say("はるちろがマチアプを始めると言いだしたとき、服を買いに行く話になった。"),
-  haruchiro.say("店員さん、めちゃくちゃ丁寧に教えてくれましたよ。メンターみたいだった"),
+  haruchiro.say("服屋の店員さん、めちゃくちゃ丁寧に教えてくれましたよ。もうメンターみたいでした！"),
   yuujin.say("翌日、自己紹介文をMarkdownで書きかけているのを発見した。"),
-  haruchiro.say("gitのリンクは載せるべきですよね？"),
+  haruchiro.say("えっ、コーディングの癖とか知っときたいでしょ？gitのリンクは載せるべきですよね？"),
   yuujin.say("絶対にやめろと止めた。"),
   yuujin.say("その後、DroidKaigiで「いい出会いがあった」と連絡が来た。嫌な予感がした。"),
   haruchiroFlashback.jumpTo(tonapiFlashback),
@@ -42,10 +42,10 @@ const saasanFlashback = new Scene("saasan-flashback", {
 saasanFlashback.action([
   yuujin.say("【回想: さーさんと海陽町】"),
   yuujin.say("さーさんが海陽町から転校してきた日のことを覚えている。"),
-  saasan.say("海の町から来た"),
+  saasan.say("ああ、海の町から来たわ"),
   yuujin.say("それだけ言って、翌週にはハッカソンで無双していた。"),
   yuujin.say("去年の卒サプ事件——プリンターを終電まで占拠された話——は今でも語り草だ。"),
-  saasan.say("あれは俺も悪かった。でも卒論は間に合った"),
+  saasan.say("あれは俺も悪かったと思ってる。でも、卒論はちゃんと間に合っただろ？余裕だったしな"),
   saasanFlashback.jumpTo(haruchiroFlashback),
 ]);
 
@@ -56,9 +56,9 @@ const massuFlashback = new Scene("massu-flashback", {
 massuFlashback.action([
   yuujin.say("【回想: まっすーの卒研中間発表】"),
   yuujin.say("ソフトボール全国に行くくらいの実力者が、なぜ卒研の中間発表に2時間遅刻したのか。"),
-  massu.say("遠距離の彼から電話が来て……つい"),
+  massu.say("ごめーん！遠距離の彼から電話が来て……つい長くなっちゃって！あはは！"),
   yuujin.say("発表室の外で待つ指導教員の顔は、今でも夢に見る。"),
-  massu.say("さーさんに恋愛相談してたのも、あの頃だったなあ"),
+  massu.say("さーさんに恋愛相談してたのも、あの頃だったなあー。なんでさーさんだったんだろ？"),
   yuujin.say("さーさんに恋愛相談、というのが謎すぎて逆に和んだ。"),
   massuFlashback.jumpTo(saasanFlashback),
 ]);
@@ -73,9 +73,9 @@ packFlashback.action([
   pack.say("あ"),
   yuujin.say("橋の上で、ぱっくの手からたいやきが落ちた。"),
   yuujin.say("たいやきは弧を描き、用水路の中へと消えた。"),
-  pack.say("……泳いでる"),
+  pack.say("……泳いでるな。"),
   yuujin.say("二人で5分間、用水路を流れるたいやきを見つめた。"),
-  pack.say("なんかこれ、縁起いいな"),
+  pack.say("なかなか面白いことするじゃないか。なんかこれ、縁起いいな"),
   yuujin.say("以来、ぱっくの中で「たいやきを流す＝成功のジンクス」という謎の方程式が生まれた。"),
   packFlashback.jumpTo(massuFlashback),
 ]);
