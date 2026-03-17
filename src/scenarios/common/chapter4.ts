@@ -6,7 +6,6 @@ import { massuRouteMain } from "../routes/massu";
 import { saasanRouteMain } from "../routes/saasan";
 import { haruchiroRouteMain } from "../routes/haruchiro";
 import { tonapiRouteMain } from "../routes/tonapi";
-import { exhaustionEnd } from "../endings/group";
 
 // 第4章: 個別ルート確定
 export const chapter4Scene = new Scene("chapter4", {
@@ -38,10 +37,5 @@ chapter4Scene.action([
     .choose("となっぴーに全力で向き合う", [
       gameFlags.set("route_tonapi", true),
       chapter4Scene.jumpTo(tonapiRouteMain),
-    ])
-    .choose("全員均等に見る（真のトゥルーを目指す）", [
-      yuujin.say("全員の面倒を見続けた結果……"),
-      gameFlags.set("player_exhausted", true),
-      chapter4Scene.jumpTo(exhaustionEnd),
     ]),
 ]);
