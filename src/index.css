@@ -21,22 +21,8 @@ button.bg-white * {
   color: #0f172a !important;
 }
 
-/* セリフの親コンテナ（bottom-0 w-full h-full を持つ div）の、直下にある最初の div（名前とセリフを囲む枠）を狙い撃ち */
-div.absolute.bottom-0.w-full.h-full>div:first-child {
-  background-color: rgba(0, 0, 0, 0.7) !important;
-  /* 黒の半透明（70%の濃さ） */
-  padding: 24px 32px !important;
-  /* 内側に余白をつけて文字が端にくっつかないようにする */
-  border-radius: 12px !important;
-  /* 角を少し丸くする（お好みで） */
-  margin: 16px !important;
-  /* 画面の端から少し浮かせる（お好みで） */
-  width: calc(100% - 32px) !important;
-  /* margin分を引いて幅を調整 */
-}
-
-/* ついでに、セリフ本体の文字色が黒（rgb(0,0,0)）になっていて見えなくなる可能性があるので、白に上書き */
-div.absolute.bottom-0.w-full.h-full>div:first-child .whitespace-pre-wrap,
-div.absolute.bottom-0.w-full.h-full>div:first-child .whitespace-pre-wrap * {
-  color: #ffffff !important;
+/* タイトル画面の星きらきらアニメーション */
+@keyframes twinkle {
+  from { opacity: 0.2; transform: scale(0.8); }
+  to   { opacity: 1;   transform: scale(1.2); }
 }
