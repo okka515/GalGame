@@ -118,29 +118,29 @@ const ch3MassuScene = new Scene("ch3-massu", {
   background: "#1f2937",
 });
 ch3MassuScene.action([
-  yuujin.say("【秋の修羅場: カメラ大破事件】"),
+  yuujin.say("【秋の修羅場: 就活説明会すっぽかし】"),
   yuujin.say("まっすーが青ざめた顔で研究室に駆け込んできた。"),
-  massu.say("どうしよう！大事なカメラ落としてレンズ割れちゃった！！あはは！"),
+  massu.say("どうしよう！東京の就活説明会、行き忘れてたー！！あはは！"),
   yuujin.say("（全く笑い事ではない状況なのに笑っている）"),
-  massu.say("今週末の遠距離恋愛の彼との旅行で絶対使いたかったのに！もう終わりだー！卒研も手につかない！"),
+  massu.say("卒研の中間発表と同じ週で、気づいたらカメラ持って外歩いてた！あとレンズにちょっと傷が……"),
   Menu.prompt("どう励ます？")
     .choose("「スマホのカメラで十分だろ」", [
-      yuujin.say("「落ち着け。最近のスマホのカメラで十分だろ。卒研に集中しろ」"),
+      yuujin.say("「まず説明会を再予約しろ。カメラはスマホで十分だから卒研に集中しろ」"),
       massu.say("うーん……たしかにiPhoneのポートレート最強だもんね！切り替えていく！"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
       ch3MassuScene.jumpTo(ch3SaasanScene),
     ])
     .choose("「俺のカメラ貸そうか？」", [
-      yuujin.say("「しょうがないな、俺のカメラ貸そうか？」"),
+      yuujin.say("「傷くらいどうってことない。説明会は俺のOB繋ぎで再予約してやるよ」"),
       massu.say("えっ！？神！？一生ついていく！！"),
       yuujin.say("（恩は売れたが、根本的な解決にはなっていない）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
       ch3MassuScene.jumpTo(ch3SaasanScene),
     ])
     .choose("「新しいの買えよ」", [
-      yuujin.say("「もうローン組んで新しいの買えよ」"),
+      yuujin.say("「傷が気になるならもう新しいの買えよ。就活はまたやり直せる」"),
       massu.say("マジ！？じゃあフルサイズ行っちゃおっかなー！"),
-      yuujin.say("（就活生にとんでもない借金を背負わせてしまった）"),
+      yuujin.say("（就活生にとんでもない発想をさせてしまった）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
       ch3MassuScene.jumpTo(ch3SaasanScene),
     ]),

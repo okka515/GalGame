@@ -160,15 +160,17 @@ const ch4MassuScene = new Scene("ch4-massu", {
   background: "#1f2937",
 });
 ch4MassuScene.action([
-  yuujin.say("【冬の追い込み: キャリアか、彼氏か】"),
-  yuujin.say("まっすーの就活がようやく終わりを迎えていた。"),
+  yuujin.say("【冬の追い込み: 内定と大破】"),
+  yuujin.say("まっすーの就活がようやく終わりを迎えた日のことだった。"),
   massu.say("東京の第一志望から内定出たー！やったー！あはは！"),
-  yuujin.say("だが、その目はどこか泳いでいる。"),
+  yuujin.say("（よかった。本当によかった）"),
+  massu.say("テンションあがりすぎて廊下で走ったら……カメラ落として大破させちゃった！！あはは！"),
+  yuujin.say("（……笑っているが、目が死んでいる。センサーまで逝ったらしい）"),
   massu.say("でもさ……彼がいるのは地元じゃん？東京に行ったら、遠距離のままになっちゃうなぁって。"),
-  massu.say("どっちを選ぶべきかな……"),
+  massu.say("カメラもなくなって、なんか急にいろいろ考えちゃって……どっちを選ぶべきかな"),
   Menu.prompt("どう答える？")
     .choose("「自分のキャリアを優先しろ」", [
-      yuujin.say("「自分のキャリアを優先しろ。東京で広報やりたいんだろ？」"),
+      yuujin.say("「カメラは直せる。東京でやりたいことがあるなら、自分のキャリアを優先しろ」"),
       massu.say("……うん！そうだよね。自分の夢は諦めたくない！"),
       yuujin.say("まっすーの目に力が宿った。"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
@@ -182,7 +184,7 @@ ch4MassuScene.action([
       ch4MassuScene.jumpTo(ch4SaasanScene),
     ])
     .choose("「彼氏の近くに行け」", [
-      yuujin.say("「そんなに大事なら、彼氏の近くでのんびり働けばいいんじゃないか？」"),
+      yuujin.say("「カメラも壊れたことだし、一回全部リセットして彼氏の近くでのんびり働けば？」"),
       massu.say("うーん……たしかにメンタルは安定するかも……内定辞退のメール書こっかな。"),
       yuujin.say("（せっかくのキャリアを捨てさせてしまったかもしれない）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),

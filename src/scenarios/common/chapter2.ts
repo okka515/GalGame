@@ -121,7 +121,7 @@ const massuFlashback = new Scene("massu-flashback", {
 massuFlashback.action([
   yuujin.say("【夏の回想: まっすーの中間発表遅刻事件】"),
   yuujin.say("ソフトボール全国大会に行くくらいの実力者が、なぜ中間発表に2時間遅刻したのか。"),
-  massu.say("ごめーん！遠距離の彼から電話が来て……つい長くなっちゃって！あはは！"),
+  massu.say("ごめーん！実は最近好きな人ができてさ、その話してたら長くなっちゃって！あはは！"),
   yuujin.say("発表室の外で待つ指導教員の顔は、今でも夢に見る。"),
   massu.say("さーさんに恋愛相談してたのも、あの頃だったなあー。なんでさーさんだったんだろ？"),
   Menu.prompt("どうコメントする？")
@@ -138,7 +138,7 @@ massuFlashback.action([
       massuFlashback.jumpTo(saasanFlashback),
     ])
     .choose("遠距離ならしょうがない", [
-      yuujin.say("「まあ、遠距離恋愛ならしょうがない面もあるよな」"),
+      yuujin.say("「まあ、好きな人ができたなら仕方ない面もあるよな」"),
       massu.say("でしょー！？わかってくれるー！？彼氏が一番大事だからね！"),
       yuujin.say("（完全に肯定してしまった）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
