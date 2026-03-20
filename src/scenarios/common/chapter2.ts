@@ -50,29 +50,29 @@ const haruchiroFlashback = new Scene("haruchiro-flashback", {
   background: "#2d1b69",
 });
 haruchiroFlashback.action([
-  yuujin.say("【夏の回想: はるちろとマチアプ】"),
-  yuujin.say("はるちろがマチアプを始めると言いだしたとき、服を買いに行く話になった。"),
-  haruchiro.say("服屋の店員さん、めちゃくちゃ丁寧に教えてくれましたよ。もうメンターみたいでした！"),
-  yuujin.say("翌日、自己紹介文をMarkdownで書きかけているのを発見した。"),
-  haruchiro.say("えっ、コーディングの癖とか知っときたいでしょ？gitのリンクは載せるべきですよね？"),
-  yuujin.say("どう考えてもマチアプの定石から外れている。"),
+  yuujin.say("【夏の回想: はるちろの想い人】"),
+  yuujin.say("はるちろが夏頃から、なんとなく落ち着かない様子をしていた。"),
+  haruchiro.say("えっと……好きな人ができまして。どうすればいいか全然わからなくて"),
+  yuujin.say("（珍しい。はるちろがそういうことを話してくるのはほぼ初めてだ）"),
+  haruchiro.say("とりあえず気持ちを整理しようと思って、自己紹介文をMarkdownで書いたんですけど……"),
+  yuujin.say("（なぜMarkdown……）"),
   Menu.prompt("どうアドバイスする？")
     .choose("Markdownはやめとけ", [
-      yuujin.say("「頼むから、マチアプの自己紹介にMarkdownを使うのはやめとけ」"),
+      yuujin.say("「頼むから、自己紹介にMarkdownを使うのはやめとけ」"),
       haruchiro.say("えーっ。可読性上がるのに。……でもわかりました。普通に書きます。"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
       haruchiroFlashback.jumpTo(tonapiFlashback),
     ])
     .choose("むしろGitHubの草生やしたスクショ載せろ", [
-      yuujin.say("「中途半端にやるな。むしろGitHubの草生やしたスクショ載せろ」"),
+      yuujin.say("「中途半端にやるな。むしろGitHubの草生やしたスクショも見せてやれ」"),
       haruchiro.say("なるほど！技術力と継続力のアピールですね！採用します！"),
-      yuujin.say("（絶対にマッチングしないと思う）"),
+      yuujin.say("（ちょっと違う方向に行った気がする）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
       haruchiroFlashback.jumpTo(tonapiFlashback),
     ])
     .choose("服屋の店員さんにアタックしろ", [
-      yuujin.say("「いっそのこと、そのメンターみたいな服屋の店員さんにアタックしろよ」"),
-      haruchiro.say("えっ！？そ、それは難易度高すぎません！？エラー吐きそう！"),
+      yuujin.say("「まず服を買いに行け。店員さんに全部任せろ」"),
+      haruchiro.say("えっ！？服買うんですか。……でもたしかに、ファッション全然わからないです"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
       haruchiroFlashback.jumpTo(tonapiFlashback),
     ]),

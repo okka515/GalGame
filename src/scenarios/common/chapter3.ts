@@ -50,13 +50,13 @@ const ch3HaruchiroScene = new Scene("ch3-haruchiro", {
   background: "#1e1b4b",
 });
 ch3HaruchiroScene.action([
-  yuujin.say("【秋の修羅場: 恋愛相談LINE返信】"),
-  yuujin.say("はるちろからLINEが来た。マチアプのプロフィール文の確認依頼だ。"),
+  yuujin.say("【秋の修羅場: マチアプ開始・プロフィール文確認依頼】"),
+  yuujin.say("はるちろがマチアプを始めたらしく、いきなりプロフィール文の確認依頼がLINEで届いた。"),
   haruchiro.say("（送られてきた文面）「趣味: コード書くこと / 特技: アルゴリズムの最適化 / 一言: 一緒にコミット歴を積み上げましょう」"),
-  yuujin.say("……秋になってもまだこんなことをやっているのか。"),
+  yuujin.say("……マチアプ始めていきなりこれか。"),
   Menu.prompt("どう返信する？")
     .choose("「やばい。全部書き直せ」と止める", [
-      yuujin.say("「やばい。全部書き直せ」"),
+      yuujin.say("「やばい。全部書き直せ。マチアプはGitHubじゃない」"),
       haruchiro.say("え！？ダメですか？！コンパイルエラー出ますか？！"),
       yuujin.say("全力でダメだと伝えた。一緒にプロフィールを書き直した結果、まともになった。"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),

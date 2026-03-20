@@ -7,12 +7,12 @@ export default function TitleScreen({ onStart }: Props) {
     <div style={styles.root}>
       <div style={styles.inner}>
         <p style={styles.subtitle}>
-          友情・進路・恋愛・研究、全部まとめて面倒を見る主人公の卒業前ラブコメADV
+          サブタイトル案: 友情・進路・恋愛・研究、全部まとめて面倒を見る主人公の卒業までのコメディーADV
         </p>
         <h1 style={styles.title}>
           卒業できるの、できないの！？
           <br />
-          <span style={styles.titleSub}>6人組最後の春</span>
+          <span style={styles.titleSub}>6人組最後の一年</span>
         </h1>
         <button style={styles.button} onClick={onStart}>
           S T A R T
@@ -71,7 +71,7 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: "0.85rem",
     color: "#aad4ff",
     letterSpacing: "0.05em",
-    maxWidth: "600px",
+    whiteSpace: "nowrap",
     lineHeight: 1.8,
   },
   title: {
