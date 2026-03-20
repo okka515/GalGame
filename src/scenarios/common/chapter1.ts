@@ -12,28 +12,29 @@ const ch1TonapiScene = new Scene("ch1-tonapi", {
   background: "#042f2e",
 });
 ch1TonapiScene.action([
-  yuujin.say("となっぴーから不穏なLINEが届いた。"),
-  tonapi.say("あの……カビが予想より2倍の速度で増えていて。これ、新しい化合物かもしれません。"),
-  tonapi.say("あと、旅行の写真を見返したら河原に積んだ石が崩れていたんです。少し気になりますよね……フフ"),
-  yuujin.say("（「少し気になる」の基準がわからない。笑っているが目が笑っていない）"),
-  tonapi.say("来週はバレーの応援もあるので、少し忙しくなりそうです！"),
-  Menu.prompt("どう返信する？")
-    .choose("カビは早く捨てろ", [
-      yuujin.say("「カビは早く捨てろ。バイオハザードになるぞ」"),
-      tonapi.say("えっ、もったいない……でも、言われた通り安全第一で処分します。"),
+  yuujin.say("となっぴーから研究室で声をかけられた。"),
+  tonapi.say("あの……春から新しい培地でカビを育ててるんですけど"),
+  tonapi.say("なんか予想より全然違う色になってきてて。これ、普通のカビじゃないかもしれないんです。フフ"),
+  yuujin.say("（笑顔で言っているが、目が全く笑っていない。静かな熱量を感じる）"),
+  tonapi.say("教授には……まだ言ってないんですよね。どう思いますか？"),
+  Menu.prompt("どう返す？")
+    .choose("「まず教授に報告しろ」", [
+      yuujin.say("「面白そうだけど、まず教授に報告するべきだろ。手順を踏んでから」"),
+      tonapi.say("そうですよね……。わかりました、明日相談してみます！"),
+      yuujin.say("（きちんと手続きを踏もうとする姿勢は、彼女らしかった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ])
-    .choose("新しい化合物として学会に出そう", [
-      yuujin.say("「新しい化合物として学会に出そう」"),
-      tonapi.say("ですよね！ちょっと教授に相談してみます！フフフ……"),
-      yuujin.say("（危ない方向へ背中を押してしまったかもしれない）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
-    ])
-    .choose("バレーの応援がんばれ", [
-      yuujin.say("「とりあえずバレーの応援がんばれ」"),
-      tonapi.say("はい！全力で応援してきます！カビは放置しておきますね。"),
-      yuujin.say("（放置するな）"),
+    .choose("「どんな色になってるの？」", [
+      yuujin.say("「普通じゃないって、どんな色になってるんだ？」"),
+      tonapi.say("……青緑と紫が混ざったような、すごく綺麗な色なんですよ。ちょっと見ますか？フフ"),
+      yuujin.say("（連れて行かれた研究室で、俺は言葉を失った。確かに綺麗だったが、確かに危なかった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
+    ])
+    .choose("「それ、すごい発見じゃない？」", [
+      yuujin.say("「それすごい発見じゃないか！学会に出したら？」"),
+      tonapi.say("ですよね！じゃあもう少し培養を続けてから……フフフ"),
+      yuujin.say("（後日、カビのシャーレが研究室を占領しているのを見て、俺は反省した）"),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ]),
 
   Condition.If(() => {

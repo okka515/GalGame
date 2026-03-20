@@ -12,28 +12,31 @@ const tonapiFlashback = new Scene("tonapi-flashback", {
   background: "#042f2e",
 });
 tonapiFlashback.action([
-  yuujin.say("【夏の回想: となっぴーの旅行】"),
-  yuujin.say("となっぴーが旅行に行ったとき、河原で石を積みすぎたらしい。"),
-  tonapi.say("なんとなく積みたくなって。フフ、崩れていて少し残念でした"),
-  yuujin.say("バレーボール観戦では、推しチームの一点で顔色が大きく変わった。"),
-  tonapi.say("あれは感情が動いただけです。推し活ですから！"),
-  yuujin.say("研究室では、カビの培養速度が「理論値を超えた」という謎の報告がされていた。"),
-  yuujin.say("となっぴーは静かに危なかった。"),
+  yuujin.say("【夏の回想: となっぴーと石積みの旅】"),
+  yuujin.say("夏の旅行中、となっぴーが河原で石を積み始めた。"),
+  tonapi.say("なんとなく、積みたくなって……フフ"),
+  yuujin.say("「なんとなく」にしては、積み方が尋常ではなかった。"),
+  yuujin.say("1時間後、となっぴーが積んだ石塔は他のグループが積んだものの2倍以上の高さになっていた。"),
+  tonapi.say("伝承では、河原に石を積みすぎると良くないことが起きるって言われてるんですよね。フフ"),
+  yuujin.say("（それを知りながら積んでいたのか）"),
+  yuujin.say("翌朝、石塔は綺麗に崩れていた。となっぴーは静かに写真を撮っていた。"),
   Menu.prompt("どうツッコミを入れる？")
-    .choose("研究データはちゃんと取れよ", [
-      yuujin.say("「色々あるだろうが、カビの研究データはちゃんと取れよ」"),
-      tonapi.say("はい、もちろん記録は残しています。論文のネタになるかもしれませんし！"),
+    .choose("「なんで知りながら積んだんだ」", [
+      yuujin.say("「伝承を知ってて、なんで積んだんだ……」"),
+      tonapi.say("だって、積みたくなったんですもん。でも次は気をつけます。フフ"),
+      yuujin.say("（全然気にしていないことがわかった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ])
-    .choose("一緒に推し活しよう", [
-      yuujin.say("「そんなに楽しいなら、俺も一緒に推し活しようかな」"),
-      tonapi.say("えっ！？本当に！？じゃあまずは用語集から覚えてもらって……"),
+    .choose("「崩れた写真、なんで撮ってるんだ」", [
+      yuujin.say("「崩れた後の写真、なんで楽しそうに撮ってるんだ」"),
+      tonapi.say("記録として残しておきたくて……崩れた状態も、美しいですよね。フフフ"),
+      yuujin.say("（価値観のずれを感じたが、否定はできなかった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
     ])
-    .choose("石は積み直した方がいい", [
-      yuujin.say("「そこまで言うなら、河原に戻って石を積み直した方がいい」"),
-      tonapi.say("ですよね！じゃあ今週末、もう一度行ってきます！フフ……"),
-      yuujin.say("（なぜ背中を押してしまったのだろう）"),
+    .choose("「もう一回積み直そう」", [
+      yuujin.say("「よし、もう一回積み直そうぜ。今度は崩れないように」"),
+      tonapi.say("いいですね！じゃあ今度は伝承を無視して積みましょう！フフ"),
+      yuujin.say("（背中を押してしまったが、そのとき俺たちはどこか楽しかった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ]),
 
