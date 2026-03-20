@@ -1,7 +1,8 @@
-import { Scene, Menu } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, pack } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
+import { gameEvents } from "../../store/gameEvents";
 
 // ぱっくルート: メインシーン
 export const packRouteMain = new Scene("pack-route-main", {
@@ -18,19 +19,23 @@ packRouteMain.action([
       yuujin.say("全部同時はさすがに無理だ。まず卒業、次に就職かフリーかを決めろ。フランスの話はそれからにしろ"),
       pack.say("……そうだな。やっぱそうだよな。じゃあ卒研から論理的に片付けるか"),
       gameFlags.set("pack_graduation_power", (v) => (v || 0) + 4),
-      packRouteMain.jumpTo(finaleScene),
     ])
     .choose("全部応援する", [
       yuujin.say("全部いけるって！お前なら絶対いける！"),
       pack.say("よし、じゃあ全力でやるか！たいやきのジンクスを信じるぞ"),
       yuujin.say("（この後、ぱっくは全部を同時に動かし始めた。結果は……）"),
       gameFlags.set("pack_graduation_power", (v) => (v || 0) + 2),
-      packRouteMain.jumpTo(finaleScene),
     ])
     .choose("恋愛を優先するよう煽る", [
       yuujin.say("フランスの話、一番大事じゃないか？愛だろ愛"),
       pack.say("そ、そうか……！やっぱ愛か！！面白いことになりそうだな"),
       gameFlags.set("pack_graduation_power", (v) => (v || 0) - 3),
-      packRouteMain.jumpTo(finaleScene),
     ]),
+
+  Condition.If(() => {
+    gameEvents.triggerChapterTitle("結果発表");
+    return false;
+  }, []),
+
+  packRouteMain.jumpTo(finaleScene),
 ]);

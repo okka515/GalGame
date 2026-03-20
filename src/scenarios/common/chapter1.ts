@@ -1,7 +1,8 @@
-import { Menu, Scene } from "narraleaf-react";
+import { Menu, Scene, Condition } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../../characters";
 import { chapter2Scene } from "./chapter2";
 import { gameFlags } from "../../store/gameState";
+import { gameEvents } from "../../store/gameEvents";
 
 // 第1章: 春（4月〜）「全員ちょっと危ないスタート」
 // 各キャラの問題噴出シーンと選択肢を定義
@@ -21,22 +22,26 @@ ch1TonapiScene.action([
       yuujin.say("「カビは早く捨てろ。バイオハザードになるぞ」"),
       tonapi.say("えっ、もったいない……でも、言われた通り安全第一で処分します。"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
-      ch1TonapiScene.jumpTo(chapter2Scene),
     ])
     .choose("新しい化合物として学会に出そう", [
       yuujin.say("「新しい化合物として学会に出そう」"),
       tonapi.say("ですよね！ちょっと教授に相談してみます！フフフ……"),
       yuujin.say("（危ない方向へ背中を押してしまったかもしれない）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
-      ch1TonapiScene.jumpTo(chapter2Scene),
     ])
     .choose("バレーの応援がんばれ", [
       yuujin.say("「とりあえずバレーの応援がんばれ」"),
       tonapi.say("はい！全力で応援してきます！カビは放置しておきますね。"),
       yuujin.say("（放置するな）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
-      ch1TonapiScene.jumpTo(chapter2Scene),
     ]),
+
+  Condition.If(() => {
+    gameEvents.triggerChapterTitle("第2章");
+    return false;
+  }, []),
+
+  ch1TonapiScene.jumpTo(chapter2Scene),
 ]);
 
 // はるちろシーン → となっぴーへ

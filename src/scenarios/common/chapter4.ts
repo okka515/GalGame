@@ -1,4 +1,4 @@
-import { Scene, Menu } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { packRouteMain } from "../routes/pack";
@@ -6,6 +6,7 @@ import { massuRouteMain } from "../routes/massu";
 import { saasanRouteMain } from "../routes/saasan";
 import { haruchiroRouteMain } from "../routes/haruchiro";
 import { tonapiRouteMain } from "../routes/tonapi";
+import { gameEvents } from "../../store/gameEvents";
 
 // 第4章: 冬（12月〜）「最終追い込みと個別ルート確定」
 // シーンを末端から定義して jumpTo で数珠つなぎにする
@@ -63,21 +64,26 @@ ch4TonapiScene.action([
       yuujin.say("「バレーは来年もある。今は論文の執筆に集中しろ」"),
       tonapi.say("うぅ……わかりました。推しには心の中でエールを送ります……"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
-      ch4TonapiScene.jumpTo(chapter4RouteSelect),
     ])
     .choose("現地で応援しながら書け", [
       yuujin.say("「現地で応援しながらノートPCで論文書け」"),
       tonapi.say("スポ根ですね！よし、タイピングの音がバレーのスパイクみたいに響かせてきます！"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
-      ch4TonapiScene.jumpTo(chapter4RouteSelect),
     ])
     .choose("俺も応援に行く", [
       yuujin.say("「よし、じゃあ俺も応援に行くか」"),
       tonapi.say("本当ですか！？じゃあ一緒にメガホン叩きましょう！フフフ！"),
       yuujin.say("（結局、二人で論文そっちのけで応援してしまった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
-      ch4TonapiScene.jumpTo(chapter4RouteSelect),
     ]),
+
+  Condition.If(() => {
+    gameEvents.triggerChapterTitle("誰を選ぶ？");
+    return false;
+  }, []),
+
+  ch4TonapiScene.jumpTo(chapter4RouteSelect),
+
 ]);
 
 // はるちろの冬 → となっぴーへ

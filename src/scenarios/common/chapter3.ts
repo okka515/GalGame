@@ -1,7 +1,8 @@
-import { Scene, Menu } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../../characters";
 import { chapter4Scene } from "./chapter4";
 import { gameFlags } from "../../store/gameState";
+import { gameEvents } from "../../store/gameEvents";
 
 // 第3章: 秋（10月〜）「卒研・進路の山場、秋の修羅場」
 // シーンを末端から定義して jumpTo で数珠つなぎにする
@@ -22,22 +23,26 @@ ch3TonapiScene.action([
       tonapi.say("……仕方ないですね。大事なサンプルですが、避難させます"),
       yuujin.say("なんとか出禁は免れた。"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
-      ch3TonapiScene.jumpTo(chapter4Scene),
     ])
     .choose("「全部捨てるぞ！」", [
       yuujin.say("「問答無用で全部捨てるぞ！バイオハザードだ！」"),
       tonapi.say("きゃー！やめてください！私の努力の結晶が！"),
       yuujin.say("泣く泣く半分だけ捨てさせた。"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
-      ch3TonapiScene.jumpTo(chapter4Scene),
     ])
     .choose("「カビに名前をつけよう」", [
       yuujin.say("「よし、まずはこの青いやつから名前をつけよう」"),
       tonapi.say("いいですね！じゃあ『トナピニリン』はどうでしょうフフフ……"),
       yuujin.say("（現実逃避をした結果、教授にめっっっちゃくちゃ怒られた）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
-      ch3TonapiScene.jumpTo(chapter4Scene),
     ]),
+
+  Condition.If(() => {
+    gameEvents.triggerChapterTitle("第4章");
+    return false;
+  }, []),
+
+  ch3TonapiScene.jumpTo(chapter4Scene),
 ]);
 
 // はるちろの秋 → となっぴーへ
