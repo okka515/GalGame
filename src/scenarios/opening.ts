@@ -1,40 +1,45 @@
-import { Scene } from "narraleaf-react";
+import { Scene, Condition } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../characters";
+import { gameEvents } from "../store/gameEvents";
 import { prologueScene } from "./prologue";
 
-// OPムービー: 「今日から新しいクラス！」的なノリ
+// OPムービー: 大学4年の春、新しいクラスで緊張している
 export const openingScene = new Scene("opening", {
-  background: "#0a1628",
+  background: "#0d1b2a",
 });
 
 openingScene.action([
-  yuujin.say("春。"),
-  yuujin.say("桜が散り始めるころ、俺たちは「卒業」という言葉と向き合っていた。"),
-  yuujin.say("思えば、出会いはいつだってあっけなかった。"),
+  yuujin.say("4月。"),
+  yuujin.say("大学4年生の春が、始まった。"),
+  yuujin.say("今日から新しいゼミ。顔ぶれが変わって、また少し緊張している。"),
+  yuujin.say("……まあ、慣れた顔も混じってるけど。"),
 
-  pack.say("今日から新しいクラス！なんか気合入るな！"),
-  yuujin.say("ぱっくはいつも全力だった。"),
+  pack.say("よっ！同じゼミじゃん！最高か！"),
+  yuujin.say("テンション高い人が来た。"),
 
-  massu.say("よろしくね！写真撮っていい？"),
-  yuujin.say("まっすーはカメラを持ってきていた。初日から。"),
+  massu.say("あ、席取っといたよ。あとこれ、入学式の写真——って4年だけど"),
+  yuujin.say("まっすーは入学式ですらカメラを持ち込んでいた。なぜ今それを出すんだ。"),
 
-  saasan.say("……海陽町から来た"),
-  yuujin.say("さーさんはそれだけ言って、翌週にはハッカソンで優勝していた。"),
+  saasan.say("今年も同じゼミか。まあいいけど"),
+  yuujin.say("さーさんはいつも通り、落ち着いている。たぶん何も緊張していない。"),
 
-  haruchiro.say("あの、自己紹介をMarkdownで書いてきたんですけど……"),
-  yuujin.say("はるちろの第一印象は「変な人」だった。今も変わっていない。"),
+  haruchiro.say("えーと、今日の自己紹介、Markdownで書いてきたんですけど……やっぱり紙に出力します"),
+  yuujin.say("成長したのか退化したのかわからない。"),
 
-  tonapi.say("カビの培養、うまくいきました"),
-  yuujin.say("となっぴーは初日から研究の話をしていた。"),
+  tonapi.say("今年は新しい培地で試してみようと思っています"),
+  yuujin.say("初日からカビの話をするな。"),
 
-  yuujin.say("そんな5人と、気づいたらずっと一緒にいた。"),
-  yuujin.say("笑いすぎて腹が痛い夜も、"),
-  yuujin.say("締め切りギリギリで全員パニックになった朝も、"),
-  yuujin.say("どこかに行くとき、帰ってきたとき、"),
-  yuujin.say("いつもこの6人だった。"),
-  yuujin.say("そして今、最後の春が始まろうとしている。"),
-  yuujin.say("全員ちゃんと卒業して、追いコンで会おう。"),
-  yuujin.say("――それだけのことが、なぜこんなに難しいんだ。"),
+  yuujin.say("……でも、こういう感じが好きだと思っている。"),
+  yuujin.say("緊張して、笑って、また始まる春。"),
+  yuujin.say("これが最後の春なんだって、まだ実感がない。"),
+  yuujin.say("全員ちゃんと卒業して、追いコンで終わろう。"),
+  yuujin.say("そう思っていたのは、この日の午前中だけだった。"),
+
+  // OP 終了 → 「第1章」チャプタータイトル表示 → プロローグへ
+  Condition.If(() => {
+    gameEvents.triggerChapterTitle("第 1 章");
+    return false;
+  }, []),
 
   openingScene.jumpTo(prologueScene),
 ]);
