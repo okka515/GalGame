@@ -81,28 +81,30 @@ const ch1SaasanScene = new Scene("ch1-saasan", {
   background: "#052e16",
 });
 ch1SaasanScene.action([
-  yuujin.say("さーさんが珍しく連絡してきた。"),
-  saasan.say("会社立ち上げようと思ってる。よし、卒業したら即稼働だな"),
-  yuujin.say("（それ自体はさーさんなら普通の発言だ）"),
-  saasan.say("ただ、車のミラーを昨日ちょっと当ててな。車検が来月なんだけど、まあ余裕だろ"),
-  saasan.say("あと炒り卵カルボナーラの作り方を教えてくれ。絶対にネギは入れるなよ、成分表示も見たいから"),
-  yuujin.say("（相談が3方向同時に来ている。これでハッカソンも優勝しているのだから末恐ろしい）"),
+  yuujin.say("さーさんが研究室の奥で、優雅にコーヒーを飲んでいた。"),
+  saasan.say("おお、お疲れ。この前のサイバーのハッカソン、余裕だったわ"),
+  yuujin.say("（当然のように言っているが、倍率も技術レベルも尋常じゃない大会だ）"),
+  saasan.say("ただのものづくりじゃ満足できないってこの前話したろ。一緒に立ち上げる会社、俺がCTOとして技術周りは全部持つからな"),
+  yuujin.say("誰もが認める『黒ポロ』で頂点の存在。俺を容赦なく巻き込んで起業の計画が進んでいく。"),
   Menu.prompt("どう答える？")
-    .choose("生活習慣だけはどうにかしろ", [
-      yuujin.say("「とりあえず、生活習慣だけはどうにかしろ。ネギも食え」"),
-      saasan.say("チッ、わかったよ。野菜ジュースくらいは飲んどくわ。"),
+    .choose("「よし、一緒に世界を獲ろう」", [
+      yuujin.say("「よし、お前がCTOなら最強だな。一緒に世界を獲ろうぜ」"),
+      saasan.say("はっはっは！お前ならそう言うと思ったぜ。最高のプロダクト作ってやるよ"),
+      yuujin.say("（肩を叩かれた。彼が技術トップなら本当にできそうな気がする）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
       ch1SaasanScene.jumpTo(ch1HaruchiroScene),
     ])
-    .choose("車乗るのやめろ", [
-      yuujin.say("「頼むから、しばらく車乗るのやめろ」"),
-      saasan.say("なんでだよ！俺のドライビングテクニックを舐めるなよ！"),
+    .choose("「じゃあ俺は何をすればいいんだ？」", [
+      yuujin.say("「力強いけど、じゃあ俺は何をすればいいんだ？」"),
+      saasan.say("お前はビジネス側と雑務全部だ。代表取締役として前に立てよ"),
+      yuujin.say("（いきなり一番責任の重い役割を実質的に丸投げされた）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
       ch1SaasanScene.jumpTo(ch1HaruchiroScene),
     ])
-    .choose("炒り卵カルボナーラ食わせろ", [
-      yuujin.say("「あとでその炒り卵カルボナーラ食わせろ」"),
-      saasan.say("おう、任せとけ。最高のジャンクフードにしてやるよ！"),
+    .choose("「俺の出資比率はどうなる？」", [
+      yuujin.say("「で、俺の出資比率（株）はどうなるんだ？」"),
+      saasan.say("お前が代表なんだからお前が決めろよ。俺は開発費と最高の環境さえあれば文句ねえぞ"),
+      yuujin.say("（お金の重圧がのしかかってきた。ビジネスパートナーとしての責任が重い）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       ch1SaasanScene.jumpTo(ch1HaruchiroScene),
     ]),
