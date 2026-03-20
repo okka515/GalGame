@@ -9,13 +9,13 @@ export const haruchiroRouteMain = new Scene("haruchiro-route-main", {
 });
 
 haruchiroRouteMain.action([
-  yuujin.say("はるちろから深刻な相談が来た。"),
-  haruchiro.say("あの、実はマチアプで気になる人ができて……めちゃくちゃレスポンス早いんですよ"),
-  haruchiro.say("でもDroidKaigiで出会った人もいて。プロフィールにgitリンク貼ろうとしたら止められたし、服装も店員さんにデプロイ方法まで全部決めてもらったし……どうすればいいか分からなくて"),
-  yuujin.say("（脳内が恋愛で埋まっている。しかも技術者らしいズレが随所に出ている）"),
+  yuujin.say("はるちろから、珍しく深刻そうな相談が来た。"),
+  haruchiro.say("あの……DroidKaigiで登壇したあとに、話しかけてきた人がいて"),
+  haruchiro.say("マチアプでやり取りしてた人だって気づいて。どうすればいいかわからなくて……プロフィールにgitリンク貼ったのも見てくれてたみたいで"),
+  yuujin.say("（マチアプとDroidKaigiで同時に繋がっていたらしい。はるちろらしい巡り合わせだ）"),
   Menu.prompt("どう答える？")
     .choose("ブレーキを踏んで卒研を優先させる", [
-      yuujin.say("まず卒研を終わらせろ。gitリンクはプロフィールじゃなくてポートフォリオに貼れ"),
+      yuujin.say("まず卒研を終わらせろ。恋愛はその後だ"),
       haruchiro.say("そ、そうですよね……わかりました。まずは卒研のタスクから消化します"),
       gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) + 4),
     ])
@@ -25,7 +25,7 @@ haruchiroRouteMain.action([
       gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) + 2),
     ])
     .choose("「両方行け！」と煽る", [
-      yuujin.say("両方いい顔しとけ！二股上等！"),
+      yuujin.say("DroidKaigiの縁もマチアプの縁も、全部使え！"),
       haruchiro.say("え？！そ、そういうことに？！デッドロック起きません？！"),
       gameFlags.set("haruchiro_triangle", true),
       gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) - 1),

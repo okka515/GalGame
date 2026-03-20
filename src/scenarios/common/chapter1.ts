@@ -49,29 +49,28 @@ const ch1HaruchiroScene = new Scene("ch1-haruchiro", {
   background: "#1e1b4b",
 });
 ch1HaruchiroScene.action([
-  yuujin.say("はるちろが浮かれている。"),
-  haruchiro.say("あ、あの！マチアプで気になる人ができまして！レスポンスが早いんですよ！"),
-  haruchiro.say("でもDroidKaigiでも出会いがあって……コンフリクト起きてるんですけど、どっちにマージするのが正解だと思いますか？"),
-  yuujin.say("（脳内が恋愛100%になっている。しかも技術用語が漏れている）"),
-  haruchiro.say("とりあえずプロフィールにgitのリンク貼ったんですけど、なんか404というか、反応がなくて……"),
-  haruchiro.say("あ、あと卒研のタスク、ちょっとだけ積んでるの忘れてました"),
+  yuujin.say("はるちろが何かぶつぶつ言いながら端末を眺めている。"),
+  haruchiro.say("あの、発表スライドってPowerPointで作るべきか、MarkdownをRemarkで変換するべきか……"),
+  haruchiro.say("GitHubにまとめようとしたら、プロフィールのリンクがなぜか404になってて"),
+  yuujin.say("（完全に技術寄りのことで悩んでいる。この人はいつもこんな感じだ）"),
+  haruchiro.say("あと卒研のタスク、ちょっとだけ積んでるの忘れてました"),
   Menu.prompt("どうツッコミを入れる？")
     .choose("早く卒研のタスクやれ", [
-      yuujin.say("「コンフリクト直す前に、早く卒研のタスクやれ」"),
-      haruchiro.say("うっ……正論のPRが来ました。マージして卒研やります……"),
+      yuujin.say("「スライドの形式より卒研のタスクやれ」"),
+      haruchiro.say("うっ……それはそう。でもMarkdownの方が効率よくて……"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
       ch1HaruchiroScene.jumpTo(ch1TonapiScene),
     ])
     .choose("gitのリンク直せばワンチャンある", [
-      yuujin.say("「gitのリンク直せばワンチャンある」"),
-      haruchiro.say("ですよね！ポートフォリオ充実させてきます！"),
-      yuujin.say("（そっちじゃない）"),
+      yuujin.say("「gitのリンク直してからスライドも卒研もやれ」"),
+      haruchiro.say("ですよね！まずプロフィール整えます！"),
+      yuujin.say("（そっちが優先じゃないと思うが）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
       ch1HaruchiroScene.jumpTo(ch1TonapiScene),
     ])
     .choose("どっちにもいい顔しとけ", [
-      yuujin.say("「どっちにもいい顔しとけ」"),
-      haruchiro.say("なるほど！両方と並行稼働してみます！"),
+      yuujin.say("「PowerPointでもMarkdownでもいいから完成させろ」"),
+      haruchiro.say("なるほど！完成ファーストで並列処理します！"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
       ch1HaruchiroScene.jumpTo(ch1TonapiScene),
     ]),
