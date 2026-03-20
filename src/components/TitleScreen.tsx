@@ -22,14 +22,14 @@ export default function TitleScreen({ onStart }: Props) {
       {/* 背景の星 */}
       <div style={styles.stars} aria-hidden="true">
         {Array.from({ length: 60 }).map((_, i) => (
-          <span key={i} style={starStyle(i)} />
+          <span key={i} style={starStyle()} />
         ))}
       </div>
     </div>
   );
 }
 
-function starStyle(i: number): React.CSSProperties {
+function starStyle(): React.CSSProperties {
   const size = Math.random() * 3 + 1;
   return {
     position: "absolute",

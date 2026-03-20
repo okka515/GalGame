@@ -1,7 +1,8 @@
-import { Scene, Menu } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../../characters";
 import { chapter3Scene } from "./chapter3";
 import { gameFlags } from "../../store/gameState";
+import { gameEvents } from "../../store/gameEvents";
 
 // 第2章: 夏（7月〜）「過去エピソード解放と夏のトラブル」
 // シーンを末端から定義して jumpTo で数珠つなぎにする
@@ -23,21 +24,25 @@ tonapiFlashback.action([
       yuujin.say("「色々あるだろうが、カビの研究データはちゃんと取れよ」"),
       tonapi.say("はい、もちろん記録は残しています。論文のネタになるかもしれませんし！"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
-      tonapiFlashback.jumpTo(chapter3Scene),
     ])
     .choose("一緒に推し活しよう", [
       yuujin.say("「そんなに楽しいなら、俺も一緒に推し活しようかな」"),
       tonapi.say("えっ！？本当に！？じゃあまずは用語集から覚えてもらって……"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
-      tonapiFlashback.jumpTo(chapter3Scene),
     ])
     .choose("石は積み直した方がいい", [
       yuujin.say("「そこまで言うなら、河原に戻って石を積み直した方がいい」"),
       tonapi.say("ですよね！じゃあ今週末、もう一度行ってきます！フフ……"),
       yuujin.say("（なぜ背中を押してしまったのだろう）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
-      tonapiFlashback.jumpTo(chapter3Scene),
     ]),
+
+  Condition.If(() => {
+    gameEvents.triggerChapterTitle("第3章");
+    return false;
+  }, []),
+
+  tonapiFlashback.jumpTo(chapter3Scene),
 ]);
 
 // はるちろ回想 → となっぴーへ

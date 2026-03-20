@@ -2,6 +2,7 @@ import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saasanImg, haruchiroImg, tonapiImg } from "../characters";
 import { chapter1Scene } from "./common/chapter1";
 import { gameFlags } from "../store/gameState";
+import { gameEvents } from "../store/gameEvents";
 
 export const prologueScene = new Scene("prologue", {
   background: "/backgrounds/university_outside.jpg",
@@ -34,6 +35,11 @@ prologueScene.action([
 
 prologueMenu.action([
   Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) >= 5), [
+    Condition.If(() => {
+      gameEvents.triggerChapterTitle("第1章");
+      return false;
+    }, []),
+
     prologueMenu.jumpTo(chapter1Scene),
   ]).Else([
     prologueMenu.jumpTo(prologuePrompt),

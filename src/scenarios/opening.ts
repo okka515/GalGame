@@ -35,9 +35,9 @@ openingScene.action([
   yuujin.say("全員ちゃんと卒業して、追いコンで終わろう。"),
   yuujin.say("そう思っていたのは、この日の午前中だけだった。"),
 
-  // OP 終了 → 「第1章」チャプタータイトル表示 → プロローグへ
+  // OP 終了 → 「プロローグ」チャプタータイトル表示 → プロローグへ
   Condition.If(() => {
-    gameEvents.triggerChapterTitle("第 1 章");
+    gameEvents.triggerChapterTitle("プロローグ");
     return false;
   }, []),
 

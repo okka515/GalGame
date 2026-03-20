@@ -1,7 +1,8 @@
-import { Scene, Menu } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, massu } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
+import { gameEvents } from "../../store/gameEvents";
 
 export const massuRouteMain = new Scene("massu-route-main", {
   background: "#1f2937",
@@ -17,18 +18,22 @@ massuRouteMain.action([
       yuujin.say("まず卒研。カメラは卒業後にいくらでもできる。遠距離の不安は話し合いで解決しろ"),
       massu.say("……そっか、そうだよね。わかった。今週末、ちゃんと向き合うよ"),
       gameFlags.set("massu_graduation_power", (v) => (v || 0) + 4),
-      massuRouteMain.jumpTo(finaleScene),
     ])
     .choose("カメラも遠距離も大事にするよう応援する", [
       yuujin.say("全部大事だよ。バランスよくやっていこう"),
       massu.say("うん、頑張ってみるよ！私ならいける！"),
       gameFlags.set("massu_graduation_power", (v) => (v || 0) + 2),
-      massuRouteMain.jumpTo(finaleScene),
     ])
     .choose("「カメラが一番大事」と全肯定する", [
       yuujin.say("カメラ、めちゃくちゃいいじゃん。それで生きていこうよ"),
       massu.say("そ、そうだよね……！私、カメラで生きる！！あはは！"),
       gameFlags.set("massu_graduation_power", (v) => (v || 0) - 3),
-      massuRouteMain.jumpTo(finaleScene),
     ]),
+
+  Condition.If(() => {
+    gameEvents.triggerChapterTitle("結果発表");
+    return false;
+  }, []),
+
+  massuRouteMain.jumpTo(finaleScene),
 ]);
