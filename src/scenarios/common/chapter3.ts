@@ -150,30 +150,32 @@ const ch3PackScene = new Scene("ch3-pack", {
   background: "#1c2e4a",
 });
 ch3PackScene.action([
-  yuujin.say("【秋の修羅場: フランスからの襲来】"),
-  pack.say("おい緊急事態だ。フランス人の彼女がいきなり日本に来るって言いだした！"),
-  yuujin.say("（秋の深まる頃、ぱっくが頭を抱えていた）"),
-  pack.say("俺、起業の準備とアプリ開発で全く時間ねえのに！しかも今週は卒研の進捗報告もあるんだぞ！"),
-  yuujin.say("フランス語もままならないのにどうするつもりなのだろうか。"),
+  yuujin.say("【秋の修羅場: クリキャンか、お出迎えか】"),
+  pack.say("悪い、ちょっと相談に乗ってくれ！"),
+  yuujin.say("秋の深まる頃、ぱっくが神妙な顔をして現れた。珍しく悩んでいる。"),
+  pack.say("来月のクリキャンの日程なんだけどさ……"),
+  pack.say("実は全く同じ日に、俺の寮に留学生の女の子が入寮してくるんだ。俺は日本代表として、彼女を出迎えて文化交流をする義務がある！"),
+  yuujin.say("（ただの下心だ。最後のクリキャンを休む気なのだろうか）"),
   Menu.prompt("どうアドバイスする？")
-    .choose("「研究室に彼女を連れてこい」", [
-      yuujin.say("「よし、まずは研究室に彼女を連れてこい」"),
-      pack.say("なるほど！国際交流と研究進捗のハブ拠点にするってことだな！"),
-      yuujin.say("（数日後、研究室がフランス語教室になり指導教員が泣き崩れた）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
+    .choose("「黙ってクリキャンに行け」", [
+      yuujin.say("「お前、最後のクリキャンだろ。黙ってアサインを出せ」"),
+      pack.say("……だよな。もう先輩だしアサインは出さないと……ううっ、グッドバイ、マドモアゼル……"),
+      yuujin.say("ぱっくは血の涙を流しながら、クリキャンのアサインを提出した。"),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
       ch3PackScene.jumpTo(ch3MassuScene),
     ])
-    .choose("「一日だけ彼女の案内をしてやれ」", [
-      yuujin.say("「一日だけ完全に休みにして、彼女の案内をしてやれ」"),
-      pack.say("そうだな、メリハリがないとダメだな。よし、京都にでも行くか"),
+    .choose("「午前だけ出迎えてから合流しろ」", [
+      yuujin.say("「じゃあ、午前中だけ出迎えて、午後からクリキャンに合流しろよ」"),
+      pack.say("天才か！よし、新幹線の乗り継ぎルートを調べてくるわ！"),
+      yuujin.say("（彼ならやり遂げそうだが、アサインは入れてもらえなさそうだ）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
       ch3PackScene.jumpTo(ch3MassuScene),
     ])
-    .choose("「まずは研究の進捗を終わらせろ」", [
-      yuujin.say("「まずは死ぬ気で研究の進捗を終わらせろ。話はそれからだ」"),
-      pack.say("……だよな！三日徹夜して全部終わらせてから彼氏の顔に戻るわ！"),
-      yuujin.say("ぱっくは気合でタスクを片付け、無事に彼女を迎え入れた。"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
+    .choose("「よし、出迎えを優先しろ！」", [
+      yuujin.say("「よし、出迎えで国際交流してこい！クリキャンのアサインは出すな！」"),
+      pack.say("おっ、最高のエールをもらったぜ！サンキュー！"),
+      yuujin.say("（結果、彼は出迎えには大成功したが、アサイン申請がなく、にしむーさんは悲しんだ）"),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       ch3PackScene.jumpTo(ch3MassuScene),
     ]),
 ]);
