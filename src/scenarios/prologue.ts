@@ -48,9 +48,9 @@ prologueMenu.action([
 
 prologuePrompt.action([
   Menu.prompt("誰の相談から聞く？（早く話を聞いてあげた人ほど、後の展開で有利になるかも…？）")
-    .showWhen(gameFlags.evaluate("prologue_talked_pack", (v) => (v || 0) === 0), "ぱっく（恋愛・起業・転向、全部同時進行）", [
+    .showWhen(gameFlags.evaluate("prologue_talked_pack", (v) => (v || 0) === 0), "ぱっく（アプリ開発・起業・エンジニア転向）", [
       packImg.show(),
-      yuujin.say("自分から首を絞めにいっているとしか思えないぱっくの話を聞くことにした。"),
+      yuujin.say("文系から技術職へ劇的な転向を遂げたぱっくの話を聞くことにした。"),
       gameFlags.assign((state) => ({
         prologue_talked_pack: 5 - state.prologue_talk_count,
         pack_graduation_power: state.pack_graduation_power + (5 - state.prologue_talk_count)
@@ -70,9 +70,9 @@ prologuePrompt.action([
       massuImg.hide(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
-    .showWhen(gameFlags.evaluate("prologue_talked_saasan", (v) => (v || 0) === 0), "さーさん（会社・車・炒り卵カルボナーラ）", [
+    .showWhen(gameFlags.evaluate("prologue_talked_saasan", (v) => (v || 0) === 0), "さーさん（ハッカソン無双・黒ポロ・起業）", [
       saasanImg.show(),
-      yuujin.say("方向性が三次元に散らかっているさーさんの話を聞くことにした。"),
+      yuujin.say("この春に名古屋へ引っ越してきたばかりなのに、常に圧倒的強者であり続けるさーさんの話を聞くことにした。"),
       gameFlags.assign((state) => ({
         prologue_talked_saasan: 5 - state.prologue_talk_count,
         saasan_graduation_power: state.saasan_graduation_power + (5 - state.prologue_talk_count)
