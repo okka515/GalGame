@@ -22,17 +22,23 @@ saasanRouteMain.action([
       yuujin.say("（強者が弱さを認めたとき、それは本当の強さになる）"),
       gameFlags.set("saasan_graduation_power", (v) => (v || 0) + 4),
     ])
-    .choose("「会社のこと、もっと話せ」", [
-      yuujin.say("「弱点はわかった。でもCTOとしての話、もっと聞かせてくれよ。お前の完璧な技術の話が聞きたい」"),
+    .choose("「CTOとしての話をもっと聞かせてくれ」", [
+      yuujin.say("「弱点はわかった。でもCTOとしての話、もっと聞かせてくれよ。お前の技術の話が聞きたい」"),
       saasan.say("……そうか。じゃあ話す。俺の描いてるアーキテクチャ、聞いてくれるか"),
       yuujin.say("（さーさんの目が輝いた。これが彼の本当の領域だ）"),
       gameFlags.set("saasan_graduation_power", (v) => (v || 0) + 2),
     ])
     .choose("「俺のカルボナーラを食わせてやる」", [
       yuujin.say("「よし、今夜俺が本物のカルボナーラを作ってやる。ネギは入れないから安心しろ」"),
-      saasan.say("……マジか？お前が作れるのか？」"),
+      saasan.say("……マジか？お前が作れるのか？"),
       yuujin.say("（その夜、さーさんは初めて炒り卵が入っていないカルボナーラを食べた。少し目が潤んでいた）"),
-      gameFlags.set("saasan_graduation_power", (v) => (v || 0) + 3),
+      gameFlags.set("saasan_graduation_power", (v) => (v || 0) - 1),
+    ])
+    .choose("「まあ余裕だろ。お前ならなんとかなる」", [
+      yuujin.say("「お前なら全部大丈夫だろ。余裕余裕」"),
+      saasan.say("……まあ、そうかもな。余裕だ"),
+      yuujin.say("（この後、さーさんは何も解決しないまま静かに突き進んでいった）"),
+      gameFlags.set("saasan_graduation_power", (v) => (v || 0) - 3),
     ]),
 
   Condition.If(() => {

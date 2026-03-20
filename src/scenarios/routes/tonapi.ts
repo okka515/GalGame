@@ -27,13 +27,19 @@ tonapiRouteMain.action([
       yuujin.say("「研究は卒業で終わらない。就職してからも続けられるし、論文になったら世界に届く」"),
       tonapi.say("……そうですね。そうか、続けていいんですね。フフ"),
       yuujin.say("（彼女の目がまた輝いた。静かな狂気が戻ってきた。それが彼女らしかった）"),
-      gameFlags.set("tonapi_graduation_power", (v) => (v || 0) + 3),
+      gameFlags.set("tonapi_graduation_power", (v) => (v || 0) + 2),
     ])
-    .choose("「バレーの応援は卒業後も続く」", [
+    .choose("「バレーは社会人になった方が遠征できる」", [
       yuujin.say("「推しのバレーチームは卒業後も応援できるよ。むしろ社会人になったら遠征できる」"),
       tonapi.say("……！ たしかに！就職して推し活費が増えますね！フフフ！"),
-      yuujin.say("（突破口は意外なところにあった）"),
-      gameFlags.set("tonapi_graduation_power", (v) => (v || 0) + 2),
+      yuujin.say("（突破口は意外なところにあったが、卒業への不安が解消されたとは言い難い）"),
+      gameFlags.set("tonapi_graduation_power", (v) => (v || 0) - 1),
+    ])
+    .choose("「卒業しなくていいよ」と言う", [
+      yuujin.say("「無理に卒業しなくていいんじゃないか。研究を続けたいなら院に行けばいい」"),
+      tonapi.say("……そうですね！研究を続けます！ただ年単位でカビと向き合う覚悟が！フフフ！"),
+      yuujin.say("（背中を押してしまった。となっぴーは卒業できるのだろうか）"),
+      gameFlags.set("tonapi_graduation_power", (v) => (v || 0) - 3),
     ]),
 
   Condition.If(() => {
