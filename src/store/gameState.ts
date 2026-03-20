@@ -10,13 +10,6 @@ type GameFlags = {
   prologue_talked_haruchiro: number;
   prologue_talked_tonapi: number;
 
-  // 第1章: 最初に助けるキャラ
-  ch1_first_pack: boolean;
-  ch1_first_massu: boolean;
-  ch1_first_saasan: boolean;
-  ch1_first_haruchiro: boolean;
-  ch1_first_tonapi: boolean;
-
   // 各キャラの問題解決フラグ
   pack_resolved: boolean;
   massu_resolved: boolean;
@@ -52,11 +45,6 @@ export const gameFlags = new Persistent<GameFlags>("galgame_flags", {
   prologue_talked_saasan: 0,
   prologue_talked_haruchiro: 0,
   prologue_talked_tonapi: 0,
-  ch1_first_pack: false,
-  ch1_first_massu: false,
-  ch1_first_saasan: false,
-  ch1_first_haruchiro: false,
-  ch1_first_tonapi: false,
   pack_resolved: false,
   massu_resolved: false,
   saasan_resolved: false,
