@@ -193,30 +193,34 @@ const ch4PackScene = new Scene("ch4-pack", {
   background: "#1c2e4a",
 });
 ch4PackScene.action([
-  yuujin.say("【冬の追い込み: 会社か、卒論か】"),
-  pack.say("おい、ついに登記の準備が整ったぞ！"),
-  yuujin.say("12月。世間がクリスマスムードに染まる中、ぱっくが書類の束を持って現れた。"),
-  pack.say("これでついに俺も社長だ！……ただ、弊害があってな"),
-  yuujin.say("（言うまでもない）"),
-  pack.say("卒論が1ミリも進んでねえ！！！"),
+  yuujin.say("【冬の追い込み: グローバルすぎるトラブル】"),
+  yuujin.say("寒さの厳しい12月。ふと見ると、ぱっくが財布の中身を除き込みながら絶望の表情を浮かべていた。"),
+  pack.say("……マイナス1万7000円。痛すぎる……"),
+  yuujin.say("「どうした？起業の資金繰りでもミスったか？」"),
+  pack.say("いや、実は先週までフランス人の彼女に会いにフランスに行ってたんだよ。"),
+  pack.say("でさ、向こうの地下鉄乗る時に、癖で無意識に日本の『Suica』をピって改札にタッチしたんだ"),
+  yuujin.say("（フランスでSuica。何かがおかしい）"),
+  pack.say("そしたらなぜか改札が開いてさ！そのまま乗れたんだけど、降りる駅で盛大にエラーが出て……罰金1万7000円取られたんだよ！"),
+  yuujin.say("（ガバガバすぎる国のシステムと、見事なオチである）"),
   Menu.prompt("どうアドバイスする？")
-    .choose("「まずは卒論を出せ」", [
-      yuujin.say("「会社は後からでも作れる！まずは卒論を出せ！」"),
-      pack.say("くっ……だよな！卒業できなきゃ中卒社長になってしまう！"),
-      yuujin.say("ぱっくは血走った目で研究室に籠もった。"),
+    .choose("「グローバルな勉強代だと思え」", [
+      yuujin.say("「これもグローバルな経験の一部……高くついた勉強代だと思え」"),
+      pack.say("だよな！これでまた一つ、俺のスケールがでかくなったってことだ！"),
+      yuujin.say("（ポジティブな解釈で落ち着いたようだ）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
       ch4PackScene.jumpTo(ch4MassuScene),
     ])
-    .choose("「会社を登記しろ」", [
-      yuujin.say("「卒業なんていつでもできる。今は会社を登記しろ」"),
-      pack.say("おっ、わかってるじゃねえか。よし、印鑑証明取ってくるわ！"),
+    .choose("「彼女に慰めてもらえよ」", [
+      yuujin.say("「ドンマイ。まあ、彼女に慰めてもらえよ」"),
+      pack.say("それがさ！罰金で揉めてたらいつの間にか彼女消えてて、帰国するまでちょっと気まずかったんだよな……"),
+      yuujin.say("（思っていたより悲惨なオチだった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
       ch4PackScene.jumpTo(ch4MassuScene),
     ])
-    .choose("「フランスに逃亡しよう」", [
-      yuujin.say("「もう何もかも捨てて、彼女と一緒にフランスに逃亡しようぜ」"),
-      pack.say("ボナペティ！それ最高だな！……って馬鹿！"),
-      yuujin.say("（ノリツッコミの余裕はあるらしい）"),
+    .choose("「フランスでSuicaは草」", [
+      yuujin.say("「いや、フランスでSuicaは草」"),
+      pack.say("お前なぁ！人が悲しんでるのに草生やすなよ！エラー音だけはやたら軽快だったぞ！"),
+      yuujin.say("（笑い事ではないが、ぱっくらしいトラブルだった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       ch4PackScene.jumpTo(ch4MassuScene),
     ]),

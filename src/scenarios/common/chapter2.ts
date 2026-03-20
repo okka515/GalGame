@@ -147,31 +147,31 @@ const packFlashback = new Scene("pack-flashback", {
   background: "#1c2e4a",
 });
 packFlashback.action([
-  yuujin.say("【夏の回想: ぱっくとたいやき】"),
-  yuujin.say("それは、ある蒸し暑い日のことだった。"),
-  pack.say("あ"),
-  yuujin.say("橋の上で、ぱっくの手からたいやきが落ちた。"),
-  yuujin.say("たいやきは弧を描き、用水路の中へと消えた。"),
-  pack.say("……泳いでるな。"),
-  yuujin.say("二人で5分間、用水路を流れるたいやきを見つめた。"),
-  pack.say("なかなか面白いことするじゃないか。なんかこれ、縁起いいな"),
-  yuujin.say("以来、ぱっくの中で「たいやきを流す＝成功のジンクス」という謎の方程式が生まれたそうだ。"),
+  yuujin.say("【夏の回想: ぱっくと泳ぐたいやき】"),
+  yuujin.say("蒸し暑い日、用水路を見つめるぱっくを見て、ふと高校時代の昔話を思い出した。"),
+  pack.say("そういえば昔さ、この用水路にたいやきを落としたことがあってな"),
+  yuujin.say("「落とした、お前が自発的にか？」"),
+  pack.say("ああ。たいやきって魚だろ？泳がせてみたらどうなるか急に気になってな"),
+  yuujin.say("（行動力のベクトルが明らかにおかしい。「よくわからなくて面白いこと」を正義だと思いすぎている）"),
+  pack.say("そしたらさ、結構綺麗に泳いでたんだよな。あれを見た時、俺の人生の可能性も無限大だなって確信したね"),
+  yuujin.say("（独特すぎる価値観だ。天才と変人は紙一重である。）"),
   Menu.prompt("どう突っ込む？")
-    .choose("食べ物を粗末にするな", [
-      yuujin.say("「ジンクス以前に、食べ物を粗末にするなとしか言えん」"),
-      pack.say("うっ……正論過ぎて反論できねぇ。次はちゃんと食うわ。"),
+    .choose("「食べ物を粗末にするな」", [
+      yuujin.say("「可能性はともかく、食べ物を粗末にするなとしか言えん」"),
+      pack.say("うっ……ごもっともすぎる。今思えば若気の至りだったわ"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
       packFlashback.jumpTo(massuFlashback),
     ])
-    .choose("なるほど、縁起いいな！", [
+    .choose("「なるほど、縁起いいな！」", [
       yuujin.say("「なるほど、用水路を力強く泳ぐたいやき……縁起いいな！」"),
-      pack.say("おっ！お前もわかってきたか！これで俺の起業も大成功だな！"),
+      pack.say("おっ！お前もわかってきたか！あの泳ぎっぷりはまさにイノベーションの予兆だったね"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
       packFlashback.jumpTo(massuFlashback),
     ])
-    .choose("意味不明すぎる。もう一回落としてみろ", [
-      yuujin.say("「意味不明すぎる。よし、もう一回落としてみろ」"),
-      pack.say("おっ、いいぜ！って、もうたいやき持ってねえよ！"),
+    .choose("「じゃあ今からもう一回泳がせるか？」", [
+      yuujin.say("「じゃあ今からもう一回泳がせるか？」"),
+      pack.say("おっ、いいぜ！……って、今は手元にたいやきが無いな。買ってこいよ"),
+      yuujin.say("（乗っかってしまったが、パシリにされそうになった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       packFlashback.jumpTo(massuFlashback),
     ]),

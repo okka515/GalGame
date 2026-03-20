@@ -146,31 +146,32 @@ const ch1PackScene = new Scene("ch1-pack", {
   background: "#1c2e4a",
 });
 ch1PackScene.action([
-  yuujin.say("最初に来たのはぱっくだった。"),
-  pack.say("なあ聞いてくれよ。フランス人の彼氏ができたんだが、"),
-  pack.say("同時に起業の話も進んでてさ。俺、エンジニアに転向した方がいいと思うんだよな"),
-  pack.say("全部うまくいく気がするんだ。根拠？たいやきが用水路泳いでたからな、縁起いいだろ"),
-  yuujin.say("（全部やろうとするのはわかった。ジンクスの根拠は意味不明だ）"),
-  pack.say("留学生の女の子のお出迎えも今週あるし、天文学サークルのアプリもFlutterで作ってるしな"),
+  yuujin.say("最初に来たのはぱっくだった。就活の時期だというのに、妙に晴れやかな顔をしている。"),
+  pack.say("なあ聞いてくれよ。大学入学当初からやってた起業の件なんだけどさ、俺、広報からエンジニアに転向したんだわ"),
+  yuujin.say("（いきなりのキャリアチェンジ宣言。しかも文系職からゴリゴリの技術職への転向だ）"),
+  pack.say("プログラミングってやってみると直感的というか……面白そうなことの解像度が上がるよな。"),
+  pack.say("とりあえず一ヶ月くらい勉強して、俺が所属してる天文学サークル用のアプリをFlutterで自作し始めたところだ"),
+  yuujin.say("（一ヶ月でそこまで形にするのはシンプルに天才としか言いようがない。しかし……）"),
+  pack.say("で、色々やってたらタスクがコンフリクトしててさ。起業のコード書きつつ、サークルのアプリも進めたいんだけど、お前どう思う？"),
   Menu.prompt("どう答える？")
-    .choose("まずは一つずつ確実に片付けろ", [
-      yuujin.say("「まずは一つずつ確実に片付けろ。キャパオーバーするぞ」"),
-      pack.say("んー、まあ確かに一気にやると死ぬかもな。わかった、優先順位つけるわ。"),
+    .choose("「まずは起業の方のコードに集中しろ」", [
+      yuujin.say("「まずは起業の方のコードに集中しろ。会社がかかってるんだろ」"),
+      pack.say("んー、まあ確かに。利益直結のプロジェクトを優先するのは定石か。わかった、そっちのPRから処理するわ"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
       ch1PackScene.jumpTo(ch1MassuScene),
     ])
-    .choose("とりあえず全部全力でやれ！", [
-      yuujin.say("「とりあえず全部全力でやれ！いけるいける！」"),
-      pack.say("おっ、わかってるじゃねえか！全部やってやるよ！"),
-      yuujin.say("（破滅へのカウントダウンが始まった気がする）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
+    .choose("「両方全力で並行開発しろ！」", [
+      yuujin.say("「いけるいける！両方全力で並行開発しろ！」"),
+      pack.say("おっ、言うねえ！マルチスレッドで脳髄フル回転させてくるわ！"),
+      yuujin.say("（彼は天才だが、確実に寿命を縮める選択をしてしまった気がする）"),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
       ch1PackScene.jumpTo(ch1MassuScene),
     ])
-    .choose("留学生のお出迎えだけは絶対に行くな", [
-      yuujin.say("「留学生のお出迎えだけは絶対に行くな。絶対にだ」"),
-      pack.say("なんでだよ！そこが一番行きたいところだろ！絶対行くわ！"),
-      yuujin.say("（案の定、話を聞かなかった）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 0 })),
+    .choose("「サークルのアプリ、面白そうだな」", [
+      yuujin.say("「サークルのアプリ、面白そうだな。そっち見せてよ」"),
+      pack.say("おっ、わかってるじゃねえか！UIのアニメーションが結構いい感じにできたんだよ！"),
+      yuujin.say("（楽しそうなぱっくを見て、起業の方は大丈夫かと一抹の不安を覚えた）"),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       ch1PackScene.jumpTo(ch1MassuScene),
     ]),
 ]);
