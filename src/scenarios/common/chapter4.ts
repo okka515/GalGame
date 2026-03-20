@@ -124,30 +124,32 @@ const ch4SaasanScene = new Scene("ch4-saasan", {
   background: "#052e16",
 });
 ch4SaasanScene.action([
-  yuujin.say("【冬の追い込み: 完璧な資料と抜けてる足元】"),
-  yuujin.say("さーさんは卒論の執筆をハイスピードで終わらせていた。"),
-  saasan.say("ふぅ。卒論のドラフト、完成したわ。俺の文章力ならこれで修論でも通るだろ"),
-  yuujin.say("相変わらずの自信だが、画面を覗くと致命的な欠陥があった。"),
-  yuujin.say("論文の文字がすべて丸ゴシック体だ。しかも参考文献がゼロ。"),
-  Menu.prompt("どう指摘する？")
-    .choose("「参考文献がないぞ。あとフォント直せ」", [
-      yuujin.say("「お前の論文、よく見たら参考文献がないぞ。あとフォント直せ」"),
-      saasan.say("あっ。……マジか。フォーマット落としてくるわ"),
-      yuujin.say("素直に直した。さーさんは有能なので修正も早い。"),
+  yuujin.say("【冬の追い込み: 完璧超人の致命的弱点】"),
+  yuujin.say("卒論の大詰め。徹夜明けの俺たちに、さーさんが得意料理を振る舞うと言い出した。"),
+  saasan.say("俺の特製カルボナーラだ。……ただ、ちょっと火を通しすぎたかもな"),
+  yuujin.say("（それは完全に『炒り卵パスタ』だった。だが誰も突っ込めないオーラがある）"),
+  saasan.say("あと買い出しのコンビニの味噌汁、成分表示を全力で目視して、ネギが1ミリも入ってないやつを選び抜いたぜ。"),
+  yuujin.say("（完璧超人の唯一にして最大の弱点。ネギへの異常な憎悪と、ポンコツすぎる家事スキルだ）"),
+  yuujin.say("そう思った矢先、さーさんが盛大にオレンジジュースを床にこぼした。"),
+  Menu.prompt("どうする？")
+    .choose("「黙って床を拭く」", [
+      yuujin.say("（無言で雑巾を取り出し、オレンジジュースでベタベタの床を拭いた）"),
+      saasan.say("……悪いな。プログラミングならバグは出ないのに、現実世界はバグだらけだぜ"),
+      yuujin.say("（名言風だが、ただのドジである）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ])
-    .choose("「とりあえずカルボナーラ食うか？」", [
-      yuujin.say("「とりあえず、炒り卵カルボナーラ食うか？」"),
-      saasan.say("おう！俺が作ってやるよ！ネギ抜きな！"),
-      yuujin.say("（現実逃避に走ってしまった）"),
+    .choose("「炒り卵パスタには大盛り激辛ソースだろ」", [
+      yuujin.say("「この炒り卵パスタ、どうせなら大盛り激辛ソースでもかけるか？」"),
+      saasan.say("おっ、わかってるじゃねえか。食べ物は大盛り激辛至上主義だからな！"),
+      yuujin.say("（味覚も完全に狂っていることが判明した）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ])
-    .choose("「とりあえず寝ろ」", [
-      yuujin.say("「完璧だな。とりあえず寝ろ」"),
-      saasan.say("だろ？明日は海陽町までドライブでも行くか"),
-      yuujin.say("（後日、担当教員から雷が落ちた）"),
+    .choose("「お好み焼きでも頼むか」", [
+      yuujin.say("「もう出前でネギたっぷりのお好み焼きでも頼むか？」"),
+      saasan.say("……お前、俺を殺す気か？ネギだけは絶対に許さん！"),
+      yuujin.say("（激怒された。ネギへの憎しみは本物だ）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ]),

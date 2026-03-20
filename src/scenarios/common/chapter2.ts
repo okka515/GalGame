@@ -83,28 +83,32 @@ const saasanFlashback = new Scene("saasan-flashback", {
   background: "#052e16",
 });
 saasanFlashback.action([
-  yuujin.say("【夏の回想: さーさんと海陽町】"),
-  yuujin.say("さーさんが海陽町から転校してきた日のことを覚えている。"),
-  saasan.say("ああ、海の町から来たわ"),
-  yuujin.say("それだけ言って、翌週には即席チームのハッカソンで無双していた。"),
-  yuujin.say("だが去年の卒サプ事件——研究室のプリンターを終電まで占拠された話——は今でも語り草だ。"),
-  saasan.say("あれは俺も悪かったと思ってる。でも、俺の資料は完璧だっただろ？"),
-  Menu.prompt("どう振り返る？")
-    .choose("プリンターは計画的に使え", [
-      yuujin.say("「資料が完璧でも、プリンターはもっと計画的に使え」"),
-      saasan.say("痛いところを突くね。今年はペーパーレスでいくわ。"),
+  yuujin.say("【夏のトラブル: 強者のドライブ】"),
+  yuujin.say("夏の暑い日、さーさんがふらっと現れた。"),
+  saasan.say("おう、昨日ちょっと車で出かけてたんだけどさ。軽くミラー当てちゃってな"),
+  yuujin.say("「お前でも運転ミスることあるんだな」"),
+  saasan.say("弘法にも筆の誤りってやつだな。まあ、それはいいんだが……"),
+  saasan.say("よく考えたら、俺の車、半年前に車検切れてたわ"),
+  yuujin.say("（全然よくない。コンプライアンスの概念が豪快に欠落している）"),
+  Menu.prompt("どうツッコミを入れる？")
+    .choose("「今すぐ車を封印しろ」", [
+      yuujin.say("「今すぐその車を封印しろ。これ以上は犯罪だ」"),
+      saasan.say("厳しいな。まあ、今日から俺は徒歩勢になるわ"),
+      yuujin.say("（素直に諦めてくれたので安堵した）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
       saasanFlashback.jumpTo(haruchiroFlashback),
     ])
-    .choose("次のハッカソンも一緒に出ようぜ", [
-      yuujin.say("「まあいいさ。次のハッカソンも一緒に出ようぜ」"),
-      saasan.say("おう、任せとけ。また優勝させてやるよ。"),
+    .choose("「ミラー直すより先に車検通せ」", [
+      yuujin.say("「ミラー直すより先に車検通せよ」"),
+      saasan.say("だよな。じゃあ今からユーザー車検に持ち寄ってくるわ"),
+      yuujin.say("（行動力は随一だが、そもそも乗るなと言いたい）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
       saasanFlashback.jumpTo(haruchiroFlashback),
     ])
-    .choose("海陽町ってどこだっけ？", [
-      yuujin.say("「ところで、海陽町ってどこだっけ？」"),
-      saasan.say("……お前、マジで言ってんの？徳島の右下だよ！！"),
+    .choose("「名古屋に海陽町のノリを持ち込むな」", [
+      yuujin.say("「名古屋に海陽町のノリを持ち込むな。お前の地元の常識だとしてもアウトだぞ」"),
+      saasan.say("ははっ、海陽町でも流石に車検切れはアウトだわ！"),
+      yuujin.say("（ノリツッコミのキレも良い）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       saasanFlashback.jumpTo(haruchiroFlashback),
     ]),

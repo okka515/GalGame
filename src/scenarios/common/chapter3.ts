@@ -83,30 +83,31 @@ const ch3SaasanScene = new Scene("ch3-saasan", {
   background: "#052e16",
 });
 ch3SaasanScene.action([
-  yuujin.say("【秋の修羅場: プリンター占拠事件】"),
-  yuujin.say("研究室でさーさんが大量の資料を印刷していた。"),
-  saasan.say("悪いな、あと2時間はプリンター独占するわ。会社用の資料だ"),
-  yuujin.say("（当然のように言っているが、今日は卒研の中間レポートの締切日だ）"),
-  yuujin.say("他の学生たちが恨めしそうに見ている。このままではさーさんが研究室の敵になる。"),
-  Menu.prompt("どう切り出す？")
-    .choose("「先に卒研組に譲れ」と正論を言う", [
-      yuujin.say("「今日は中間提出だろ。先に卒研組に譲ってやれ」"),
-      saasan.say("ん？ああ、そうか。俺はいつでもいいから譲るわ"),
-      yuujin.say("あっさり譲ってくれた。さーさんは強者の余裕を持っている。"),
+  yuujin.say("【秋の修羅場: 強者たちの休息】"),
+  yuujin.say("卒研の中間発表直前。研究室の誰もが疲労困憊でピリピリしていた。"),
+  saasan.say("お前ら、進捗どうよ？俺はもう完璧だから、息抜きにスマブラやろうぜ"),
+  yuujin.say("（悪魔の誘いだった。結果、全員がさーさんにボコボコにされ、プライドを粉砕された）"),
+  saasan.say("はっはっは！じゃあこの後、気分転換にカラオケでも行くか？俺の美声を聞かせてやるよ"),
+  yuujin.say("（全てが完璧すぎる。彼には修羅場という概念が存在しないらしい）"),
+  Menu.prompt("どう反応する？")
+    .choose("「先に俺たちの卒研を見てくれ」", [
+      yuujin.say("「カラオケの前に、俺たちの卒研のレビューをしてくれ」"),
+      saasan.say("おう、任せとけ。一瞬で終わらせてやるから、そしたらカラオケな"),
+      yuujin.say("（的確すぎる指摘のおかげで、逆に全員の進捗が爆上がりした）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
       ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ])
-    .choose("「俺が代わりにコンビニで刷ってくるよ」", [
-      yuujin.say("「しょうがない、俺が代わりにコンビニで刷ってくるよ」"),
-      saasan.say("おっ、助かる！金は後で払うわ"),
-      yuujin.say("俺の負担が増えただけだった。"),
+    .choose("「カラオケで勝負だ！」", [
+      yuujin.say("「スマブラは負けたが、カラオケで勝負だ！」"),
+      saasan.say("いい度胸だ。90点以下なら奢りな？"),
+      yuujin.say("（彼は軽く95点を出してきた。財布が空になった）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
       ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ])
-    .choose("「一緒に占拠しちゃおうぜ」", [
-      yuujin.say("「よし、俺も一緒に占拠してやる」"),
-      saasan.say("おう、お前の分も一緒に印刷するか"),
-      yuujin.say("（結果、研究室全体を敵に回した）"),
+    .choose("「一人で行ってこい」", [
+      yuujin.say("「いいからお前は一人で行ってこい。こっちは忙しいんだ」"),
+      saasan.say("なんだよ、ノリが悪いな。じゃあヒトカラで十八番叩き出してくるわ"),
+      yuujin.say("（嵐は去ったが、虚無感だけが残った）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ]),
