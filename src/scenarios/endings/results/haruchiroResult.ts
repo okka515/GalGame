@@ -3,10 +3,10 @@ import { yuujin, haruchiro } from "../../../characters";
 import { gameFlags } from "../../../store/gameState";
 import { tonapiResult } from "./tonapiResult";
 
-const haruchiroBestImg = new Image({ src: "/characters/harutiro/haruchiro_best_graduation.png" });
-const haruchiroGradImg = new Image({ src: "/characters/harutiro/haruchiro_graduation.png" });
-const haruchiroTriangleImg = new Image({ src: "/characters/harutiro/haruchiro_triangle_graduation.png" });
-const haruchiroFailImg = new Image({ src: "/characters/harutiro/haruchiro_failure.png" });
+const haruchiroBestImg = new Image({ src: "/characters/haruchiro/haruchiro_best_graduation.png" });
+const haruchiroGradImg = new Image({ src: "/characters/haruchiro/haruchiro_graduation.png" });
+const haruchiroTriangleImg = new Image({ src: "/characters/haruchiro/haruchiro_triangle_graduation.png" });
+const haruchiroFailImg = new Image({ src: "/characters/haruchiro/haruchiro_failure.png" });
 
 export const haruchiroResult = new Scene(
   "finale-haruchiro-result",

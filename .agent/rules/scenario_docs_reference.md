@@ -6,7 +6,7 @@
 
 - **全体シナリオ**: `docs/integration_scenario.md`
 - **個別シナリオ**: `docs/individual_scenarios/` 配下の各キャラクターファイル
-  - `harutiro_scenario.md` — はるちろ
+  - `haruchiro_scenario.md` — はるちろ
   - `massu_scenario.md` — まっすー
   - `pack_scenario.md` — ぱっく
   - `saasan_scenario.md` — さーさん
