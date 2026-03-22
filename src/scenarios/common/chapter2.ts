@@ -37,7 +37,7 @@ tonapiFlashback.action([
       tonapi.say("記録として残しておきたくて……崩れた状態も、美しいですよね。フフフ"),
       tonapiImg.hide(),
       yuujin.say("（価値観のずれを感じたが、否定はできなかった）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ])
     .choose("「もう一回積み直そう」", [
       yuujin.say("「よし、もう一回積み直そうぜ。今度は崩れないように」"),
@@ -45,7 +45,7 @@ tonapiFlashback.action([
       tonapi.say("いいですね！じゃあ今度は伝承を無視して積みましょう！フフ"),
       tonapiImg.hide(),
       yuujin.say("（背中を押してしまったが、そのとき俺たちはどこか楽しかった）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
     ]),
 
   Condition.If(() => {
@@ -84,7 +84,7 @@ haruchiroFlashback.action([
       haruchiro.say("なるほど！技術力と継続力のアピールですね！採用します！"),
       haruchiroImg.hide(),
       yuujin.say("（ちょっと違う方向に行った気がする）"),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
       haruchiroFlashback.jumpTo(tonapiFlashback),
     ])
     .choose("服屋の店員さんにアタックしろ", [
@@ -92,7 +92,7 @@ haruchiroFlashback.action([
       haruchiroImg.show(),
       haruchiro.say("えっ！？服買うんですか。……でもたしかに、ファッション全然わからないです"),
       haruchiroImg.hide(),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
       haruchiroFlashback.jumpTo(tonapiFlashback),
     ]),
 ]);
@@ -127,7 +127,7 @@ saasanFlashback.action([
       saasan.say("だよな。じゃあ今からユーザー車検に持ち寄ってくるわ"),
       saasanImg.hide(),
       yuujin.say("（行動力は随一だが、そもそも乗るなと言いたい）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       saasanFlashback.jumpTo(haruchiroFlashback),
     ])
     .choose("「名古屋に海陽町のノリを持ち込むな」", [
@@ -136,7 +136,7 @@ saasanFlashback.action([
       saasan.say("ははっ、海陽町でも流石に車検切れはアウトだわ！"),
       saasanImg.hide(),
       yuujin.say("（ノリツッコミのキレも良い）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
       saasanFlashback.jumpTo(haruchiroFlashback),
     ]),
 ]);
@@ -167,7 +167,7 @@ massuFlashback.action([
       massuImg.show(),
       massu.say("ね！さーさん、意外と真面目に答えてくれたんだよ！？あはは！"),
       massuImg.hide(),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
       massuFlashback.jumpTo(saasanFlashback),
     ])
     .choose("遠距離ならしょうがない", [
@@ -176,7 +176,7 @@ massuFlashback.action([
       massu.say("でしょー！？わかってくれるー！？彼氏が一番大事だからね！"),
       massuImg.hide(),
       yuujin.say("（完全に肯定してしまった）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
       massuFlashback.jumpTo(saasanFlashback),
     ]),
 ]);
@@ -210,7 +210,7 @@ packFlashback.action([
       packImg.show(),
       pack.say("おっ！お前もわかってきたか！あの泳ぎっぷりはまさにイノベーションの予兆だったね"),
       packImg.hide(),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       packFlashback.jumpTo(massuFlashback),
     ])
     .choose("「じゃあ今からもう一回泳がせるか？」", [
@@ -219,7 +219,7 @@ packFlashback.action([
       pack.say("おっ、いいぜ！……って、今は手元にたいやきが無いな。買ってこいよ"),
       packImg.hide(),
       yuujin.say("（乗っかってしまったが、パシリにされそうになった）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power - 1 })),
       packFlashback.jumpTo(massuFlashback),
     ]),
 ]);

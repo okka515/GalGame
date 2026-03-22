@@ -14,11 +14,11 @@ export const haruchiroResult = new Scene(
 );
 
 haruchiroResult.action([
-  Condition.If(gameFlags.evaluate("haruchiro_graduation_power", (v) => (v || 0) >= 7), [
+  Condition.If(gameFlags.evaluate("haruchiro_graduation_power", (v) => (v || 0) >= 18), [
     haruchiroBestImg.show(),
     haruchiro.say("マチアプ、ちゃんとプロフィール直しました。DroidKaigiの子とも話したけど、ただの知り合いでしたね。卒研も無事ビルド通りました！"),
     yuujin.say("はるちろが落ち着いた。学業も恋愛も両立できる大人になっていた。"),
-  ]).ElseIf(gameFlags.evaluate("haruchiro_graduation_power", (v) => (v || 0) >= 4), [
+  ]).ElseIf(gameFlags.evaluate("haruchiro_graduation_power", (v) => (v || 0) >= 7), [
     haruchiroGradImg.show(),
     haruchiro.say("えっと、まあ……なんとか卒業できました。課題クリアです"),
     yuujin.say("はるちろは卒業した。恋愛はまだ迷走中だが、それもまたはるちろらしい。"),

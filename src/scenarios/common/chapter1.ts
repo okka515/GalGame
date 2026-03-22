@@ -34,7 +34,7 @@ ch1TonapiScene.action([
       tonapi.say("……青緑と紫が混ざったような、すごく綺麗な色なんですよ。ちょっと見ますか？フフ"),
       tonapiImg.hide(),
       yuujin.say("（連れて行かれた研究室で、俺は言葉を失った。確かに綺麗だったが、確かに危なかった）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ])
     .choose("「それ、すごい発見じゃない？」", [
       yuujin.say("「それすごい発見じゃないか！学会に出したら？」"),
@@ -42,7 +42,7 @@ ch1TonapiScene.action([
       tonapi.say("ですよね！じゃあもう少し培養を続けてから……フフフ"),
       tonapiImg.hide(),
       yuujin.say("（後日、カビのシャーレが研究室を占領しているのを見て、俺は反省した）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
     ]),
 
   Condition.If(() => {
@@ -80,7 +80,7 @@ ch1HaruchiroScene.action([
       haruchiro.say("ですよね！まずプロフィール整えます！"),
       haruchiroImg.hide(),
       yuujin.say("（そっちが優先じゃないと思うが）"),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
       ch1HaruchiroScene.jumpTo(ch1TonapiScene),
     ])
     .choose("どっちにもいい顔しとけ", [
@@ -88,7 +88,7 @@ ch1HaruchiroScene.action([
       haruchiroImg.show(),
       haruchiro.say("なるほど！完成ファーストで並列処理します！"),
       haruchiroImg.hide(),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
       ch1HaruchiroScene.jumpTo(ch1TonapiScene),
     ]),
 ]);
@@ -121,7 +121,7 @@ ch1SaasanScene.action([
       saasan.say("お前はビジネス側と雑務全部だ。代表取締役として前に立てよ"),
       saasanImg.hide(),
       yuujin.say("（いきなり一番責任の重い役割を実質的に丸投げされた）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       ch1SaasanScene.jumpTo(ch1HaruchiroScene),
     ])
     .choose("「俺の出資比率はどうなる？」", [
@@ -130,7 +130,7 @@ ch1SaasanScene.action([
       saasan.say("お前が代表なんだからお前が決めろよ。俺は開発費と最高の環境さえあれば文句ねえぞ"),
       saasanImg.hide(),
       yuujin.say("（お金の重圧がのしかかってきた。ビジネスパートナーとしての責任が重い）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
       ch1SaasanScene.jumpTo(ch1HaruchiroScene),
     ]),
 ]);
@@ -162,7 +162,7 @@ ch1MassuScene.action([
       massu.say("わかった！今日はふて寝する！おやすみー！"),
       massuImg.hide(),
       yuujin.say("（問題は何も解決していない）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
       ch1MassuScene.jumpTo(ch1SaasanScene),
     ])
     .choose("カメラに逃げるな！", [
@@ -170,7 +170,7 @@ ch1MassuScene.action([
       massuImg.show(),
       massu.say("痛いところ突かないでよー！わかってるってば！"),
       massuImg.hide(),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
       ch1MassuScene.jumpTo(ch1SaasanScene),
     ]),
 ]);
@@ -204,7 +204,7 @@ ch1PackScene.action([
       pack.say("おっ、言うねえ！マルチスレッドで脳髄フル回転させてくるわ！"),
       packImg.hide(),
       yuujin.say("（彼は天才だが、確実に寿命を縮める選択をしてしまった気がする）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       ch1PackScene.jumpTo(ch1MassuScene),
     ])
     .choose("「サークルのアプリ、面白そうだな」", [
@@ -213,7 +213,7 @@ ch1PackScene.action([
       pack.say("おっ、わかってるじゃねえか！UIのアニメーションが結構いい感じにできたんだよ！"),
       packImg.hide(),
       yuujin.say("（楽しそうなぱっくを見て、起業の方は大丈夫かと一抹の不安を覚えた）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power - 1 })),
       ch1PackScene.jumpTo(ch1MassuScene),
     ]),
 ]);
