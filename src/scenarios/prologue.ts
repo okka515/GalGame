@@ -3,7 +3,7 @@ import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saas
 import { chapter1Scene } from "./common/chapter1";
 import { gameFlags } from "../store/gameState";
 import { gameEvents } from "../store/gameEvents";
-import { chapterTitleEffect } from "../store/gameEffect";
+import { chapterTitleSound, menuSelectSound } from "../store/gameEffect";
 
 export const prologueScene = new Scene("prologue", {
   background: "/backgrounds/opening.png",
@@ -72,7 +72,7 @@ prologueScene.action([
     gameEvents.triggerChapterTitle("相談");
     return false;
   }, []),
-  chapterTitleEffect.play(),
+  chapterTitleSound.play(),
   prologueBgm.resume(),
 
   yuujin.say("昼休み、学食でいつものように6人で集まっていた時のことだ。"),
@@ -113,6 +113,7 @@ prologueMenu.action([
       gameEvents.triggerChapterTitle("第1章");
       return false;
     }, []),
+    chapterTitleSound.play(),
 
     prologueMenu.jumpTo(chapter1Scene),
   ]).Else([
@@ -121,8 +122,9 @@ prologueMenu.action([
 ]);
 
 prologuePrompt.action([
-  Menu.prompt("誰の相談から聞く？（早く話を聞いてあげた人ほど、後の展開で有利になるかも…？）")
+  Menu.prompt("誰の相談から聞く？（話し合って決めてね！）")
     .showWhen(gameFlags.evaluate("prologue_talked_pack", (v) => (v || 0) === 0), "ぱっく（アプリ開発・起業・エンジニア転向）", [
+      menuSelectSound.play(),
       packImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、文系から技術職へ劇的な転向を遂げたぱっくの話を聞くことに決めた。"),
@@ -138,6 +140,7 @@ prologuePrompt.action([
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_massu", (v) => (v || 0) === 0), "まっすー（遠距離・就活・カメラ、時間感覚が死んでいる）", [
+      menuSelectSound.play(),
       massuImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、一番時間が迫っていそうなまっすーの話を聞くことに決めた。"),
@@ -153,6 +156,7 @@ prologuePrompt.action([
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_saasan", (v) => (v || 0) === 0), "さーさん（ハッカソン無双・黒ポロ・起業）", [
+      menuSelectSound.play(),
       saasanImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、この春に名古屋へ引っ越してきたばかりなのに、常に圧倒的強者であり続けるさーさんの話を聞くことに決めた。"),
@@ -168,6 +172,7 @@ prologuePrompt.action([
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_haruchiro", (v) => (v || 0) === 0), "はるちろ（マチアプ脳、DroidKaigiの出会い）", [
+      menuSelectSound.play(),
       haruchiroImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、完全に技術より色恋沙汰に向かっているはるちろの話を聞くことに決めた。"),
@@ -183,6 +188,7 @@ prologuePrompt.action([
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_tonapi", (v) => (v || 0) === 0), "となっぴー（カビ・石積み・バレー）", [
+      menuSelectSound.play(),
       tonapiImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、一番底知れない闇を感じるとなっぴーの話を聞くことに決めた。"),
