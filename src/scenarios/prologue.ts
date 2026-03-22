@@ -3,7 +3,7 @@ import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saas
 import { chapter1Scene } from "./common/chapter1";
 import { gameFlags } from "../store/gameState";
 import { gameEvents } from "../store/gameEvents";
-import { chapterTitleSound, menuSelectSound } from "../store/gameEffect";
+import { chapterTitleSound, menuSelectSound } from "../store/gameSoundEffect";
 
 export const prologueScene = new Scene("prologue", {
   background: "/backgrounds/opening.png",
