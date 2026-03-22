@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type React from "react";
 import { GameProviders, Player } from "narraleaf-react";
 import { mainStory } from "./scenarios/main";
 import TitleScreen from "./components/TitleScreen";
@@ -15,17 +16,24 @@ import { gameEvents } from "./store/gameEvents";
 
 export default function App() {
   const [started, setStarted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   return (
     <>
-      {!started ? (
-        <TitleScreen onStart={() => setStarted(true)} />
-      ) : (
+      {!started && !loading ? (
+        <TitleScreen onStart={() => { setStarted(true); setLoading(true); }} />
+      ) : loading ? (
+        <div style={loadingStyles}>
+          <p style={loadingTextStyles}>ロード中...</p>
+        </div>
+      ) : null}
+      {started && (
         <>
           <GameProviders>
             <Player
               story={mainStory}
               onReady={({ liveGame }) => {
+                setLoading(false);
                 liveGame.newGame();
               }}
               width="100vw"
@@ -40,3 +48,20 @@ export default function App() {
     </>
   );
 }
+
+const loadingStyles: React.CSSProperties = {
+  position: "fixed",
+  inset: 0,
+  background: "#000",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  zIndex: 9999,
+};
+
+const loadingTextStyles: React.CSSProperties = {
+  color: "#fff",
+  fontSize: "1.2rem",
+  fontFamily: "'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif",
+  letterSpacing: "0.2em",
+};
