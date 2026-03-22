@@ -23,6 +23,12 @@ const prologueBgm = new Sound({
   volume: 0.3,
 });
 
+const menuSelectingBgm = new Sound({
+  src: "/public/audio/bgm/menu_selecting_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+})
+
 prologueScene.action([
   prologueBgm.play(),
   // opening.ts の内容
@@ -125,9 +131,12 @@ prologuePrompt.action([
   Menu.prompt("誰の相談から聞く？（話し合って決めてね！）")
     .showWhen(gameFlags.evaluate("prologue_talked_pack", (v) => (v || 0) === 0), "ぱっく（アプリ開発・起業・エンジニア転向）", [
       menuSelectSound.play(),
+      menuSelectingBgm.play(),
       packImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、文系から技術職へ劇的な転向を遂げたぱっくの話を聞くことに決めた。"),
+      ]).ElseIf(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 4), [
+        yuujin.say("最後に、文系から技術職へ劇的な転向を遂げたぱっくの話を聞くことにした。"),
       ]).Else([
         yuujin.say("次は、文系から技術職へ劇的な転向を遂げたぱっくの話を聞くことにした。"),
       ]),
@@ -137,13 +146,17 @@ prologuePrompt.action([
       })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
       packImg.hide(),
+      menuSelectingBgm.stop(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_massu", (v) => (v || 0) === 0), "まっすー（遠距離・就活・カメラ、時間感覚が死んでいる）", [
       menuSelectSound.play(),
+      menuSelectingBgm.play(),
       massuImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、一番時間が迫っていそうなまっすーの話を聞くことに決めた。"),
+      ]).ElseIf(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 4), [
+        yuujin.say("最後に、一番時間が迫っていそうなまっすーの話を聞くことにした。"),
       ]).Else([
         yuujin.say("次は、一番時間が迫っていそうなまっすーの話を聞くことにした。"),
       ]),
@@ -153,13 +166,17 @@ prologuePrompt.action([
       })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
       massuImg.hide(),
+      menuSelectingBgm.stop(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_saasan", (v) => (v || 0) === 0), "さーさん（ハッカソン無双・黒ポロ・起業）", [
       menuSelectSound.play(),
+      menuSelectingBgm.play(),
       saasanImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、この春に名古屋へ引っ越してきたばかりなのに、常に圧倒的強者であり続けるさーさんの話を聞くことに決めた。"),
+      ]).ElseIf(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 4), [
+        yuujin.say("最後に、この春に名古屋へ引っ越してきたばかりなのに、常に圧倒的強者であり続けるさーさんの話を聞くことにした。"),
       ]).Else([
         yuujin.say("次は、この春に名古屋へ引っ越してきたばかりなのに、常に圧倒的強者であり続けるさーさんの話を聞くことにした。"),
       ]),
@@ -169,13 +186,17 @@ prologuePrompt.action([
       })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
       saasanImg.hide(),
+      menuSelectingBgm.stop(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_haruchiro", (v) => (v || 0) === 0), "はるちろ（マチアプ脳、DroidKaigiの出会い）", [
       menuSelectSound.play(),
+      menuSelectingBgm.play(),
       haruchiroImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、完全に技術より色恋沙汰に向かっているはるちろの話を聞くことに決めた。"),
+      ]).ElseIf(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 4), [
+        yuujin.say("最後に、完全に技術より色恋沙汰に向かっているはるちろの話を聞くことにした。"),
       ]).Else([
         yuujin.say("次は、完全に技術より色恋沙汰に向かっているはるちろの話を聞くことにした。"),
       ]),
@@ -185,13 +206,17 @@ prologuePrompt.action([
       })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
       haruchiroImg.hide(),
+      menuSelectingBgm.stop(),
       prologuePrompt.jumpTo(prologueMenu),
     ])
     .showWhen(gameFlags.evaluate("prologue_talked_tonapi", (v) => (v || 0) === 0), "となっぴー（カビ・石積み・バレー）", [
       menuSelectSound.play(),
+      menuSelectingBgm.play(),
       tonapiImg.show(),
       Condition.If(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 0), [
         yuujin.say("まずは、一番底知れない闇を感じるとなっぴーの話を聞くことに決めた。"),
+      ]).ElseIf(gameFlags.evaluate("prologue_talk_count", (v) => (v || 0) === 4), [
+        yuujin.say("最後に、一番底知れない闇を感じるとなっぴーの話を聞くことにした。"),
       ]).Else([
         yuujin.say("次は、一番底知れない闇を感じるとなっぴーの話を聞くことにした。"),
       ]),
@@ -201,6 +226,7 @@ prologuePrompt.action([
       })),
       gameFlags.set("prologue_talk_count", (v) => (v || 0) + 1),
       tonapiImg.hide(),
+      menuSelectingBgm.stop(),
       prologuePrompt.jumpTo(prologueMenu),
     ]),
 ]);
