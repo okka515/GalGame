@@ -9,7 +9,7 @@ import { gameEvents } from "../../store/gameEvents";
 
 // となっぴーの秋（最後）→ 第4章へ
 const ch3TonapiScene = new Scene("ch3-tonapi", {
-  background: "#042f2e",
+  background: "/backgrounds/university_fall.png",
 });
 ch3TonapiScene.action([
   yuujin.say("【秋の修羅場: 推し活、緊急事態】"),
@@ -47,7 +47,7 @@ ch3TonapiScene.action([
 
 // はるちろの秋 → となっぴーへ
 const ch3HaruchiroScene = new Scene("ch3-haruchiro", {
-  background: "#1e1b4b",
+  background: "/backgrounds/university_fall.png",
 });
 ch3HaruchiroScene.action([
   yuujin.say("【秋の修羅場: マチアプ開始・プロフィール文確認依頼】"),
@@ -80,7 +80,7 @@ ch3HaruchiroScene.action([
 
 // さーさんの秋 → はるちろへ
 const ch3SaasanScene = new Scene("ch3-saasan", {
-  background: "#052e16",
+  background: "/backgrounds/university_fall.png",
 });
 ch3SaasanScene.action([
   yuujin.say("【秋の修羅場: 強者たちの休息】"),
@@ -115,7 +115,7 @@ ch3SaasanScene.action([
 
 // まっすーの秋 → さーさんへ
 const ch3MassuScene = new Scene("ch3-massu", {
-  background: "#1f2937",
+  background: "/backgrounds/university_fall.png",
 });
 ch3MassuScene.action([
   yuujin.say("【秋の修羅場: 就活説明会すっぽかし】"),
@@ -148,7 +148,7 @@ ch3MassuScene.action([
 
 // ぱっくの秋（最初）→ まっすーへ
 const ch3PackScene = new Scene("ch3-pack", {
-  background: "#1c2e4a",
+  background: "/backgrounds/university_fall.png",
 });
 ch3PackScene.action([
   yuujin.say("【秋の修羅場: クリキャンか、お出迎えか】"),
@@ -183,7 +183,7 @@ ch3PackScene.action([
 
 // 第3章 エントリーシーン → ぱっくへ
 export const chapter3Scene = new Scene("chapter3", {
-  background: "#111827",
+  background: "/backgrounds/university_fall.png",
 });
 chapter3Scene.action([
   yuujin.say("【第3章: 秋（10月〜）「卒研・進路の山場、秋の修羅場」】"),

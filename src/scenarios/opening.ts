@@ -5,7 +5,7 @@ import { prologueScene } from "./prologue";
 
 // OPムービー: 大学4年の春、新しいクラスで緊張している
 export const openingScene = new Scene("opening", {
-  background: "#0d1b2a",
+  background: "/backgrounds/opening.png",
 });
 
 openingScene.action([

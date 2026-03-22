@@ -9,7 +9,7 @@ import { gameEvents } from "../../store/gameEvents";
 
 // となっぴーシーン（最後）→ 第2章へ
 const ch1TonapiScene = new Scene("ch1-tonapi", {
-  background: "#042f2e",
+  background: "/backgrounds/opening.png",
 });
 ch1TonapiScene.action([
   yuujin.say("となっぴーから研究室で声をかけられた。"),
@@ -47,7 +47,7 @@ ch1TonapiScene.action([
 
 // はるちろシーン → となっぴーへ
 const ch1HaruchiroScene = new Scene("ch1-haruchiro", {
-  background: "#1e1b4b",
+  background: "/backgrounds/opening.png",
 });
 ch1HaruchiroScene.action([
   yuujin.say("はるちろが何かぶつぶつ言いながら端末を眺めている。"),
@@ -79,7 +79,7 @@ ch1HaruchiroScene.action([
 
 // さーさんシーン → はるちろへ
 const ch1SaasanScene = new Scene("ch1-saasan", {
-  background: "#052e16",
+  background: "/backgrounds/opening.png",
 });
 ch1SaasanScene.action([
   yuujin.say("さーさんが研究室の奥で、優雅にコーヒーを飲んでいた。"),
@@ -113,7 +113,7 @@ ch1SaasanScene.action([
 
 // まっすーシーン → さーさんへ
 const ch1MassuScene = new Scene("ch1-massu", {
-  background: "#1f2937",
+  background: "/backgrounds/opening.png",
 });
 ch1MassuScene.action([
   yuujin.say("まっすーが写真を大量に見せてきた。"),
@@ -145,7 +145,7 @@ ch1MassuScene.action([
 
 // ぱっくシーン（最初）→ まっすーへ
 const ch1PackScene = new Scene("ch1-pack", {
-  background: "#1c2e4a",
+  background: "/backgrounds/opening.png",
 });
 ch1PackScene.action([
   yuujin.say("最初に来たのはぱっくだった。就活の時期だというのに、妙に晴れやかな顔をしている。"),
@@ -180,7 +180,7 @@ ch1PackScene.action([
 
 // 第1章 エントリーシーン → ぱっくへ
 export const chapter1Scene = new Scene("chapter1", {
-  background: "#111827",
+  background: "/backgrounds/opening.png",
 });
 chapter1Scene.action([
   yuujin.say("【第1章: 春（4月〜）「全員ちょっと危ないスタート」】"),
