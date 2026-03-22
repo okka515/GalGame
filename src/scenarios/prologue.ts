@@ -3,6 +3,7 @@ import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saas
 import { chapter1Scene } from "./common/chapter1";
 import { gameFlags } from "../store/gameState";
 import { gameEvents } from "../store/gameEvents";
+import { chapterTitleEffect } from "../store/gameEffect";
 
 export const prologueScene = new Scene("prologue", {
   background: "/backgrounds/opening.png",
@@ -66,10 +67,13 @@ prologueScene.action([
   yuujin.say("全員ちゃんと卒業して、追いコンで終わろう。"),
   yuujin.say("そう思っていたのは、この日の午前中だけだった。"),
 
+  prologueBgm.pause(),
   Condition.If(() => {
     gameEvents.triggerChapterTitle("相談");
     return false;
   }, []),
+  chapterTitleEffect.play(),
+  prologueBgm.resume(),
 
   yuujin.say("昼休み、学食でいつものように6人で集まっていた時のことだ。"),
 
