@@ -46,6 +46,12 @@ export default function TitleScreen({ onStart }: Props) {
         <button
           style={styles.button}
           onClick={() => {
+            // ブラウザの自動再生ポリシーを解除するため、クリック時にAudioContextを起動する
+            const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+            if (AudioContextClass) {
+              const ctx = new AudioContextClass();
+              ctx.resume().catch(() => {});
+            }
             const buttonEffectSound = new Audio("/audio/effect/button_deep.mp3");
             buttonEffectSound.play();
             onStart();
