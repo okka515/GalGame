@@ -1,5 +1,5 @@
 import { Scene, Menu, Condition } from "narraleaf-react";
-import { yuujin, pack, massu, saasan, haruchiro, tonapi } from "../../characters";
+import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saasanImg, haruchiroImg, tonapiImg } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { packRouteMain } from "../routes/pack";
 import { massuRouteMain } from "../routes/massu";
@@ -55,27 +55,35 @@ const ch4TonapiScene = new Scene("ch4-tonapi", {
 ch4TonapiScene.action([
   yuujin.say("【冬の追い込み: ノーベル賞か、全国制覇か】"),
   yuujin.say("12月。となっぴーの研究が、ついに指導教員を動かした。"),
+  tonapiImg.show(),
   tonapi.say("教授から『これは本物かもしれない』って言ってもらえて……フフ、ついに私の時代が来ました"),
   yuujin.say("（穏やかに、しかし確実に狂気の目をしている）"),
   yuujin.say("だが机の上には、推しの全国大会のチケットが置いてある。"),
   tonapi.say("ただ今週末が推しチームの全国大会の決勝で。論文の最終提出期限も、同じ日なんです"),
+  tonapiImg.hide(),
   yuujin.say("（このままでは、どちらかを諦めさせることになる）"),
   Menu.prompt("どうアドバイスする？")
     .choose("「論文の執筆に集中しろ」", [
       yuujin.say("「バレーは来年もある。今は論文の執筆に集中しろ」"),
+      tonapiImg.show(),
       tonapi.say("うぅ……わかりました。推しには心の中でエールを送ります……"),
+      tonapiImg.hide(),
       yuujin.say("論文は無事に提出された。その夜、となっぴーはライブ配信で推しのチームが優勝する瞬間を見て、静かに泣いていたという。"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ])
     .choose("「現地で応援しながら書け」", [
       yuujin.say("「現地で応援しながらノートPCで論文書け」"),
+      tonapiImg.show(),
       tonapi.say("スポ根ですね！よし、タイピングの音がバレーのスパイクみたいに響かせてきます！"),
+      tonapiImg.hide(),
       yuujin.say("（結果、推しのチームのスパイクで勢いよくEnterをたたいて提出したらしい）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
     ])
     .choose("「俺も応援に行く」", [
       yuujin.say("「よし、じゃあ俺も応援に行くか」"),
+      tonapiImg.show(),
       tonapi.say("本当ですか！？じゃあ一緒にメガホン叩きましょう！フフフ！"),
+      tonapiImg.hide(),
       yuujin.say("（結局、二人で論文そっちのけで応援してしまった。それでも、となっぴーの笑顔は本物だった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ]),
@@ -96,26 +104,34 @@ const ch4HaruchiroScene = new Scene("ch4-haruchiro", {
 ch4HaruchiroScene.action([
   yuujin.say("【冬の追い込み: デートか、発表練習か】"),
   yuujin.say("卒論の最終発表が迫る中、はるちろはスマホの画面と睨めっこしていた。"),
+  haruchiroImg.show(),
   haruchiro.say("どうしよう！クリスマスのデートの約束、発表練習の日と完全に被っちゃいました！！"),
   yuujin.say("そもそもマッチングアプリで出会った相手とクリスマスまで関係が続いていることに驚きだ。"),
   haruchiro.say("でもここで行かないと、せっかくの継続的インテグレーションが……"),
+  haruchiroImg.hide(),
   Menu.prompt("どうツッコミを入れる？")
     .choose("発表練習が最優先だろ", [
       yuujin.say("「お前、卒業できなきゃデートどころじゃないだろ。発表練習が最優先だ」"),
+      haruchiroImg.show(),
       haruchiro.say("っ！……ですね。リスケのお願いを送ってみます！"),
+      haruchiroImg.hide(),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
       ch4HaruchiroScene.jumpTo(ch4TonapiScene),
     ])
     .choose("マチアプの子を練習相手にしろ", [
       yuujin.say("「デートでマチアプの子を発表練習の相手にしろ」"),
+      haruchiroImg.show(),
       haruchiro.say("なるほど！専門外の人に伝わるかどうかのテストですね！"),
+      haruchiroImg.hide(),
       yuujin.say("（デートが完全に学会発表の場になってしまったらしい）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
       ch4HaruchiroScene.jumpTo(ch4TonapiScene),
     ])
     .choose("俺が代わりに発表してやるよ", [
       yuujin.say("「しょうがない。俺が代わりに発表してやるよ」"),
+      haruchiroImg.show(),
       haruchiro.say("えっ！？代打ち！？ありがてええぇぇ！行ってきます！"),
+      haruchiroImg.hide(),
       yuujin.say("（はるちろの卒業が完全に俺の手にかかってしまった）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
       ch4HaruchiroScene.jumpTo(ch4TonapiScene),
@@ -129,29 +145,37 @@ const ch4SaasanScene = new Scene("ch4-saasan", {
 ch4SaasanScene.action([
   yuujin.say("【冬の追い込み: 完璧超人の致命的弱点】"),
   yuujin.say("卒論の大詰め。徹夜明けの俺たちに、さーさんが得意料理を振る舞うと言い出した。"),
+  saasanImg.show(),
   saasan.say("俺の特製カルボナーラだ。……ただ、ちょっと火を通しすぎたかもな"),
   yuujin.say("（それは完全に『炒り卵パスタ』だった。だが誰も突っ込めないオーラがある）"),
   saasan.say("あと買い出しのコンビニの味噌汁、成分表示を全力で目視して、ネギが1ミリも入ってないやつを選び抜いたぜ。"),
+  saasanImg.hide(),
   yuujin.say("（完璧超人の唯一にして最大の弱点。ネギへの異常な憎悪と、ポンコツすぎる家事スキルだ）"),
   yuujin.say("そう思った矢先、さーさんが盛大にオレンジジュースを床にこぼした。"),
   Menu.prompt("どうする？")
     .choose("「黙って床を拭く」", [
       yuujin.say("（無言で雑巾を取り出し、オレンジジュースでベタベタの床を拭いた）"),
+      saasanImg.show(),
       saasan.say("……悪いな。プログラミングならバグは出ないのに、現実世界はバグだらけだぜ"),
+      saasanImg.hide(),
       yuujin.say("（名言風だが、ただのドジである）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ])
     .choose("「炒り卵パスタには大盛り激辛ソースだろ」", [
       yuujin.say("「この炒り卵パスタ、どうせなら大盛り激辛ソースでもかけるか？」"),
+      saasanImg.show(),
       saasan.say("おっ、わかってるじゃねえか。食べ物は大盛り激辛至上主義だからな！"),
+      saasanImg.hide(),
       yuujin.say("（味覚も完全に狂っていることが判明した）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ])
     .choose("「お好み焼きでも頼むか」", [
       yuujin.say("「もう出前でネギたっぷりのお好み焼きでも頼むか？」"),
+      saasanImg.show(),
       saasan.say("……お前、俺を殺す気か？ネギだけは絶対に許さん！"),
+      saasanImg.hide(),
       yuujin.say("（激怒された。ネギへの憎しみは本物だ）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
@@ -165,30 +189,38 @@ const ch4MassuScene = new Scene("ch4-massu", {
 ch4MassuScene.action([
   yuujin.say("【冬の追い込み: 内定と大破】"),
   yuujin.say("まっすーの就活がようやく終わりを迎えた日のことだった。"),
+  massuImg.show(),
   massu.say("東京の第一志望から内定出たー！やったー！あはは！"),
   yuujin.say("（よかった。本当によかった）"),
   massu.say("テンションあがりすぎて廊下で走ったら……カメラ落として大破させちゃった！！あはは！"),
   yuujin.say("（……笑っているが、目が死んでいる。センサーまで逝ったらしい）"),
   massu.say("でもさ……彼がいるのは地元じゃん？東京に行ったら、遠距離のままになっちゃうなぁって。"),
   massu.say("カメラもなくなって、なんか急にいろいろ考えちゃって……どっちを選ぶべきかな"),
+  massuImg.hide(),
   Menu.prompt("どう答える？")
     .choose("「自分のキャリアを優先しろ」", [
       yuujin.say("「カメラは直せる。東京でやりたいことがあるなら、自分のキャリアを優先しろ」"),
+      massuImg.show(),
       massu.say("……うん！そうだよね。自分の夢は諦めたくない！"),
+      massuImg.hide(),
       yuujin.say("まっすーの目に力が宿った。"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
       ch4MassuScene.jumpTo(ch4SaasanScene),
     ])
     .choose("「俺と一緒に東京に行きなよ」", [
       yuujin.say("「遠距離が嫌ならさ、俺と一緒に東京に行きなよ」"),
+      massuImg.show(),
       massu.say("えっ！？……あはは！冗談キツいよー！"),
+      massuImg.hide(),
       yuujin.say("（はぐらかされたが、少し照れていた）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
       ch4MassuScene.jumpTo(ch4SaasanScene),
     ])
     .choose("「彼氏の近くに行け」", [
       yuujin.say("「カメラも壊れたことだし、一回全部リセットして彼氏の近くでのんびり働けば？」"),
+      massuImg.show(),
       massu.say("うーん……たしかにメンタルは安定するかも……内定辞退のメール書こっかな。"),
+      massuImg.hide(),
       yuujin.say("（せっかくのキャリアを捨てさせてしまったかもしれない）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
       ch4MassuScene.jumpTo(ch4SaasanScene),
@@ -202,31 +234,39 @@ const ch4PackScene = new Scene("ch4-pack", {
 ch4PackScene.action([
   yuujin.say("【冬の追い込み: グローバルすぎるトラブル】"),
   yuujin.say("寒さの厳しい12月。ふと見ると、ぱっくが財布の中身を除き込みながら絶望の表情を浮かべていた。"),
+  packImg.show(),
   pack.say("……マイナス1万7000円。痛すぎる……"),
   yuujin.say("「どうした？起業の資金繰りでもミスったか？」"),
   pack.say("いや、実は先週までフランス人の彼女に会いにフランスに行ってたんだよ。"),
   pack.say("でさ、向こうの地下鉄乗る時に、癖で無意識に日本の『Suica』をピって改札にタッチしたんだ"),
   yuujin.say("（フランスでSuica。何かがおかしい）"),
   pack.say("そしたらなぜか改札が開いてさ！そのまま乗れたんだけど、降りる駅で盛大にエラーが出て……罰金1万7000円取られたんだよ！"),
+  packImg.hide(),
   yuujin.say("（ガバガバすぎる国のシステムと、見事なオチである）"),
   Menu.prompt("どうアドバイスする？")
     .choose("「グローバルな勉強代だと思え」", [
       yuujin.say("「これもグローバルな経験の一部……高くついた勉強代だと思え」"),
+      packImg.show(),
       pack.say("だよな！これでまた一つ、俺のスケールがでかくなったってことだ！"),
+      packImg.hide(),
       yuujin.say("（ポジティブな解釈で落ち着いたようだ）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
       ch4PackScene.jumpTo(ch4MassuScene),
     ])
     .choose("「彼女に慰めてもらえよ」", [
       yuujin.say("「ドンマイ。まあ、彼女に慰めてもらえよ」"),
+      packImg.show(),
       pack.say("それがさ！罰金で揉めてたらいつの間にか彼女消えてて、帰国するまでちょっと気まずかったんだよな……"),
+      packImg.hide(),
       yuujin.say("（思っていたより悲惨なオチだった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
       ch4PackScene.jumpTo(ch4MassuScene),
     ])
     .choose("「フランスでSuicaは草」", [
       yuujin.say("「いや、フランスでSuicaは草」"),
+      packImg.show(),
       pack.say("お前なぁ！人が悲しんでるのに草生やすなよ！エラー音だけはやたら軽快だったぞ！"),
+      packImg.hide(),
       yuujin.say("（笑い事ではないが、ぱっくらしいトラブルだった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       ch4PackScene.jumpTo(ch4MassuScene),
