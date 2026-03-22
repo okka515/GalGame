@@ -10,7 +10,7 @@ import { packResult } from "./results/packResult";
 
 // ===== フィナーレ本体 =====
 export const finaleScene = new Scene("finale", {
-  background: "#fef9c3",
+  background: "/backgrounds/office.png",
 });
 
 finaleScene.action([
