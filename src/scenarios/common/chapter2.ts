@@ -4,7 +4,7 @@ import { chapter3Scene } from "./chapter3";
 import { gameFlags } from "../../store/gameState";
 import { gameEvents } from "../../store/gameEvents";
 import { haruchiroLoveBgm, massuBaseBgm, packHentekoBgm, saasanBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
-import { chapterTitleSound } from "../../store/gameSoundEffect";
+import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
 // 第2章: 夏（7月〜）「過去エピソード解放と夏のトラブル」
 // シーンを末端から定義して jumpTo で数珠つなぎにする
@@ -27,6 +27,7 @@ tonapiFlashback.action([
   yuujin.say("翌朝、石塔は綺麗に崩れていた。となっぴーは静かに写真を撮っていた。"),
   Menu.prompt("どうツッコミを入れる？")
     .choose("「なんで知りながら積んだんだ」", [
+      menuSelectSound.play(),
       yuujin.say("「伝承を知ってて、なんで積んだんだ……」"),
       tonapiImg.show(),
       tonapi.say("だって、積みたくなったんですもん。でも次は気をつけます。フフ"),
@@ -35,6 +36,7 @@ tonapiFlashback.action([
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ])
     .choose("「崩れた写真、なんで撮ってるんだ」", [
+      menuSelectSound.play(),
       yuujin.say("「崩れた後の写真、なんで楽しそうに撮ってるんだ」"),
       tonapiImg.show(),
       tonapi.say("記録として残しておきたくて……崩れた状態も、美しいですよね。フフフ"),
@@ -43,6 +45,7 @@ tonapiFlashback.action([
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
     ])
     .choose("「もう一回積み直そう」", [
+      menuSelectSound.play(),
       yuujin.say("「よし、もう一回積み直そうぜ。今度は崩れないように」"),
       tonapiImg.show(),
       tonapi.say("いいですね！じゃあ今度は伝承を無視して積みましょう！フフ"),
@@ -77,6 +80,7 @@ haruchiroFlashback.action([
   yuujin.say("（なぜMarkdown……）"),
   Menu.prompt("どうアドバイスする？")
     .choose("Markdownはやめとけ", [
+      menuSelectSound.play(),
       yuujin.say("「頼むから、自己紹介にMarkdownを使うのはやめとけ」"),
       haruchiroImg.show(),
       haruchiro.say("えーっ。可読性上がるのに。……でもわかりました。普通に書きます。"),
@@ -84,6 +88,7 @@ haruchiroFlashback.action([
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
     ])
     .choose("むしろGitHubの草生やしたスクショ載せろ", [
+      menuSelectSound.play(),
       yuujin.say("「中途半端にやるな。むしろGitHubの草生やしたスクショも見せてやれ」"),
       haruchiroImg.show(),
       haruchiro.say("なるほど！技術力と継続力のアピールですね！採用します！"),
@@ -92,6 +97,7 @@ haruchiroFlashback.action([
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
     ])
     .choose("服屋の店員さんにアタックしろ", [
+      menuSelectSound.play(),
       yuujin.say("「まず服を買いに行け。店員さんに全部任せろ」"),
       haruchiroImg.show(),
       haruchiro.say("えっ！？服買うんですか。……でもたしかに、ファッション全然わからないです"),
@@ -119,6 +125,7 @@ saasanFlashback.action([
   yuujin.say("（全然よくない。コンプライアンスの概念が豪快に欠落している）"),
   Menu.prompt("どうツッコミを入れる？")
     .choose("「今すぐ車を封印しろ」", [
+      menuSelectSound.play(),
       yuujin.say("「今すぐその車を封印しろ。これ以上は犯罪だ」"),
       saasanImg.show(),
       saasan.say("厳しいな。まあ、今日から俺は徒歩勢になるわ"),
@@ -127,6 +134,7 @@ saasanFlashback.action([
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
     ])
     .choose("「ミラー直すより先に車検通せ」", [
+      menuSelectSound.play(),
       yuujin.say("「ミラー直すより先に車検通せよ」"),
       saasanImg.show(),
       saasan.say("だよな。じゃあ今からユーザー車検に持ち寄ってくるわ"),
@@ -135,6 +143,7 @@ saasanFlashback.action([
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
     ])
     .choose("「名古屋に海陽町のノリを持ち込むな」", [
+      menuSelectSound.play(),
       yuujin.say("「名古屋に海陽町のノリを持ち込むな。お前の地元の常識だとしてもアウトだぞ」"),
       saasanImg.show(),
       saasan.say("ははっ、海陽町でも流石に車検切れはアウトだわ！"),
@@ -161,6 +170,7 @@ massuFlashback.action([
   massuImg.hide(),
   Menu.prompt("どうコメントする？")
     .choose("さすがに発表前は電話切るべきだろ", [
+      menuSelectSound.play(),
       yuujin.say("「さすがに発表の直前くらいは電話切るべきだろ……」"),
       massuImg.show(),
       massu.say("そうだよねー、あの時は本当に反省したよ！次からは気をつける！"),
@@ -168,6 +178,7 @@ massuFlashback.action([
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
     ])
     .choose("さーさんに恋愛相談してたのが一番ウケた", [
+      menuSelectSound.play(),
       yuujin.say("「遅刻より、さーさんに恋愛相談してたのが一番ウケた」"),
       massuImg.show(),
       massu.say("ね！さーさん、意外と真面目に答えてくれたんだよ！？あはは！"),
@@ -175,6 +186,7 @@ massuFlashback.action([
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
     ])
     .choose("遠距離ならしょうがない", [
+      menuSelectSound.play(),
       yuujin.say("「まあ、好きな人ができたなら仕方ない面もあるよな」"),
       massuImg.show(),
       massu.say("でしょー！？わかってくれるー！？彼氏が一番大事だからね！"),
@@ -204,6 +216,7 @@ packFlashback.action([
   yuujin.say("（独特すぎる価値観だ。天才と変人は紙一重である。）"),
   Menu.prompt("どう突っ込む？")
     .choose("「食べ物を粗末にするな」", [
+      menuSelectSound.play(),
       yuujin.say("「可能性はともかく、食べ物を粗末にするなとしか言えん」"),
       packImg.show(),
       pack.say("うっ……ごもっともすぎる。今思えば若気の至りだったわ"),
@@ -211,6 +224,7 @@ packFlashback.action([
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
     ])
     .choose("「なるほど、縁起いいな！」", [
+      menuSelectSound.play(),
       yuujin.say("「なるほど、用水路を力強く泳ぐたいやき……縁起いいな！」"),
       packImg.show(),
       pack.say("おっ！お前もわかってきたか！あの泳ぎっぷりはまさにイノベーションの予兆だったね"),
@@ -218,6 +232,7 @@ packFlashback.action([
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
     ])
     .choose("「じゃあ今からもう一回泳がせるか？」", [
+      menuSelectSound.play(),
       yuujin.say("「じゃあ今からもう一回泳がせるか？」"),
       packImg.show(),
       pack.say("おっ、いいぜ！……って、今は手元にたいやきが無いな。買ってこいよ"),

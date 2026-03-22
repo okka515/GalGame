@@ -4,7 +4,7 @@ import { chapter2Scene } from "./chapter2";
 import { gameFlags } from "../../store/gameState";
 import { gameEvents } from "../../store/gameEvents";
 import { haruchiroBaseBgm, massuBaseBgm, packBaseBgm, saasanBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
-import { chapterTitleSound } from "../../store/gameSoundEffect";
+import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
 // 第1章: 春（4月〜）「全員ちょっと危ないスタート」
 // 各キャラの問題噴出シーンと選択肢を定義
@@ -24,6 +24,7 @@ ch1TonapiScene.action([
   tonapiImg.hide(),
   Menu.prompt("どう返す？")
     .choose("「まず教授に報告しろ」", [
+      menuSelectSound.play(),
       yuujin.say("「面白そうだけど、まず教授に報告するべきだろ。手順を踏んでから」"),
       tonapiImg.show(),
       tonapi.say("そうですよね……。わかりました、明日相談してみます！"),
@@ -32,6 +33,7 @@ ch1TonapiScene.action([
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ])
     .choose("「どんな色になってるの？」", [
+      menuSelectSound.play(),
       yuujin.say("「普通じゃないって、どんな色になってるんだ？」"),
       tonapiImg.show(),
       tonapi.say("……青緑と紫が混ざったような、すごく綺麗な色なんですよ。ちょっと見ますか？フフ"),
@@ -40,6 +42,7 @@ ch1TonapiScene.action([
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
     ])
     .choose("「それ、すごい発見じゃない？」", [
+      menuSelectSound.play(),
       yuujin.say("「それすごい発見じゃないか！学会に出したら？」"),
       tonapiImg.show(),
       tonapi.say("ですよね！じゃあもう少し培養を続けてから……フフフ"),
@@ -73,6 +76,7 @@ ch1HaruchiroScene.action([
   haruchiroImg.hide(),
   Menu.prompt("どうツッコミを入れる？")
     .choose("早く卒研のタスクやれ", [
+      menuSelectSound.play(),
       yuujin.say("「スライドの形式より卒研のタスクやれ」"),
       haruchiroImg.show(),
       haruchiro.say("うっ……それはそう。でもMarkdownの方が効率よくて……"),
@@ -80,6 +84,7 @@ ch1HaruchiroScene.action([
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
     ])
     .choose("gitのリンク直せばワンチャンある", [
+      menuSelectSound.play(),
       yuujin.say("「gitのリンク直してからスライドも卒研もやれ」"),
       haruchiroImg.show(),
       haruchiro.say("ですよね！まずプロフィール整えます！"),
@@ -88,6 +93,7 @@ ch1HaruchiroScene.action([
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
     ])
     .choose("どっちにもいい顔しとけ", [
+      menuSelectSound.play(),
       yuujin.say("「PowerPointでもMarkdownでもいいから完成させろ」"),
       haruchiroImg.show(),
       haruchiro.say("なるほど！完成ファーストで並列処理します！"),
@@ -113,6 +119,7 @@ ch1SaasanScene.action([
   yuujin.say("誰もが認める『黒ポロ』で頂点の存在。俺を容赦なく巻き込んで起業の計画が進んでいく。"),
   Menu.prompt("どう答える？")
     .choose("「よし、一緒に世界を獲ろう」", [
+      menuSelectSound.play(),
       yuujin.say("「よし、お前がCTOなら最強だな。一緒に世界を獲ろうぜ」"),
       saasanImg.show(),
       saasan.say("はっはっは！お前ならそう言うと思ったぜ。最高のプロダクト作ってやるよ"),
@@ -121,6 +128,7 @@ ch1SaasanScene.action([
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
     ])
     .choose("「じゃあ俺は何をすればいいんだ？」", [
+      menuSelectSound.play(),
       yuujin.say("「力強いけど、じゃあ俺は何をすればいいんだ？」"),
       saasanImg.show(),
       saasan.say("お前はビジネス側と雑務全部だ。代表取締役として前に立てよ"),
@@ -129,6 +137,7 @@ ch1SaasanScene.action([
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
     ])
     .choose("「俺の出資比率はどうなる？」", [
+      menuSelectSound.play(),
       yuujin.say("「で、俺の出資比率（株）はどうなるんだ？」"),
       saasanImg.show(),
       saasan.say("お前が代表なんだからお前が決めろよ。俺は開発費と最高の環境さえあれば文句ねえぞ"),
@@ -155,6 +164,7 @@ ch1MassuScene.action([
   yuujin.say("（「ちょっと」の感覚がおかしい）"),
   Menu.prompt("どうアドバイスする？")
     .choose("ちゃんとスケジュール管理ツール入れろ", [
+      menuSelectSound.play(),
       yuujin.say("「ちゃんとスケジュール管理ツール入れろ。目に見える形でタスクを整理するんだ」"),
       massuImg.show(),
       massu.say("うっ……そうだよね。Notionでちゃんと管理してみる！"),
@@ -162,6 +172,7 @@ ch1MassuScene.action([
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
     ])
     .choose("時間は有限だ、とりあえず寝ろ", [
+      menuSelectSound.play(),
       yuujin.say("「時間は有限だ、考えるのをやめてとりあえず寝ろ」"),
       massuImg.show(),
       massu.say("わかった！今日はふて寝する！おやすみー！"),
@@ -170,6 +181,7 @@ ch1MassuScene.action([
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
     ])
     .choose("カメラに逃げるな！", [
+      menuSelectSound.play(),
       yuujin.say("「カメラに逃げるな！卒研やれ！」"),
       massuImg.show(),
       massu.say("痛いところ突かないでよー！わかってるってば！"),
@@ -197,6 +209,7 @@ ch1PackScene.action([
   packImg.hide(),
   Menu.prompt("どう答える？")
     .choose("「まずは起業の方のコードに集中しろ」", [
+      menuSelectSound.play(),
       yuujin.say("「まずは起業の方のコードに集中しろ。会社がかかってるんだろ」"),
       packImg.show(),
       pack.say("んー、まあ確かに。利益直結のプロジェクトを優先するのは定石か。わかった、そっちのPRから処理するわ"),
@@ -204,6 +217,7 @@ ch1PackScene.action([
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
     ])
     .choose("「両方全力で並行開発しろ！」", [
+      menuSelectSound.play(),
       yuujin.say("「いけるいける！両方全力で並行開発しろ！」"),
       packImg.show(),
       pack.say("おっ、言うねえ！マルチスレッドで脳髄フル回転させてくるわ！"),
@@ -212,6 +226,7 @@ ch1PackScene.action([
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
     ])
     .choose("「サークルのアプリ、面白そうだな」", [
+      menuSelectSound.play(),
       yuujin.say("「サークルのアプリ、面白そうだな。そっち見せてよ」"),
       packImg.show(),
       pack.say("おっ、わかってるじゃねえか！UIのアニメーションが結構いい感じにできたんだよ！"),
