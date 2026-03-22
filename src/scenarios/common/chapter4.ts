@@ -13,7 +13,7 @@ import { gameEvents } from "../../store/gameEvents";
 
 // 個別ルート選択シーン（最後）
 const chapter4RouteSelect = new Scene("chapter4-route-select", {
-  background: "#111827",
+  background: "/backgrounds/university_winter.png",
 });
 chapter4RouteSelect.action([
   yuujin.say("冬が終わろうとしている。卒業と追いコンまで、あと少し。"),
@@ -50,7 +50,7 @@ chapter4RouteSelect.action([
 
 // となっぴーの冬 → ルート選択へ
 const ch4TonapiScene = new Scene("ch4-tonapi", {
-  background: "#042f2e",
+  background: "/backgrounds/university_winter.png",
 });
 ch4TonapiScene.action([
   yuujin.say("【冬の追い込み: ノーベル賞か、全国制覇か】"),
@@ -91,7 +91,7 @@ ch4TonapiScene.action([
 
 // はるちろの冬 → となっぴーへ
 const ch4HaruchiroScene = new Scene("ch4-haruchiro", {
-  background: "#1e1b4b",
+  background: "/backgrounds/university_winter.png",
 });
 ch4HaruchiroScene.action([
   yuujin.say("【冬の追い込み: デートか、発表練習か】"),
@@ -124,7 +124,7 @@ ch4HaruchiroScene.action([
 
 // さーさんの冬 → はるちろへ
 const ch4SaasanScene = new Scene("ch4-saasan", {
-  background: "#052e16",
+  background: "/backgrounds/university_winter.png",
 });
 ch4SaasanScene.action([
   yuujin.say("【冬の追い込み: 完璧超人の致命的弱点】"),
@@ -160,7 +160,7 @@ ch4SaasanScene.action([
 
 // まっすーの冬 → さーさんへ
 const ch4MassuScene = new Scene("ch4-massu", {
-  background: "#1f2937",
+  background: "/backgrounds/university_winter.png",
 });
 ch4MassuScene.action([
   yuujin.say("【冬の追い込み: 内定と大破】"),
@@ -197,7 +197,7 @@ ch4MassuScene.action([
 
 // ぱっくの冬（最初）→ まっすーへ
 const ch4PackScene = new Scene("ch4-pack", {
-  background: "#1c2e4a",
+  background: "/backgrounds/university_winter.png",
 });
 ch4PackScene.action([
   yuujin.say("【冬の追い込み: グローバルすぎるトラブル】"),
@@ -235,7 +235,7 @@ ch4PackScene.action([
 
 // 第4章 エントリーシーン → ぱっくへ
 export const chapter4Scene = new Scene("chapter4", {
-  background: "#111827",
+  background: "/backgrounds/university_winter.png",
 });
 chapter4Scene.action([
   yuujin.say("【第4章: 冬（12月〜）「最終追い込みと個別ルート確定」】"),

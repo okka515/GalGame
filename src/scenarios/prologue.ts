@@ -5,15 +5,15 @@ import { gameFlags } from "../store/gameState";
 import { gameEvents } from "../store/gameEvents";
 
 export const prologueScene = new Scene("prologue", {
-  background: "/backgrounds/university_outside.jpg",
+  background: "/backgrounds/opening.png",
 });
 
 const prologueMenu = new Scene("prologue-menu", {
-  background: "/backgrounds/university_outside.jpg",
+  background: "/backgrounds/opening.png",
 });
 
 const prologuePrompt = new Scene("prologue-prompt", {
-  background: "/backgrounds/university_outside.jpg",
+  background: "/backgrounds/opening.png",
 });
 
 prologueScene.action([

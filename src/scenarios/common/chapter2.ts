@@ -9,7 +9,7 @@ import { gameEvents } from "../../store/gameEvents";
 
 // となっぴー回想（最後）→ 第3章へ
 const tonapiFlashback = new Scene("tonapi-flashback", {
-  background: "#042f2e",
+  background: "/backgrounds/university_summer.png",
 });
 tonapiFlashback.action([
   yuujin.say("【夏の回想: となっぴーと石積みの旅】"),
@@ -50,7 +50,7 @@ tonapiFlashback.action([
 
 // はるちろ回想 → となっぴーへ
 const haruchiroFlashback = new Scene("haruchiro-flashback", {
-  background: "#2d1b69",
+  background: "/backgrounds/university_summer.png",
 });
 haruchiroFlashback.action([
   yuujin.say("【夏の回想: はるちろの想い人】"),
@@ -83,7 +83,7 @@ haruchiroFlashback.action([
 
 // さーさん回想 → はるちろへ
 const saasanFlashback = new Scene("saasan-flashback", {
-  background: "#052e16",
+  background: "/backgrounds/university_summer.png",
 });
 saasanFlashback.action([
   yuujin.say("【夏のトラブル: 強者のドライブ】"),
@@ -119,7 +119,7 @@ saasanFlashback.action([
 
 // まっすー回想 → さーさんへ
 const massuFlashback = new Scene("massu-flashback", {
-  background: "#2d1f3d",
+  background: "/backgrounds/university_summer.png",
 });
 massuFlashback.action([
   yuujin.say("【夏の回想: まっすーの中間発表遅刻事件】"),
@@ -151,7 +151,7 @@ massuFlashback.action([
 
 // ぱっく回想 → まっすーへ
 const packFlashback = new Scene("pack-flashback", {
-  background: "#1c2e4a",
+  background: "/backgrounds/university_summer.png",
 });
 packFlashback.action([
   yuujin.say("【夏の回想: ぱっくと泳ぐたいやき】"),
@@ -186,7 +186,7 @@ packFlashback.action([
 
 // 第2章 エントリーシーン → ぱっく回想へ
 export const chapter2Scene = new Scene("chapter2", {
-  background: "#1e1b4b",
+  background: "/backgrounds/university_summer.png",
 });
 chapter2Scene.action([
   yuujin.say("【第2章: 夏（7月〜）「過去エピソード解放と夏のトラブル」】"),
