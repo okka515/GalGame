@@ -1,4 +1,4 @@
-import { Scene, Menu, Condition } from "narraleaf-react";
+import { Scene, Menu, Condition, Sound } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saasanImg, haruchiroImg, tonapiImg } from "../characters";
 import { chapter1Scene } from "./common/chapter1";
 import { gameFlags } from "../store/gameState";
@@ -16,7 +16,14 @@ const prologuePrompt = new Scene("prologue-prompt", {
   background: "/backgrounds/opening.png",
 });
 
+const prologueBgm = new Sound({
+  src: "/public/audio/bgm/prologue_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
 prologueScene.action([
+  prologueBgm.play(),
   // opening.ts の内容
   yuujin.say("4月。"),
   yuujin.say("大学4年生の春が、始まった。"),
@@ -33,7 +40,7 @@ prologueScene.action([
   massu.say("あ、席取っといたよ。あとこれ、入学式の写真——って4年だけど"),
   massuImg.hide(),
 
-  yuujin.say("まっすーは入学式ですらカメラを持ち込んでいた。なぜ今それを出すんだ。"),
+  yuujin.say("まっすーはガイダンスですらカメラを持ち込んでいた。なぜ今それを出すんだ。"),
 
   saasanImg.show(),
   saasan.say("ここのゼミか。まあいいけど"),
@@ -92,6 +99,7 @@ prologueScene.action([
   yuujin.say("その結果、5人全員がそれぞれ抱える厄介な問題を、俺のところに持ち込んでくる流れになってしまった。"),
   yuujin.say("当然のように。"),
   yuujin.say("これが、波乱に満ちた最後の一年の始まりだった。"),
+  prologueBgm.stop(),
   prologueScene.jumpTo(prologueMenu),
 ]);
 
