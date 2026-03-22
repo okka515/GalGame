@@ -3,6 +3,8 @@ import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saas
 import { chapter2Scene } from "./chapter2";
 import { gameFlags } from "../../store/gameState";
 import { gameEvents } from "../../store/gameEvents";
+import { haruchiroBaseBgm, massuBaseBgm, packBaseBgm, saasanBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
+import { chapterTitleSound } from "../../store/gameSoundEffect";
 
 // 第1章: 春（4月〜）「全員ちょっと危ないスタート」
 // 各キャラの問題噴出シーンと選択肢を定義
@@ -12,6 +14,7 @@ const ch1TonapiScene = new Scene("ch1-tonapi", {
   background: "/backgrounds/opening.png",
 });
 ch1TonapiScene.action([
+  tonappiBaseBgm.play(),
   yuujin.say("となっぴーから研究室で声をかけられた。"),
   tonapiImg.show(),
   tonapi.say("あの……春から新しい培地でカビを育ててるんですけど"),
@@ -44,11 +47,13 @@ ch1TonapiScene.action([
       yuujin.say("（後日、カビのシャーレが研究室を占領しているのを見て、俺は反省した）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ]),
+  tonappiBaseBgm.stop(),
 
   Condition.If(() => {
     gameEvents.triggerChapterTitle("第2章");
     return false;
   }, []),
+  chapterTitleSound.play(),
 
   ch1TonapiScene.jumpTo(chapter2Scene),
 ]);
@@ -58,6 +63,7 @@ const ch1HaruchiroScene = new Scene("ch1-haruchiro", {
   background: "/backgrounds/opening.png",
 });
 ch1HaruchiroScene.action([
+  haruchiroBaseBgm.play(),
   yuujin.say("はるちろが何かぶつぶつ言いながら端末を眺めている。"),
   haruchiroImg.show(),
   haruchiro.say("あの、発表スライドってPowerPointで作るべきか、MarkdownをRemarkで変換するべきか……"),
@@ -72,7 +78,6 @@ ch1HaruchiroScene.action([
       haruchiro.say("うっ……それはそう。でもMarkdownの方が効率よくて……"),
       haruchiroImg.hide(),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
-      ch1HaruchiroScene.jumpTo(ch1TonapiScene),
     ])
     .choose("gitのリンク直せばワンチャンある", [
       yuujin.say("「gitのリンク直してからスライドも卒研もやれ」"),
@@ -81,7 +86,6 @@ ch1HaruchiroScene.action([
       haruchiroImg.hide(),
       yuujin.say("（そっちが優先じゃないと思うが）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
-      ch1HaruchiroScene.jumpTo(ch1TonapiScene),
     ])
     .choose("どっちにもいい顔しとけ", [
       yuujin.say("「PowerPointでもMarkdownでもいいから完成させろ」"),
@@ -89,8 +93,9 @@ ch1HaruchiroScene.action([
       haruchiro.say("なるほど！完成ファーストで並列処理します！"),
       haruchiroImg.hide(),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
-      ch1HaruchiroScene.jumpTo(ch1TonapiScene),
     ]),
+  haruchiroBaseBgm.stop(),
+  ch1HaruchiroScene.jumpTo(ch1TonapiScene),
 ]);
 
 // さーさんシーン → はるちろへ
@@ -98,6 +103,7 @@ const ch1SaasanScene = new Scene("ch1-saasan", {
   background: "/backgrounds/opening.png",
 });
 ch1SaasanScene.action([
+  saasanBaseBgm.play(),
   yuujin.say("さーさんが研究室の奥で、優雅にコーヒーを飲んでいた。"),
   saasanImg.show(),
   saasan.say("おお、お疲れ。この前のサイバーのハッカソン、余裕だったわ"),
@@ -113,7 +119,6 @@ ch1SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（肩を叩かれた。彼が技術トップなら本当にできそうな気がする）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
-      ch1SaasanScene.jumpTo(ch1HaruchiroScene),
     ])
     .choose("「じゃあ俺は何をすればいいんだ？」", [
       yuujin.say("「力強いけど、じゃあ俺は何をすればいいんだ？」"),
@@ -122,7 +127,6 @@ ch1SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（いきなり一番責任の重い役割を実質的に丸投げされた）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
-      ch1SaasanScene.jumpTo(ch1HaruchiroScene),
     ])
     .choose("「俺の出資比率はどうなる？」", [
       yuujin.say("「で、俺の出資比率（株）はどうなるんだ？」"),
@@ -131,8 +135,9 @@ ch1SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（お金の重圧がのしかかってきた。ビジネスパートナーとしての責任が重い）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
-      ch1SaasanScene.jumpTo(ch1HaruchiroScene),
     ]),
+  saasanBaseBgm.stop(),
+  ch1SaasanScene.jumpTo(ch1HaruchiroScene),
 ]);
 
 // まっすーシーン → さーさんへ
@@ -140,6 +145,7 @@ const ch1MassuScene = new Scene("ch1-massu", {
   background: "/backgrounds/opening.png",
 });
 ch1MassuScene.action([
+  massuBaseBgm.play(),
   yuujin.say("まっすーが写真を大量に見せてきた。"),
   massuImg.show(),
   massu.say("ゼミのフィールドワーク、全部記録してきたよ！5000枚！あはは！"),
@@ -154,7 +160,6 @@ ch1MassuScene.action([
       massu.say("うっ……そうだよね。Notionでちゃんと管理してみる！"),
       massuImg.hide(),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
-      ch1MassuScene.jumpTo(ch1SaasanScene),
     ])
     .choose("時間は有限だ、とりあえず寝ろ", [
       yuujin.say("「時間は有限だ、考えるのをやめてとりあえず寝ろ」"),
@@ -163,7 +168,6 @@ ch1MassuScene.action([
       massuImg.hide(),
       yuujin.say("（問題は何も解決していない）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
-      ch1MassuScene.jumpTo(ch1SaasanScene),
     ])
     .choose("カメラに逃げるな！", [
       yuujin.say("「カメラに逃げるな！卒研やれ！」"),
@@ -171,8 +175,9 @@ ch1MassuScene.action([
       massu.say("痛いところ突かないでよー！わかってるってば！"),
       massuImg.hide(),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
-      ch1MassuScene.jumpTo(ch1SaasanScene),
     ]),
+  massuBaseBgm.stop(),
+  ch1MassuScene.jumpTo(ch1SaasanScene),
 ]);
 
 // ぱっくシーン（最初）→ まっすーへ
@@ -180,6 +185,7 @@ const ch1PackScene = new Scene("ch1-pack", {
   background: "/backgrounds/opening.png",
 });
 ch1PackScene.action([
+  packBaseBgm.play(),
   yuujin.say("最初に来たのはぱっくだった。就活の時期だというのに、妙に晴れやかな顔をしている。"),
   packImg.show(),
   pack.say("なあ聞いてくれよ。大学入学当初からやってた起業の件なんだけどさ、俺、広報からエンジニアに転向したんだわ"),
@@ -196,7 +202,6 @@ ch1PackScene.action([
       pack.say("んー、まあ確かに。利益直結のプロジェクトを優先するのは定石か。わかった、そっちのPRから処理するわ"),
       packImg.hide(),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
-      ch1PackScene.jumpTo(ch1MassuScene),
     ])
     .choose("「両方全力で並行開発しろ！」", [
       yuujin.say("「いけるいける！両方全力で並行開発しろ！」"),
@@ -205,7 +210,6 @@ ch1PackScene.action([
       packImg.hide(),
       yuujin.say("（彼は天才だが、確実に寿命を縮める選択をしてしまった気がする）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
-      ch1PackScene.jumpTo(ch1MassuScene),
     ])
     .choose("「サークルのアプリ、面白そうだな」", [
       yuujin.say("「サークルのアプリ、面白そうだな。そっち見せてよ」"),
@@ -214,8 +218,9 @@ ch1PackScene.action([
       packImg.hide(),
       yuujin.say("（楽しそうなぱっくを見て、起業の方は大丈夫かと一抹の不安を覚えた）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
-      ch1PackScene.jumpTo(ch1MassuScene),
     ]),
+  packBaseBgm.stop(),
+  ch1PackScene.jumpTo(ch1MassuScene),
 ]);
 
 // 第1章 エントリーシーン → ぱっくへ
