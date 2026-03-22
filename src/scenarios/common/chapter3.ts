@@ -34,7 +34,7 @@ ch3TonapiScene.action([
       tonapi.say("！ その発想はなかったです！行けますね！行きます！"),
       tonapiImg.hide(),
       yuujin.say("（タイムテーブルの確認を手伝った。余裕で間に合った）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ])
     .choose("「バレーに行っていいよ」", [
       yuujin.say("「バレーに行きなよ。中間報告は俺がうまく伝えておく」"),
@@ -42,7 +42,7 @@ ch3TonapiScene.action([
       tonapi.say("……本当ですか！？ありがとうございます！！フフフ！"),
       tonapiImg.hide(),
       yuujin.say("（彼女は全力で推し活し、俺は後日、教員への説明に追われた）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
     ]),
 
   Condition.If(() => {
@@ -80,7 +80,7 @@ ch3HaruchiroScene.action([
       haruchiro.say("確かに！GitHubのURLも追加して、コーディングの癖まで見せておきます！"),
       haruchiroImg.hide(),
       yuujin.say("（もう手遅れだ）"),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
       ch3HaruchiroScene.jumpTo(ch3TonapiScene),
     ])
     .choose("「いいじゃん！個性的で」と褒める", [
@@ -89,7 +89,7 @@ ch3HaruchiroScene.action([
       haruchiro.say("本当ですか！？じゃあこれでPR出してみます！"),
       haruchiroImg.hide(),
       yuujin.say("（そして誰からも反応は来なかった）"),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
       ch3HaruchiroScene.jumpTo(ch3TonapiScene),
     ]),
 ]);
@@ -123,7 +123,7 @@ ch3SaasanScene.action([
       saasan.say("いい度胸だ。90点以下なら奢りな？"),
       saasanImg.hide(),
       yuujin.say("（彼は軽く95点を出してきた。財布が空になった）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ])
     .choose("「一人で行ってこい」", [
@@ -132,7 +132,7 @@ ch3SaasanScene.action([
       saasan.say("なんだよ、ノリが悪いな。じゃあヒトカラで十八番叩き出してくるわ"),
       saasanImg.hide(),
       yuujin.say("（嵐は去ったが、虚無感だけが残った）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
       ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ]),
 ]);
@@ -164,7 +164,7 @@ ch3MassuScene.action([
       massu.say("えっ！？神！？一生ついていく！！"),
       massuImg.hide(),
       yuujin.say("（恩は売れたが、根本的な解決にはなっていない）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
       ch3MassuScene.jumpTo(ch3SaasanScene),
     ])
     .choose("「新しいの買えよ」", [
@@ -173,7 +173,7 @@ ch3MassuScene.action([
       massu.say("マジ！？じゃあフルサイズ行っちゃおっかなー！"),
       massuImg.hide(),
       yuujin.say("（就活生にとんでもない発想をさせてしまった）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
       ch3MassuScene.jumpTo(ch3SaasanScene),
     ]),
 ]);
@@ -207,7 +207,7 @@ ch3PackScene.action([
       pack.say("天才か！よし、新幹線の乗り継ぎルートを調べてくるわ！"),
       packImg.hide(),
       yuujin.say("（彼ならやり遂げそうだが、アサインは入れてもらえなさそうだ）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       ch3PackScene.jumpTo(ch3MassuScene),
     ])
     .choose("「よし、出迎えを優先しろ！」", [
@@ -216,7 +216,7 @@ ch3PackScene.action([
       pack.say("おっ、最高のエールをもらったぜ！サンキュー！"),
       packImg.hide(),
       yuujin.say("（結果、彼は出迎えには大成功したが、アサイン申請がなく、にしむーさんは悲しんだ）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power - 1 })),
       ch3PackScene.jumpTo(ch3MassuScene),
     ]),
 ]);

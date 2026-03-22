@@ -77,7 +77,7 @@ ch4TonapiScene.action([
       tonapi.say("スポ根ですね！よし、タイピングの音がバレーのスパイクみたいに響かせてきます！"),
       tonapiImg.hide(),
       yuujin.say("（結果、推しのチームのスパイクで勢いよくEnterをたたいて提出したらしい）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ])
     .choose("「俺も応援に行く」", [
       yuujin.say("「よし、じゃあ俺も応援に行くか」"),
@@ -85,7 +85,7 @@ ch4TonapiScene.action([
       tonapi.say("本当ですか！？じゃあ一緒にメガホン叩きましょう！フフフ！"),
       tonapiImg.hide(),
       yuujin.say("（結局、二人で論文そっちのけで応援してしまった。それでも、となっぴーの笑顔は本物だった）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
     ]),
 
   Condition.If(() => {
@@ -124,7 +124,7 @@ ch4HaruchiroScene.action([
       haruchiro.say("なるほど！専門外の人に伝わるかどうかのテストですね！"),
       haruchiroImg.hide(),
       yuujin.say("（デートが完全に学会発表の場になってしまったらしい）"),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
       ch4HaruchiroScene.jumpTo(ch4TonapiScene),
     ])
     .choose("俺が代わりに発表してやるよ", [
@@ -133,7 +133,7 @@ ch4HaruchiroScene.action([
       haruchiro.say("えっ！？代打ち！？ありがてええぇぇ！行ってきます！"),
       haruchiroImg.hide(),
       yuujin.say("（はるちろの卒業が完全に俺の手にかかってしまった）"),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
       ch4HaruchiroScene.jumpTo(ch4TonapiScene),
     ]),
 ]);
@@ -168,7 +168,7 @@ ch4SaasanScene.action([
       saasan.say("おっ、わかってるじゃねえか。食べ物は大盛り激辛至上主義だからな！"),
       saasanImg.hide(),
       yuujin.say("（味覚も完全に狂っていることが判明した）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ])
     .choose("「お好み焼きでも頼むか」", [
@@ -177,7 +177,7 @@ ch4SaasanScene.action([
       saasan.say("……お前、俺を殺す気か？ネギだけは絶対に許さん！"),
       saasanImg.hide(),
       yuujin.say("（激怒された。ネギへの憎しみは本物だ）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ]),
 ]);
@@ -213,7 +213,7 @@ ch4MassuScene.action([
       massu.say("えっ！？……あはは！冗談キツいよー！"),
       massuImg.hide(),
       yuujin.say("（はぐらかされたが、少し照れていた）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
       ch4MassuScene.jumpTo(ch4SaasanScene),
     ])
     .choose("「彼氏の近くに行け」", [
@@ -222,7 +222,7 @@ ch4MassuScene.action([
       massu.say("うーん……たしかにメンタルは安定するかも……内定辞退のメール書こっかな。"),
       massuImg.hide(),
       yuujin.say("（せっかくのキャリアを捨てさせてしまったかもしれない）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
       ch4MassuScene.jumpTo(ch4SaasanScene),
     ]),
 ]);
@@ -259,7 +259,7 @@ ch4PackScene.action([
       pack.say("それがさ！罰金で揉めてたらいつの間にか彼女消えてて、帰国するまでちょっと気まずかったんだよな……"),
       packImg.hide(),
       yuujin.say("（思っていたより悲惨なオチだった）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
       ch4PackScene.jumpTo(ch4MassuScene),
     ])
     .choose("「フランスでSuicaは草」", [
@@ -268,7 +268,7 @@ ch4PackScene.action([
       pack.say("お前なぁ！人が悲しんでるのに草生やすなよ！エラー音だけはやたら軽快だったぞ！"),
       packImg.hide(),
       yuujin.say("（笑い事ではないが、ぱっくらしいトラブルだった）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power - 1 })),
       ch4PackScene.jumpTo(ch4MassuScene),
     ]),
 ]);

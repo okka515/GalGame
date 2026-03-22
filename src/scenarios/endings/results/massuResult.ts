@@ -13,11 +13,11 @@ export const massuResult = new Scene(
 );
 
 massuResult.action([
-  Condition.If(gameFlags.evaluate("massu_graduation_power", (v) => (v || 0) >= 7), [
+  Condition.If(gameFlags.evaluate("massu_graduation_power", (v) => (v || 0) >= 18), [
     massuBestImg.show(),
     massu.say("卒研、なんとか間に合ったー！東京の広告会社から内定ももらえたし、卒サプの写真は全部私が撮るね！あはは！"),
     yuujin.say("まっすーは東京就職。写真がSNSでバズり、キラキラ業界エンドへ。"),
-  ]).ElseIf(gameFlags.evaluate("massu_graduation_power", (v) => (v || 0) >= 4), [
+  ]).ElseIf(gameFlags.evaluate("massu_graduation_power", (v) => (v || 0) >= 7), [
     massuGradImg.show(),
     massu.say("ギリギリだったけど、卒業できたよー！よかったぁ！"),
     yuujin.say("まっすーはギリギリ卒業できた。カメラは趣味として続けている。"),

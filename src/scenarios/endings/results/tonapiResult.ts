@@ -10,11 +10,11 @@ const tonapiGradImg = new Image({ src: "/characters/tonappi/tonappi_graduation.p
 const tonapiFailureImg = new Image({ src: "/characters/tonappi/tonappi_failure.png" });
 
 tonapiResult.action([
-  Condition.If(gameFlags.evaluate("tonapi_graduation_power", (v) => (v || 0) >= 7), [
+  Condition.If(gameFlags.evaluate("tonapi_graduation_power", (v) => (v || 0) >= 18), [
     tonapiBestImg.show(),
     tonapi.say("卒研の発表、無事終わりました！化学系メーカーからも内定もらえましたし、バレーのチームも優勝しましたよ！フフ"),
     yuujin.say("となっぴーが化学系メーカーに就職した。数十年後、ノーベル賞候補の噂が流れる。"),
-  ]).ElseIf(gameFlags.evaluate("tonapi_graduation_power", (v) => (v || 0) >= 4), [
+  ]).ElseIf(gameFlags.evaluate("tonapi_graduation_power", (v) => (v || 0) >= 7), [
     tonapiGradImg.show(),
     tonapi.say("卒業できました。カビも今のところ大丈夫です。ふふ"),
     yuujin.say("となっぴーは堅実に卒業した。カビの行方は不明。"),
