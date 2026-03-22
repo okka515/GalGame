@@ -16,9 +16,49 @@ body,
   font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
 }
 
-button.bg-white,
+/* Menuボタンのリッチ化（グラスモーフィズム・ホバーアニメーション） */
+button.bg-white {
+  background: rgba(20, 25, 40, 0.8) !important; /* 少し青みがかったダークな半透明 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(150, 200, 255, 0.4) !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  padding: 14px 24px !important;
+  margin: 8px 0 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  overflow: hidden;
+  position: relative;
+}
+
 button.bg-white * {
-  color: #0f172a !important;
+  color: #ffffff !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* 輝き（ライトスイープ）の設定 */
+button.bg-white::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: none;
+  z-index: 1;
+}
+
+button.bg-white:hover {
+  background: rgba(40, 60, 90, 0.9) !important;
+  border-color: rgba(180, 220, 255, 0.8) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 25px rgba(100, 150, 255, 0.4) !important;
+}
+
+button.bg-white:active {
+  transform: translateY(1px) scale(0.98) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* タイトル画面の星きらきらアニメーション */
