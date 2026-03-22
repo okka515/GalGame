@@ -35,3 +35,9 @@ export const packHentekoBgm = new Sound({
   loop: true,
   volume: 0.3,
 });
+
+export const haruchiroLoveBgm = new Sound({
+  src: "/public/audio/bgm/haruchiro_love_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+})
