@@ -18,13 +18,13 @@ const prologuePrompt = new Scene("prologue-prompt", {
 });
 
 const prologueBgm = new Sound({
-  src: "/public/audio/bgm/prologue_bgm.mp3",
+  src: "/audio/bgm/prologue_bgm.mp3",
   loop: true,
   volume: 0.3,
 });
 
 const menuSelectingBgm = new Sound({
-  src: "/public/audio/bgm/menu_selecting_bgm.mp3",
+  src: "/audio/bgm/menu_selecting_bgm.mp3",
   loop: true,
   volume: 0.3,
 })
