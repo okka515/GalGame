@@ -1,10 +1,39 @@
+import { useEffect, useRef } from "react";
+
 type Props = {
   onStart: () => void;
 };
 
 export default function TitleScreen({ onStart }: Props) {
+  const bgmRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    const bgm = new Audio("/audio/bgm/title_screen.mp3");
+    bgm.loop = true;
+    bgm.volume = 0.3; // 音量 (0.0 ~ 1.0)
+    bgmRef.current = bgm;
+
+    // 自動再生を試みる（ブロックされた場合は警告のみ）
+    bgm.play().catch((err) => {
+      console.warn("ブラウザのポリシーによりBGMの自動再生がブロックされました。画面をクリックすると再生されます:", err);
+    });
+
+    // コンポーネントのアンマウント時にBGMを停止
+    return () => {
+      bgm.pause();
+      bgm.src = "";
+    };
+  }, []);
+
+  // 画面がクリックされたとき、BGMが再生されていなければ再生する
+  const handleInteraction = () => {
+    if (bgmRef.current && bgmRef.current.paused) {
+      bgmRef.current.play().catch(() => {});
+    }
+  };
+
   return (
-    <div style={styles.root}>
+    <div style={styles.root} onClick={handleInteraction}>
       <div style={styles.inner}>
         <p style={styles.subtitle}>
           サブタイトル案: 友情・進路・恋愛・研究、全部まとめて面倒を見る主人公の卒業までのコメディーADV
