@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type React from "react";
 import { GameProviders, Player } from "narraleaf-react";
 import { mainStory } from "./scenarios/main";
@@ -18,16 +18,18 @@ export default function App() {
   const [started, setStarted] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // loadingがtrueになった次のレンダー後にPlayerをマウントする
+  useEffect(() => {
+    if (loading && !started) {
+      setStarted(true);
+    }
+  }, [loading, started]);
+
   return (
     <>
-      {!started && !loading ? (
-        <TitleScreen onStart={() => { setStarted(true); setLoading(true); }} />
-      ) : loading ? (
-        <div style={loadingStyles}>
-          <p style={loadingTextStyles}>ロード中...</p>
-        </div>
-      ) : null}
-      {started && (
+      {!started ? (
+        <TitleScreen onStart={() => setLoading(true)} />
+      ) : (
         <>
           <GameProviders>
             <Player
@@ -45,6 +47,12 @@ export default function App() {
       )}
       {/* EndingModal は常にマウントしてイベントを受け取れるようにする */}
       <EndingModal />
+      {/* ローディングオーバーレイは最前面に表示 */}
+      {loading && (
+        <div style={loadingStyles}>
+          <p style={loadingTextStyles}>ロード中...</p>
+        </div>
+      )}
     </>
   );
 }
