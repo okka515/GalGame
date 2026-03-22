@@ -28,7 +28,7 @@ export default function TitleScreen({ onStart }: Props) {
   // 画面がクリックされたとき、BGMが再生されていなければ再生する
   const handleInteraction = () => {
     if (bgmRef.current && bgmRef.current.paused) {
-      bgmRef.current.play().catch(() => {});
+      bgmRef.current.play().catch(() => { });
     }
   };
 
@@ -43,7 +43,14 @@ export default function TitleScreen({ onStart }: Props) {
           <br />
           <span style={styles.titleSub}>6人組最後の一年</span>
         </h1>
-        <button style={styles.button} onClick={onStart}>
+        <button
+          style={styles.button}
+          onClick={() => {
+            const buttonEffectSound = new Audio("/audio/effect/button_deep.mp3");
+            buttonEffectSound.play();
+            onStart();
+          }}
+        >
           S T A R T
         </button>
       </div>
