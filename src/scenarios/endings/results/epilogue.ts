@@ -1,7 +1,7 @@
 import { Scene } from "narraleaf-react";
 import { yuujin } from "../../../characters";
 
-export const epilogue = new Scene("finale-epilogue", { background: "#fef9c3" });
+export const epilogue = new Scene("finale-epilogue", { background: "/backgrounds/title.png" });
 
 epilogue.action([
   yuujin.say("……そして俺も、なんとか卒業した。"),
