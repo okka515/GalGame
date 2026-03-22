@@ -13,11 +13,11 @@ type CharacterEnding = {
 function getEndingLabel(type: EndingType): string {
   switch (type) {
     case "happy":
-      return "ハッピーエンド";
+      return "首席卒業";
     case "normal":
-      return "ノーマルエンド";
+      return "卒業";
     case "bad":
-      return "バッドエンド";
+      return "卒業不可";
     case "special":
       return "スペシャルエンド";
   }
