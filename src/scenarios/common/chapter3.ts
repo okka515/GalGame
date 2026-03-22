@@ -12,28 +12,28 @@ const ch3TonapiScene = new Scene("ch3-tonapi", {
   background: "#042f2e",
 });
 ch3TonapiScene.action([
-  yuujin.say("【秋の修羅場: 研究室大掃除】"),
-  yuujin.say("研究室の大掃除の日。となっぴーのデスクには、色とりどりのシャーレが山積みになっていた。"),
-  tonapi.say("あ、触らないでください！それはまだ同定されていない新種の……フフ、カビの候補です"),
-  yuujin.say("（笑い声が怖い。しかも色が完全に毒々しい）"),
-  yuujin.say("指導教員が見回りに来るまであと30分。このままではとなっぴーが研究室を出禁になる。"),
-  Menu.prompt("どうする？")
-    .choose("「危険物は隔離しろ」", [
-      yuujin.say("「頼むから、せめて危険物保管庫に隔離してくれ」"),
-      tonapi.say("……仕方ないですね。大事なサンプルですが、避難させます"),
-      yuujin.say("なんとか出禁は免れた。"),
+  yuujin.say("【秋の修羅場: 推し活、緊急事態】"),
+  yuujin.say("秋のある日、となっぴーから急に呼び出された。"),
+  tonapi.say("あの……今週末、推しのバレーチームの試合があって"),
+  tonapi.say("卒研の中間報告と日程が被ってしまったんです。どうすればいいでしょうか。フフ"),
+  yuujin.say("（フフと笑っているが、目は全く笑っていない。絶対にバレーに行きたい目をしている）"),
+  Menu.prompt("どうアドバイスする？")
+    .choose("「卒研を最優先にしろ」", [
+      yuujin.say("「卒研の中間報告は一度しかないだろ。バレーは次もある」"),
+      tonapi.say("……そうですよね。わかりました。推しには心の中でエールを送ります"),
+      yuujin.say("（後日、彼女は報告を無事終え、その夜ひとりで試合のライブ配信を見ていたらしい）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ])
-    .choose("「全部捨てるぞ！」", [
-      yuujin.say("「問答無用で全部捨てるぞ！バイオハザードだ！」"),
-      tonapi.say("きゃー！やめてください！私の努力の結晶が！"),
-      yuujin.say("泣く泣く半分だけ捨てさせた。"),
+    .choose("「午前中だけ報告して、午後から試合に行け」", [
+      yuujin.say("「午前に報告を終わらせて、そのまま移動すれば両方いけるんじゃないか？」"),
+      tonapi.say("！ その発想はなかったです！行けますね！行きます！"),
+      yuujin.say("（タイムテーブルの確認を手伝った。余裕で間に合った）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
     ])
-    .choose("「カビに名前をつけよう」", [
-      yuujin.say("「よし、まずはこの青いやつから名前をつけよう」"),
-      tonapi.say("いいですね！じゃあ『トナピニリン』はどうでしょうフフフ……"),
-      yuujin.say("（現実逃避をした結果、教授にめっっっちゃくちゃ怒られた）"),
+    .choose("「バレーに行っていいよ」", [
+      yuujin.say("「バレーに行きなよ。中間報告は俺がうまく伝えておく」"),
+      tonapi.say("……本当ですか！？ありがとうございます！！フフフ！"),
+      yuujin.say("（彼女は全力で推し活し、俺は後日、教員への説明に追われた）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ]),
 

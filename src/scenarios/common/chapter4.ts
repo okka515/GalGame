@@ -53,27 +53,30 @@ const ch4TonapiScene = new Scene("ch4-tonapi", {
   background: "#042f2e",
 });
 ch4TonapiScene.action([
-  yuujin.say("【冬の追い込み: 論文か、応援か】"),
-  yuujin.say("となっぴーが育てていた謎のカビが、まさかの学会発表レベルの成果になりかけていた。"),
-  tonapi.say("教授が『これはいける』って言ってくれて……フフ、ついに私の時代が来ました"),
-  yuujin.say("だが机の上には、冬のバレーボール大会のチケットが置いてある。"),
-  tonapi.say("ただ、今週末から推しチームの全国大会で。現地に行かないと死ぬ病気なんです"),
-  yuujin.say("論文の提出期限も今週末だ。"),
+  yuujin.say("【冬の追い込み: ノーベル賞か、全国制覇か】"),
+  yuujin.say("12月。となっぴーの研究が、ついに指導教員を動かした。"),
+  tonapi.say("教授から『これは本物かもしれない』って言ってもらえて……フフ、ついに私の時代が来ました"),
+  yuujin.say("（穏やかに、しかし確実に狂気の目をしている）"),
+  yuujin.say("だが机の上には、推しの全国大会のチケットが置いてある。"),
+  tonapi.say("ただ今週末が推しチームの全国大会の決勝で。論文の最終提出期限も、同じ日なんです"),
+  yuujin.say("（このままでは、どちらかを諦めさせることになる）"),
   Menu.prompt("どうアドバイスする？")
-    .choose("論文の執筆に集中しろ", [
+    .choose("「論文の執筆に集中しろ」", [
       yuujin.say("「バレーは来年もある。今は論文の執筆に集中しろ」"),
       tonapi.say("うぅ……わかりました。推しには心の中でエールを送ります……"),
+      yuujin.say("論文は無事に提出された。その夜、となっぴーはライブ配信で推しのチームが優勝する瞬間を見て、静かに泣いていたという。"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ])
-    .choose("現地で応援しながら書け", [
+    .choose("「現地で応援しながら書け」", [
       yuujin.say("「現地で応援しながらノートPCで論文書け」"),
       tonapi.say("スポ根ですね！よし、タイピングの音がバレーのスパイクみたいに響かせてきます！"),
+      yuujin.say("（結果、推しのチームのスパイクで勢いよくEnterをたたいて提出したらしい）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
     ])
-    .choose("俺も応援に行く", [
+    .choose("「俺も応援に行く」", [
       yuujin.say("「よし、じゃあ俺も応援に行くか」"),
       tonapi.say("本当ですか！？じゃあ一緒にメガホン叩きましょう！フフフ！"),
-      yuujin.say("（結局、二人で論文そっちのけで応援してしまった）"),
+      yuujin.say("（結局、二人で論文そっちのけで応援してしまった。それでも、となっぴーの笑顔は本物だった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ]),
 
