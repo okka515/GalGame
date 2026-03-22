@@ -1,14 +1,17 @@
-import { Scene, Menu, Condition } from "narraleaf-react";
+import { Scene, Menu, Condition, Image } from "narraleaf-react";
 import { yuujin, massu } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
+
+const massuRouteImg = new Image({ src: "/characters/massu/massu_route.png" });
 
 export const massuRouteMain = new Scene("massu-route-main", {
   background: "#1f2937",
 });
 
 massuRouteMain.action([
+  massuRouteImg.show(),
   yuujin.say("まっすーに呼び出された。大破したカメラを両手で持っている。"),
   massu.say("ねえ……修理に出すか迷ってて。センサーも逝ってて、修理代がすごくかかりそうで"),
   massu.say("でもこのカメラ、大学4年間ずっと一緒だったんだよね。捨てたくなくて……"),
