@@ -4,11 +4,11 @@ import { gameFlags } from "../../../store/gameState";
 import { massuResult } from "./massuResult";
 import { bestGraduationBgm, finaleBgm, packBadendBgm } from "../../../store/gameBgm";
 
-const packBestImg = new Image({ src: "/characters/pack/pack_best_graduation.png" });
-const packGradImg = new Image({ src: "/characters/pack/pack_graduation.png" });
-const packFailImg = new Image({ src: "/characters/pack/pack_failure.png" });
+const packBestImg = new Image({ src: "/characters/pack/pack_best_graduation.png", zoom: 0.7 });
+const packGradImg = new Image({ src: "/characters/pack/pack_graduation.png", zoom: 0.7 });
+const packFailImg = new Image({ src: "/characters/pack/pack_failure.png", zoom: 0.7 });
 
-export const packResult = new Scene("finale-pack-result", { background: "/backgrounds/office.png" });
+export const packResult = new Scene("finale-pack-result", { background: "#000000" });
 
 packResult.action([
   Condition.If(gameFlags.evaluate("pack_graduation_power", (v) => (v || 0) >= 18), [

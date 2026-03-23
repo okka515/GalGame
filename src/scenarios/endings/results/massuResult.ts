@@ -4,13 +4,13 @@ import { gameFlags } from "../../../store/gameState";
 import { saasanResult } from "./saasanResult";
 import { bestGraduationBgm, finaleBgm, massuBadendBgm } from "../../../store/gameBgm";
 
-const massuBestImg = new Image({ src: "/characters/massu/massu_best_graduation.png" });
-const massuGradImg = new Image({ src: "/characters/massu/massu_graduation.png" });
-const massuFailImg = new Image({ src: "/characters/massu/massu_failure.png" });
+const massuBestImg = new Image({ src: "/characters/massu/massu_best_graduation.png", zoom: 0.7 });
+const massuGradImg = new Image({ src: "/characters/massu/massu_graduation.png", zoom: 0.7 });
+const massuFailImg = new Image({ src: "/characters/massu/massu_failure.png", zoom: 0.7 });
 
 export const massuResult = new Scene(
   "finale-massu-result",
-  { background: "/backgrounds/office.png" }
+  { background: "#000000" }
 );
 
 massuResult.action([

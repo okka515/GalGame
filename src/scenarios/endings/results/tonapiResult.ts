@@ -4,11 +4,11 @@ import { gameFlags } from "../../../store/gameState";
 import { epilogue } from "./epilogue";
 import { bestGraduationBgm, finaleBgm, tonappiBadendBgm } from "../../../store/gameBgm";
 
-export const tonapiResult = new Scene("finale-tonapi-result", { background: "/backgrounds/office.png" });
+export const tonapiResult = new Scene("finale-tonapi-result", { background: "#000000" });
 
-const tonapiBestImg = new Image({ src: "/characters/tonappi/tonappi_best_graduation.png" });
-const tonapiGradImg = new Image({ src: "/characters/tonappi/tonappi_graduation.png" });
-const tonapiFailureImg = new Image({ src: "/characters/tonappi/tonappi_failure.png" });
+const tonapiBestImg = new Image({ src: "/characters/tonappi/tonappi_best_graduation.png", zoom: 0.7 });
+const tonapiGradImg = new Image({ src: "/characters/tonappi/tonappi_graduation.png", zoom: 0.7 });
+const tonapiFailureImg = new Image({ src: "/characters/tonappi/tonappi_failure.png", zoom: 0.7 });
 
 tonapiResult.action([
   Condition.If(gameFlags.evaluate("tonapi_graduation_power", (v) => (v || 0) >= 18), [
