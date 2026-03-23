@@ -30,7 +30,7 @@ haruchiroResult.action([
   ]).Else([
     finaleBgm.pause(),
     haruchiroBadendBgm.play(),
-    Condition.If(gameFlags.evaluate("haruchiro_triangle", (v) => v === true || true), [
+    Condition.If(gameFlags.evaluate("haruchiro_triangle", (v) => v === true), [
       haruchiroTriangleImg.show(),
       haruchiro.say("え……な、なんで2人とも来てるんですか？！デ、デッドロック……！"),
       yuujin.say("はるちろは修羅場の末、マチアプの子とDroidKaigiの子の両方にフラれた。"),

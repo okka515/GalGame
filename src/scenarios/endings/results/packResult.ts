@@ -11,7 +11,7 @@ const packFailImg = new Image({ src: "/characters/pack/pack_failure.png", zoom: 
 export const packResult = new Scene("finale-pack-result", { background: "#000000" });
 
 packResult.action([
-  Condition.If(gameFlags.evaluate("pack_graduation_power", (v) => (v || 0) >= 18 || true), [
+  Condition.If(gameFlags.evaluate("pack_graduation_power", (v) => (v || 0) >= 18), [
     finaleBgm.pause(),
     bestGraduationBgm.play(),
     packBestImg.show(),
