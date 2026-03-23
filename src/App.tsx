@@ -36,6 +36,20 @@ export default function App() {
               story={mainStory}
               onReady={({ liveGame }) => {
                 setLoading(false);
+                // Enter(Return)キーで会話を進められるようにネイティブのキーバインドを追加
+                liveGame.game.keyMap.addKeyBinding("nextAction", "Enter");
+                liveGame.game.keyMap.addKeyBinding("nextAction", "Return");
+                
+                // 矢印キー(右)で次へ
+                liveGame.game.keyMap.addKeyBinding("nextAction", "ArrowRight");
+                
+                // 矢印キー(左)で前へ戻る(undo)
+                liveGame.onWindowEvent("keydown", (e: KeyboardEvent) => {
+                  if (e.key === "ArrowLeft") {
+                    liveGame.undo();
+                  }
+                });
+
                 liveGame.newGame();
               }}
               width="100vw"
