@@ -48,8 +48,38 @@ export const finaleBgm = new Sound({
   volume: 0.3,
 });
 
-export const beestGraduationBgm = new Sound({
+export const bestGraduationBgm = new Sound({
   src: "/audio/bgm/best_graduation_bgm.mp3",
   loop: true,
   volume: 0.6,
+});
+
+export const saasanBadendBgm = new Sound({
+  src: "/audio/bgm/saasan_badend_bgm.mp3",
+  loop: true,
+  volume: 0.4,
+});
+
+export const haruchiroBadendBgm = new Sound({
+  src: "/audio/bgm/haruchiro_badend_bgm.mp3",
+  loop: true,
+  volume: 0.4,
+});
+
+export const massuBadendBgm = new Sound({
+  src: "/audio/bgm/massu_badend_bgm.mp3",
+  loop: true,
+  volume: 0.4,
+});
+
+export const packBadendBgm = new Sound({
+  src: "/audio/bgm/pack_badend_bgm.mp3",
+  loop: true,
+  volume: 0.4,
+});
+
+export const tonappiBadendBgm = new Sound({
+  src: "/audio/bgm/tonappi_badend_bgm.mp3",
+  loop: true,
+  volume: 0.4,
 });
