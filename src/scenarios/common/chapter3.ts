@@ -80,8 +80,6 @@ ch3HaruchiroScene.action([
       haruchiroImg.hide(),
       yuujin.say("（もう手遅れだ）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
-      haruchiroLoveBgm.stop(),
-      ch3HaruchiroScene.jumpTo(ch3TonapiScene),
     ])
     .choose("「いいじゃん！個性的で」と褒める", [
       menuSelectSound.play(),
@@ -91,8 +89,6 @@ ch3HaruchiroScene.action([
       haruchiroImg.hide(),
       yuujin.say("（そして誰からも反応は来なかった）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
-      haruchiroLoveBgm.stop(),
-      ch3HaruchiroScene.jumpTo(ch3TonapiScene),
     ])
     .choose("「やばい。全部書き直せ」と止める", [
       menuSelectSound.play(),
@@ -102,9 +98,9 @@ ch3HaruchiroScene.action([
       haruchiroImg.hide(),
       yuujin.say("全力でダメだと伝えた。一緒にプロフィールを書き直した結果、まともになった。"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
-      haruchiroLoveBgm.stop(),
-      ch3HaruchiroScene.jumpTo(ch3TonapiScene),
     ]),
+  haruchiroLoveBgm.stop(),
+  ch3HaruchiroScene.jumpTo(ch3TonapiScene),
 ]);
 
 // さーさんの秋 → はるちろへ
@@ -130,8 +126,6 @@ ch3SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（嵐は去ったが、虚無感だけが残った）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
-      saasanBaseBgm.stop(),
-      ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ])
     .choose("「カラオケで勝負だ！」", [
       menuSelectSound.play(),
@@ -141,8 +135,6 @@ ch3SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（彼は軽く95点を出してきた。財布が空になった）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
-      saasanBaseBgm.stop(),
-      ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ])
     .choose("「先に俺たちの卒研を見てくれ」", [
       menuSelectSound.play(),
@@ -152,9 +144,9 @@ ch3SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（的確すぎる指摘のおかげで、逆に全員の進捗が爆上がりした）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
-      saasanBaseBgm.stop(),
-      ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ]),
+  saasanBaseBgm.stop(),
+  ch3SaasanScene.jumpTo(ch3HaruchiroScene),
 ]);
 
 // まっすーの秋 → さーさんへ
@@ -178,8 +170,6 @@ ch3MassuScene.action([
       massu.say("うーん……たしかにiPhoneのポートレート最強だもんね！切り替えていく！"),
       massuImg.hide(),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
-      massuBaseBgm.stop(),
-      ch3MassuScene.jumpTo(ch3SaasanScene),
     ])
     .choose("「新しいの買えよ」", [
       menuSelectSound.play(),
@@ -189,8 +179,6 @@ ch3MassuScene.action([
       massuImg.hide(),
       yuujin.say("（就活生にとんでもない発想をさせてしまった）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
-      massuBaseBgm.stop(),
-      ch3MassuScene.jumpTo(ch3SaasanScene),
     ])
     .choose("「俺のカメラ貸そうか？」", [
       menuSelectSound.play(),
@@ -200,9 +188,9 @@ ch3MassuScene.action([
       massuImg.hide(),
       yuujin.say("（恩は売れたが、根本的な解決にはなっていない）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
-      massuBaseBgm.stop(),
-      ch3MassuScene.jumpTo(ch3SaasanScene),
     ]),
+  massuBaseBgm.stop(),
+  ch3MassuScene.jumpTo(ch3SaasanScene),
 ]);
 
 // ぱっくの秋（最初）→ まっすーへ
@@ -228,8 +216,6 @@ ch3PackScene.action([
       packImg.hide(),
       yuujin.say("（彼ならやり遂げそうだが、アサインは入れてもらえなさそうだ）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
-      packBaseBgm.stop(),
-      ch3PackScene.jumpTo(ch3MassuScene),
     ])
     .choose("「黙ってクリキャンに行け」", [
       menuSelectSound.play(),
@@ -239,8 +225,6 @@ ch3PackScene.action([
       packImg.hide(),
       yuujin.say("ぱっくは血の涙を流しながら、クリキャンのアサインを提出した。"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
-      packBaseBgm.stop(),
-      ch3PackScene.jumpTo(ch3MassuScene),
     ])
     .choose("「よし、出迎えを優先しろ！」", [
       menuSelectSound.play(),
@@ -250,9 +234,9 @@ ch3PackScene.action([
       packImg.hide(),
       yuujin.say("（結果、彼は出迎えには大成功したが、アサイン申請がなく、にしむーさんは悲しんだ）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power - 1 })),
-      packBaseBgm.stop(),
-      ch3PackScene.jumpTo(ch3MassuScene),
     ]),
+  packBaseBgm.stop(),
+  ch3PackScene.jumpTo(ch3MassuScene),
 ]);
 
 // 第3章 エントリーシーン → ぱっくへ

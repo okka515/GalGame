@@ -24,26 +24,31 @@ chapter4RouteSelect.action([
   yuujin.say("自分の中で、誰かの顔が浮かぶ。"),
   Menu.prompt("誰の個別ルートへ？")
     .choose("ぱっくに全力で向き合う", [
+      menuSelectSound.play(),
       gameFlags.set("route_pack", true),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })), // ルート選択ボーナス
       chapter4RouteSelect.jumpTo(packRouteMain),
     ])
     .choose("まっすーに全力で向き合う", [
+      menuSelectSound.play(),
       gameFlags.set("route_massu", true),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
       chapter4RouteSelect.jumpTo(massuRouteMain),
     ])
     .choose("さーさんに全力で向き合う", [
+      menuSelectSound.play(),
       gameFlags.set("route_saasan", true),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
       chapter4RouteSelect.jumpTo(saasanRouteMain),
     ])
     .choose("はるちろに全力で向き合う", [
+      menuSelectSound.play(),
       gameFlags.set("route_haruchiro", true),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
       chapter4RouteSelect.jumpTo(haruchiroRouteMain),
     ])
     .choose("となっぴーに全力で向き合う", [
+      menuSelectSound.play(),
       gameFlags.set("route_tonapi", true),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
       chapter4RouteSelect.jumpTo(tonapiRouteMain),
@@ -124,8 +129,6 @@ ch4HaruchiroScene.action([
       haruchiroImg.hide(),
       yuujin.say("（はるちろの卒業が完全に俺の手にかかってしまった）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
-      haruchiroLoveBgm.stop(),
-      ch4HaruchiroScene.jumpTo(ch4TonapiScene),
     ])
     .choose("発表練習が最優先だろ", [
       menuSelectSound.play(),
@@ -134,8 +137,6 @@ ch4HaruchiroScene.action([
       haruchiro.say("っ！……ですね。リスケのお願いを送ってみます！"),
       haruchiroImg.hide(),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
-      haruchiroLoveBgm.stop(),
-      ch4HaruchiroScene.jumpTo(ch4TonapiScene),
     ])
     .choose("マチアプの子を練習相手にしろ", [
       menuSelectSound.play(),
@@ -145,9 +146,9 @@ ch4HaruchiroScene.action([
       haruchiroImg.hide(),
       yuujin.say("（デートが完全に学会発表の場になってしまったらしい）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
-      haruchiroLoveBgm.stop(),
-      ch4HaruchiroScene.jumpTo(ch4TonapiScene),
     ]),
+  haruchiroLoveBgm.stop(),
+  ch4HaruchiroScene.jumpTo(ch4TonapiScene),
 ]);
 
 // さーさんの冬 → はるちろへ
@@ -174,8 +175,6 @@ ch4SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（味覚も完全に狂っていることが判明した）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
-      saasanBaseBgm.stop(),
-      ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ])
     .choose("「お好み焼きでも頼むか」", [
       menuSelectSound.play(),
@@ -185,8 +184,6 @@ ch4SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（激怒された。ネギへの憎しみは本物だ）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
-      saasanBaseBgm.stop(),
-      ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ])
     .choose("「黙って床を拭く」", [
       menuSelectSound.play(),
@@ -196,9 +193,9 @@ ch4SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（名言風だが、ただのドジである）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
-      saasanBaseBgm.stop(),
-      ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ]),
+  saasanBaseBgm.stop(),
+  ch4SaasanScene.jumpTo(ch4HaruchiroScene),
 ]);
 
 // まっすーの冬 → さーさんへ
@@ -226,8 +223,6 @@ ch4MassuScene.action([
       massuImg.hide(),
       yuujin.say("（せっかくのキャリアを捨てさせてしまったかもしれない）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
-      massuBaseBgm.stop(),
-      ch4MassuScene.jumpTo(ch4SaasanScene),
     ])
     .choose("「俺と一緒に東京に行きなよ」", [
       menuSelectSound.play(),
@@ -237,8 +232,6 @@ ch4MassuScene.action([
       massuImg.hide(),
       yuujin.say("（はぐらかされたが、少し照れていた）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
-      massuBaseBgm.stop(),
-      ch4MassuScene.jumpTo(ch4SaasanScene),
     ])
     .choose("「自分のキャリアを優先しろ」", [
       menuSelectSound.play(),
@@ -248,9 +241,9 @@ ch4MassuScene.action([
       massuImg.hide(),
       yuujin.say("まっすーの目に力が宿った。"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
-      massuBaseBgm.stop(),
-      ch4MassuScene.jumpTo(ch4SaasanScene),
     ]),
+  massuBaseBgm.stop(),
+  ch4MassuScene.jumpTo(ch4SaasanScene),
 ]);
 
 // ぱっくの冬（最初）→ まっすーへ
@@ -279,8 +272,6 @@ ch4PackScene.action([
       packImg.hide(),
       yuujin.say("（思っていたより悲惨なオチだった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
-      packBaseBgm.stop(),
-      ch4PackScene.jumpTo(ch4MassuScene),
     ])
     .choose("「グローバルな勉強代だと思え」", [
       menuSelectSound.play(),
@@ -290,8 +281,6 @@ ch4PackScene.action([
       packImg.hide(),
       yuujin.say("（ポジティブな解釈で落ち着いたようだ）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
-      packBaseBgm.stop(),
-      ch4PackScene.jumpTo(ch4MassuScene),
     ])
     .choose("「フランスでSuicaは草」", [
       menuSelectSound.play(),
@@ -301,9 +290,9 @@ ch4PackScene.action([
       packImg.hide(),
       yuujin.say("（笑い事ではないが、ぱっくらしいトラブルだった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power - 1 })),
-      packBaseBgm.stop(),
-      ch4PackScene.jumpTo(ch4MassuScene),
     ]),
+  packBaseBgm.stop(),
+  ch4PackScene.jumpTo(ch4MassuScene),
 ]);
 
 // 第4章 エントリーシーン → ぱっくへ
