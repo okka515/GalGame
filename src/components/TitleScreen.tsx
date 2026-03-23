@@ -36,7 +36,7 @@ export default function TitleScreen({ onStart }: Props) {
     <div style={styles.root} onClick={handleInteraction}>
       <div style={styles.inner}>
         <p style={styles.subtitle}>
-          サブタイトル案: 友情・進路・恋愛・研究、全部まとめて面倒を見る主人公の卒業までのコメディーADV
+          友情・進路・恋愛・研究、全部まとめて面倒を見る主人公の卒業までのコメディーADV
         </p>
         <h1 style={styles.title}>
           卒業できるの、できないの！？
@@ -50,7 +50,7 @@ export default function TitleScreen({ onStart }: Props) {
             const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
             if (AudioContextClass) {
               const ctx = new AudioContextClass();
-              ctx.resume().catch(() => {});
+              ctx.resume().catch(() => { });
             }
             const buttonEffectSound = new Audio("/audio/effect/button_deep.mp3");
             buttonEffectSound.play();
