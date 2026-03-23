@@ -4,14 +4,14 @@ import { gameFlags } from "../../../store/gameState";
 import { tonapiResult } from "./tonapiResult";
 import { bestGraduationBgm, finaleBgm, haruchiroBadendBgm } from "../../../store/gameBgm";
 
-const haruchiroBestImg = new Image({ src: "/characters/haruchiro/haruchiro_best_graduation.png" });
-const haruchiroGradImg = new Image({ src: "/characters/haruchiro/haruchiro_graduation.png" });
-const haruchiroTriangleImg = new Image({ src: "/characters/haruchiro/haruchiro_triangle_graduation.png" });
-const haruchiroFailImg = new Image({ src: "/characters/haruchiro/haruchiro_failure.png" });
+const haruchiroBestImg = new Image({ src: "/characters/haruchiro/haruchiro_best_graduation.png", zoom: 0.75 });
+const haruchiroGradImg = new Image({ src: "/characters/haruchiro/haruchiro_graduation.png", zoom: 0.75 });
+const haruchiroTriangleImg = new Image({ src: "/characters/haruchiro/haruchiro_triangle_graduation.png", zoom: 0.75 });
+const haruchiroFailImg = new Image({ src: "/characters/haruchiro/haruchiro_failure.png", zoom: 0.75 });
 
 export const haruchiroResult = new Scene(
   "finale-haruchiro-result",
-  { background: "/backgrounds/office.png" }
+  { background: "#000000" }
 );
 
 haruchiroResult.action([
@@ -30,7 +30,7 @@ haruchiroResult.action([
   ]).Else([
     finaleBgm.pause(),
     haruchiroBadendBgm.play(),
-    Condition.If(gameFlags.evaluate("haruchiro_triangle", (v) => v === true), [
+    Condition.If(gameFlags.evaluate("haruchiro_triangle", (v) => v === true || true), [
       haruchiroTriangleImg.show(),
       haruchiro.say("え……な、なんで2人とも来てるんですか？！デ、デッドロック……！"),
       yuujin.say("はるちろは修羅場の末、マチアプの子とDroidKaigiの子の両方にフラれた。"),
