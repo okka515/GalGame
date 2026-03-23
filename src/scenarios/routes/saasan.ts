@@ -1,4 +1,4 @@
-import { Scene, Menu, Condition, Image } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, saasan } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
@@ -6,15 +6,13 @@ import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
 import { saasanRouteBgm } from "../../store/gameBgm";
 
-const saasanRouteImg = new Image({ src: "/characters/saasan/saasan_route.png" });
 
 export const saasanRouteMain = new Scene("saasan-route-main", {
-  background: "#052e16",
+  background: "/characters/saasan/saasan_route.png",
 });
 
 saasanRouteMain.action([
   saasanRouteBgm.play(),
-  saasanRouteImg.show(),
   yuujin.say("さーさんから連絡が来た。珍しい。"),
   saasan.say("なあ、俺のことちょっと相談に乗ってくれるか"),
   yuujin.say("いつも完璧でいるさーさんが、珍しく言葉を選んでいた。"),

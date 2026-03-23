@@ -1,4 +1,4 @@
-import { Scene, Menu, Condition, Image } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, tonapi } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
@@ -6,15 +6,13 @@ import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
 import { tonappiRouteBgm } from "../../store/gameBgm";
 
-const tonapiRouteImg = new Image({ src: "/characters/tonappi/tonappi_route.png" });
 
 export const tonapiRouteMain = new Scene("tonapi-route-main", {
-  background: "#042f2e",
+  background: "/characters/tonappi/tonappi_route.png",
 });
 
 tonapiRouteMain.action([
   tonappiRouteBgm.play(),
-  tonapiRouteImg.show(),
   yuujin.say("となっぴーから連絡が来た。"),
   tonapi.say("あの……ちょっとだけ、相談していいですか"),
   yuujin.say("いつもより声が少し落ち着いていた。珍しい。"),
