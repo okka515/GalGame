@@ -10,7 +10,7 @@ const saasanFailImg = new Image({ src: "/characters/saasan/saasan_failure.png", 
 export const saasanResult = new Scene("finale-saasan-result", { background: "#000000" });
 
 saasanResult.action([
-  Condition.If(gameFlags.evaluate("saasan_graduation_power", (v) => (v || 0) >= 16 || true), [
+  Condition.If(gameFlags.evaluate("saasan_graduation_power", (v) => (v || 0) >= 16), [
     finaleBgm.pause(),
     bestGraduationBgm.play(),
     saasanBestImg.show(),
