@@ -4,8 +4,8 @@ import { gameFlags } from "../../../store/gameState";
 import { saasanResult } from "./saasanResult";
 import { bestGraduationBgm, finaleBgm, massuBadendBgm } from "../../../store/gameBgm";
 
-const massuBestImg = new Image({ src: "/characters/massu/massu_best_graduation.png", zoom: 0.75 });
-const massuGradImg = new Image({ src: "/characters/massu/massu_graduation.png", zoom: 0.75 });
+const massuBestImg = new Image({ src: "/characters/massu/massu_best_graduation.png", zoom: 1.5 });
+const massuGradImg = new Image({ src: "/characters/massu/massu_graduation.png", zoom: 1.5 });
 const massuFailImg = new Image({ src: "/characters/massu/massu_failure.png", zoom: 0.75 });
 
 export const massuResult = new Scene(
