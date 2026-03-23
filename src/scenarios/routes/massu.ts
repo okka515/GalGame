@@ -1,18 +1,18 @@
-import { Scene, Menu, Condition, Image } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, massu } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
+import { massuRouteBgm } from "../../store/gameBgm";
 
-const massuRouteImg = new Image({ src: "/characters/massu/massu_route.png" });
 
 export const massuRouteMain = new Scene("massu-route-main", {
-  background: "#1f2937",
+  background: "/characters/massu/massu_route.png",
 });
 
 massuRouteMain.action([
-  massuRouteImg.show(),
+  massuRouteBgm.play(),
   yuujin.say("まっすーに呼び出された。大破したカメラを両手で持っている。"),
   massu.say("ねえ……修理に出すか迷ってて。センサーも逝ってて、修理代がすごくかかりそうで"),
   massu.say("でもこのカメラ、大学4年間ずっと一緒だったんだよね。捨てたくなくて……"),
@@ -33,6 +33,7 @@ massuRouteMain.action([
       massu.say("……そっか、そうだよね。わかった。まずは卒研、ちゃんと向き合うよ"),
       gameFlags.set("massu_graduation_power", (v) => (v || 0) + 4),
     ]),
+  massuRouteBgm.stop(),
 
   Condition.If(() => {
     gameEvents.triggerChapterTitle("結果発表");

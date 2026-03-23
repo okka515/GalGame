@@ -1,18 +1,18 @@
-import { Scene, Menu, Condition, Image } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, tonapi } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
+import { tonappiRouteBgm } from "../../store/gameBgm";
 
-const tonapiRouteImg = new Image({ src: "/characters/tonappi/tonappi_route.png" });
 
 export const tonapiRouteMain = new Scene("tonapi-route-main", {
-  background: "#042f2e",
+  background: "/characters/tonappi/tonappi_route.png",
 });
 
 tonapiRouteMain.action([
-  tonapiRouteImg.show(),
+  tonappiRouteBgm.play(),
   yuujin.say("となっぴーから連絡が来た。"),
   tonapi.say("あの……ちょっとだけ、相談していいですか"),
   yuujin.say("いつもより声が少し落ち着いていた。珍しい。"),
@@ -45,6 +45,7 @@ tonapiRouteMain.action([
       yuujin.say("（彼女の目がまた輝いた。静かな狂気が戻ってきた。それが彼女らしかった）"),
       gameFlags.set("tonapi_graduation_power", (v) => (v || 0) + 2),
     ]),
+  tonappiRouteBgm.stop(),
 
   Condition.If(() => {
     gameEvents.triggerChapterTitle("結果発表");

@@ -1,18 +1,18 @@
-import { Scene, Menu, Condition, Image } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, saasan } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
+import { saasanRouteBgm } from "../../store/gameBgm";
 
-const saasanRouteImg = new Image({ src: "/characters/saasan/saasan_route.png" });
 
 export const saasanRouteMain = new Scene("saasan-route-main", {
-  background: "#052e16",
+  background: "/characters/saasan/saasan_route.png",
 });
 
 saasanRouteMain.action([
-  saasanRouteImg.show(),
+  saasanRouteBgm.play(),
   yuujin.say("さーさんから連絡が来た。珍しい。"),
   saasan.say("なあ、俺のことちょっと相談に乗ってくれるか"),
   yuujin.say("いつも完璧でいるさーさんが、珍しく言葉を選んでいた。"),
@@ -44,6 +44,7 @@ saasanRouteMain.action([
       yuujin.say("（この後、さーさんは何も解決しないまま静かに突き進んでいった）"),
       gameFlags.set("saasan_graduation_power", (v) => (v || 0) - 3),
     ]),
+  saasanRouteBgm.stop(),
 
   Condition.If(() => {
     gameEvents.triggerChapterTitle("結果発表");

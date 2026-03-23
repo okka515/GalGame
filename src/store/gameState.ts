@@ -10,6 +10,8 @@ type GameFlags = {
   prologue_talked_haruchiro: number;
   prologue_talked_tonapi: number;
 
+  ch1_progress_value: number;
+
   // 各キャラの問題解決フラグ
   pack_resolved: boolean;
   massu_resolved: boolean;
@@ -45,6 +47,7 @@ export const gameFlags = new Persistent<GameFlags>("galgame_flags", {
   prologue_talked_saasan: 0,
   prologue_talked_haruchiro: 0,
   prologue_talked_tonapi: 0,
+  ch1_progress_value: 5,
   pack_resolved: false,
   massu_resolved: false,
   saasan_resolved: false,

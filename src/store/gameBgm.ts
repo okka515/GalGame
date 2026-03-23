@@ -83,3 +83,33 @@ export const tonappiBadendBgm = new Sound({
   loop: true,
   volume: 0.4,
 });
+
+export const haruchiroRouteBgm = new Sound({
+  src: "/audio/bgm/haruchiro_route_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
+export const tonappiRouteBgm = new Sound({
+  src: "/audio/bgm/tonappi_route_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
+export const packRouteBgm = new Sound({
+  src: "/audio/bgm/pack_route_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
+export const massuRouteBgm = new Sound({
+  src: "/audio/bgm/massu_route_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
+export const saasanRouteBgm = new Sound({
+  src: "/audio/bgm/saasan_route_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});

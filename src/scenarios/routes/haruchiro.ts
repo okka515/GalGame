@@ -1,18 +1,18 @@
-import { Scene, Menu, Condition, Image } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, haruchiro } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
+import { haruchiroRouteBgm } from "../../store/gameBgm";
 
-const haruchiroRouteImg = new Image({ src: "/characters/haruchiro/haruchiro_route.png" });
 
 export const haruchiroRouteMain = new Scene("haruchiro-route-main", {
-  background: "#1e1b4b",
+  background: "/characters/haruchiro/haruchiro_route.png",
 });
 
 haruchiroRouteMain.action([
-  haruchiroRouteImg.show(),
+  haruchiroRouteBgm.play(),
   yuujin.say("はるちろから、珍しく深刻そうな相談が来た。"),
   haruchiro.say("あの……DroidKaigiで登壇したあとに、話しかけてきた人がいて"),
   haruchiro.say("マチアプでやり取りしてた人だって気づいて。どうすればいいかわからなくて……プロフィールにgitリンク貼ったのも見てくれてたみたいで"),
@@ -39,6 +39,7 @@ haruchiroRouteMain.action([
       haruchiro.say("そ、そうですよね……わかりました。まずは卒研のタスクから消化します"),
       gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) + 4),
     ]),
+  haruchiroRouteBgm.stop(),
 
   Condition.If(() => {
     gameEvents.triggerChapterTitle("結果発表");

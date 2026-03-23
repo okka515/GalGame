@@ -1,19 +1,19 @@
-import { Scene, Menu, Condition, Image } from "narraleaf-react";
+import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, pack } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
+import { packRouteBgm } from "../../store/gameBgm";
 
-const packRouteImg = new Image({ src: "/characters/pack/pack_route.png" });
 
 // ぱっくルート: メインシーン
 export const packRouteMain = new Scene("pack-route-main", {
-  background: "#1e3a5f",
+  background: "/characters/pack/pack_route.png",
 });
 
 packRouteMain.action([
-  packRouteImg.show(),
+  packRouteBgm.play(),
   yuujin.say("ぱっくから呼び出された。"),
   pack.say("なあ聞いてくれよ。起業の技術開発、サークルのアプリ、卒論……正直全部が噛み合ってなくてなんか詰まってる"),
   pack.say("フランスのSuica事件のせいで心理的ダメージも受けてるし、なんかうまく動けない感じがしてな"),
@@ -44,6 +44,7 @@ packRouteMain.action([
       gameFlags.set("pack_graduation_power", (v) => (v || 0) + 2),
     ]),
 
+  packRouteBgm.stop(),
   Condition.If(() => {
     gameEvents.triggerChapterTitle("結果発表");
     return false;
