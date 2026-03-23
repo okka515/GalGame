@@ -6,6 +6,9 @@ import { gameEvents } from "../../store/gameEvents";
 import { haruchiroBaseBgm, massuBaseBgm, packBaseBgm, saasanBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
 import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
+// 第1章の順序制御用シーンの宣言
+const ch1DispatchScene = new Scene("ch1-dispatch", { background: "/backgrounds/opening.png" });
+
 // 第1章: 春（4月〜）「全員ちょっと危ないスタート」
 // 各キャラの問題噴出シーンと選択肢を定義
 
@@ -51,14 +54,8 @@ ch1TonapiScene.action([
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
     ]),
   tonappiBaseBgm.stop(),
-
-  Condition.If(() => {
-    gameEvents.triggerChapterTitle("第2章");
-    return false;
-  }, []),
-  chapterTitleSound.play(),
-
-  ch1TonapiScene.jumpTo(chapter2Scene),
+  gameFlags.assign((s) => ({ ch1_progress_value: (s.ch1_progress_value ?? 5) - 1 })),
+  ch1TonapiScene.jumpTo(ch1DispatchScene),
 ]);
 
 // はるちろシーン → となっぴーへ
@@ -101,7 +98,8 @@ ch1HaruchiroScene.action([
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
     ]),
   haruchiroBaseBgm.stop(),
-  ch1HaruchiroScene.jumpTo(ch1TonapiScene),
+  gameFlags.assign((s) => ({ ch1_progress_value: (s.ch1_progress_value ?? 5) - 1 })),
+  ch1HaruchiroScene.jumpTo(ch1DispatchScene),
 ]);
 
 // さーさんシーン → はるちろへ
@@ -146,7 +144,8 @@ ch1SaasanScene.action([
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
     ]),
   saasanBaseBgm.stop(),
-  ch1SaasanScene.jumpTo(ch1HaruchiroScene),
+  gameFlags.assign((s) => ({ ch1_progress_value: (s.ch1_progress_value ?? 5) - 1 })),
+  ch1SaasanScene.jumpTo(ch1DispatchScene),
 ]);
 
 // まっすーシーン → さーさんへ
@@ -189,16 +188,17 @@ ch1MassuScene.action([
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
     ]),
   massuBaseBgm.stop(),
-  ch1MassuScene.jumpTo(ch1SaasanScene),
+  gameFlags.assign((s) => ({ ch1_progress_value: (s.ch1_progress_value ?? 5) - 1 })),
+  ch1MassuScene.jumpTo(ch1DispatchScene),
 ]);
 
-// ぱっくシーン（最初）→ まっすーへ
+// ぱっくシーン
 const ch1PackScene = new Scene("ch1-pack", {
   background: "/backgrounds/opening.png",
 });
 ch1PackScene.action([
   packBaseBgm.play(),
-  yuujin.say("最初に来たのはぱっくだった。就活の時期だというのに、妙に晴れやかな顔をしている。"),
+  yuujin.say("ぱっくがやって来た。就活の時期だというのに、妙に晴れやかな顔をしている。"),
   packImg.show(),
   pack.say("なあ聞いてくれよ。大学入学当初からやってた起業の件なんだけどさ、俺、広報からエンジニアに転向したんだわ"),
   yuujin.say("（いきなりのキャリアチェンジ宣言。しかも文系職からゴリゴリの技術職への転向だ）"),
@@ -235,10 +235,54 @@ ch1PackScene.action([
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
     ]),
   packBaseBgm.stop(),
-  ch1PackScene.jumpTo(ch1MassuScene),
+  gameFlags.assign((s) => ({ ch1_progress_value: (s.ch1_progress_value ?? 5) - 1 })),
+  ch1PackScene.jumpTo(ch1DispatchScene),
 ]);
 
-// 第1章 エントリーシーン → ぱっくへ
+// 第1章の順序制御（プロローグでの選択順を反映）
+const jumpToCharacter = (progressValue: number) => {
+  return [
+    Condition.If(gameFlags.evaluate("prologue_talked_pack", (v) => v === progressValue), [
+      ch1DispatchScene.jumpTo(ch1PackScene)
+    ]).ElseIf(gameFlags.evaluate("prologue_talked_massu", (v) => v === progressValue), [
+      ch1DispatchScene.jumpTo(ch1MassuScene)
+    ]).ElseIf(gameFlags.evaluate("prologue_talked_saasan", (v) => v === progressValue), [
+      ch1DispatchScene.jumpTo(ch1SaasanScene)
+    ]).ElseIf(gameFlags.evaluate("prologue_talked_haruchiro", (v) => v === progressValue), [
+      ch1DispatchScene.jumpTo(ch1HaruchiroScene)
+    ]).ElseIf(gameFlags.evaluate("prologue_talked_tonapi", (v) => v === progressValue), [
+      ch1DispatchScene.jumpTo(ch1TonapiScene)
+    ]).Else([
+      // 万が一マッチしなかった場合は次へスキップ
+      gameFlags.assign((s) => ({ ch1_progress_value: (s.ch1_progress_value ?? 5) - 1 })),
+      ch1DispatchScene.jumpTo(ch1DispatchScene)
+    ])
+  ];
+};
+
+ch1DispatchScene.action([
+  Condition.If(gameFlags.evaluate("ch1_progress_value", (v) => (v ?? 5) === 5), [
+    ...jumpToCharacter(5)
+  ]).ElseIf(gameFlags.evaluate("ch1_progress_value", (v) => (v ?? 5) === 4), [
+    ...jumpToCharacter(4)
+  ]).ElseIf(gameFlags.evaluate("ch1_progress_value", (v) => (v ?? 5) === 3), [
+    ...jumpToCharacter(3)
+  ]).ElseIf(gameFlags.evaluate("ch1_progress_value", (v) => (v ?? 5) === 2), [
+    ...jumpToCharacter(2)
+  ]).ElseIf(gameFlags.evaluate("ch1_progress_value", (v) => (v ?? 5) === 1), [
+    ...jumpToCharacter(1)
+  ]).Else([
+    // 全員のイベントが終わったら第2章へ
+    Condition.If(() => {
+      gameEvents.triggerChapterTitle("第2章");
+      return false;
+    }, []),
+    chapterTitleSound.play(),
+    ch1DispatchScene.jumpTo(chapter2Scene),
+  ])
+]);
+
+// 第1章 エントリーシーン
 export const chapter1Scene = new Scene("chapter1", {
   background: "/backgrounds/opening.png",
 });
@@ -247,5 +291,6 @@ chapter1Scene.action([
   yuujin.say("いよいよ始まった最終学年。"),
   yuujin.say("しかし、就活や研究が本格化する春の初っ端から、5人から同時に連絡が来た。"),
   yuujin.say("……なんとなく、嫌な予感がした。"),
-  chapter1Scene.jumpTo(ch1PackScene),
+  gameFlags.assign(() => ({ ch1_progress_value: 5 })),
+  chapter1Scene.jumpTo(ch1DispatchScene),
 ]);
