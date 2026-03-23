@@ -3,6 +3,7 @@ import { yuujin, haruchiro } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
+import { resultAnnounceSound } from "../../store/gameSoundEffect";
 
 const haruchiroRouteImg = new Image({ src: "/characters/haruchiro/haruchiro_route.png" });
 
@@ -43,6 +44,7 @@ haruchiroRouteMain.action([
     gameEvents.triggerChapterTitle("結果発表");
     return false;
   }, []),
+  resultAnnounceSound.play(),
 
   haruchiroRouteMain.jumpTo(finaleScene),
 ]);

@@ -3,6 +3,7 @@ import { yuujin, pack } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
+import { resultAnnounceSound } from "../../store/gameSoundEffect";
 
 const packRouteImg = new Image({ src: "/characters/pack/pack_route.png" });
 
@@ -47,6 +48,7 @@ packRouteMain.action([
     gameEvents.triggerChapterTitle("結果発表");
     return false;
   }, []),
+  resultAnnounceSound.play(),
 
   packRouteMain.jumpTo(finaleScene),
 ]);

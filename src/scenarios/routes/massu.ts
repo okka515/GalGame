@@ -3,6 +3,7 @@ import { yuujin, massu } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
+import { resultAnnounceSound } from "../../store/gameSoundEffect";
 
 const massuRouteImg = new Image({ src: "/characters/massu/massu_route.png" });
 
@@ -37,6 +38,7 @@ massuRouteMain.action([
     gameEvents.triggerChapterTitle("結果発表");
     return false;
   }, []),
+  resultAnnounceSound.play(),
 
   massuRouteMain.jumpTo(finaleScene),
 ]);

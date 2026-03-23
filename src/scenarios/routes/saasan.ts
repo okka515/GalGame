@@ -3,6 +3,7 @@ import { yuujin, saasan } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
+import { resultAnnounceSound } from "../../store/gameSoundEffect";
 
 const saasanRouteImg = new Image({ src: "/characters/saasan/saasan_route.png" });
 
@@ -48,6 +49,7 @@ saasanRouteMain.action([
     gameEvents.triggerChapterTitle("結果発表");
     return false;
   }, []),
+  resultAnnounceSound.play(),
 
   saasanRouteMain.jumpTo(finaleScene),
 ]);
