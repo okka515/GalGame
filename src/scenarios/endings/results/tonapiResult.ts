@@ -6,9 +6,9 @@ import { bestGraduationBgm, finaleBgm, tonappiBadendBgm } from "../../../store/g
 
 export const tonapiResult = new Scene("finale-tonapi-result", { background: "#000000" });
 
-const tonapiBestImg = new Image({ src: "/characters/tonappi/tonappi_best_graduation.png", zoom: 0.7 });
-const tonapiGradImg = new Image({ src: "/characters/tonappi/tonappi_graduation.png", zoom: 0.7 });
-const tonapiFailureImg = new Image({ src: "/characters/tonappi/tonappi_failure.png", zoom: 0.7 });
+const tonapiBestImg = new Image({ src: "/characters/tonappi/tonappi_best_graduation.png", zoom: 0.75 });
+const tonapiGradImg = new Image({ src: "/characters/tonappi/tonappi_graduation.png", zoom: 0.75 });
+const tonapiFailureImg = new Image({ src: "/characters/tonappi/tonappi_failure.png", zoom: 0.75 });
 
 tonapiResult.action([
   Condition.If(gameFlags.evaluate("tonapi_graduation_power", (v) => (v || 0) >= 18), [

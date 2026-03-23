@@ -4,8 +4,8 @@ import { gameFlags } from "../../../store/gameState";
 import { haruchiroResult } from "./haruchiroResult";
 import { bestGraduationBgm, finaleBgm, saasanBadendBgm } from "../../../store/gameBgm";
 
-const saasanBestImg = new Image({ src: "/characters/saasan/saasan_best_graduation.png", zoom: 0.7 });
-const saasanFailImg = new Image({ src: "/characters/saasan/saasan_failure.png", zoom: 0.7 });
+const saasanBestImg = new Image({ src: "/characters/saasan/saasan_best_graduation.png", zoom: 0.75 });
+const saasanFailImg = new Image({ src: "/characters/saasan/saasan_failure.png", zoom: 0.75 });
 
 export const saasanResult = new Scene("finale-saasan-result", { background: "#000000" });
 
