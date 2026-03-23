@@ -4,6 +4,7 @@ import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
+import { packRouteBgm } from "../../store/gameBgm";
 
 const packRouteImg = new Image({ src: "/characters/pack/pack_route.png" });
 
@@ -13,6 +14,7 @@ export const packRouteMain = new Scene("pack-route-main", {
 });
 
 packRouteMain.action([
+  packRouteBgm.play(),
   packRouteImg.show(),
   yuujin.say("ぱっくから呼び出された。"),
   pack.say("なあ聞いてくれよ。起業の技術開発、サークルのアプリ、卒論……正直全部が噛み合ってなくてなんか詰まってる"),
@@ -44,6 +46,7 @@ packRouteMain.action([
       gameFlags.set("pack_graduation_power", (v) => (v || 0) + 2),
     ]),
 
+  packRouteBgm.stop(),
   Condition.If(() => {
     gameEvents.triggerChapterTitle("結果発表");
     return false;

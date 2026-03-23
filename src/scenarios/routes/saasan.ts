@@ -4,6 +4,7 @@ import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
+import { saasanRouteBgm } from "../../store/gameBgm";
 
 const saasanRouteImg = new Image({ src: "/characters/saasan/saasan_route.png" });
 
@@ -12,6 +13,7 @@ export const saasanRouteMain = new Scene("saasan-route-main", {
 });
 
 saasanRouteMain.action([
+  saasanRouteBgm.play(),
   saasanRouteImg.show(),
   yuujin.say("さーさんから連絡が来た。珍しい。"),
   saasan.say("なあ、俺のことちょっと相談に乗ってくれるか"),
@@ -44,6 +46,7 @@ saasanRouteMain.action([
       yuujin.say("（この後、さーさんは何も解決しないまま静かに突き進んでいった）"),
       gameFlags.set("saasan_graduation_power", (v) => (v || 0) - 3),
     ]),
+  saasanRouteBgm.stop(),
 
   Condition.If(() => {
     gameEvents.triggerChapterTitle("結果発表");

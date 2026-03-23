@@ -4,6 +4,7 @@ import { gameFlags } from "../../store/gameState";
 import { finaleScene } from "../endings/finale";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
+import { haruchiroRouteBgm } from "../../store/gameBgm";
 
 const haruchiroRouteImg = new Image({ src: "/characters/haruchiro/haruchiro_route.png" });
 
@@ -12,6 +13,7 @@ export const haruchiroRouteMain = new Scene("haruchiro-route-main", {
 });
 
 haruchiroRouteMain.action([
+  haruchiroRouteBgm.play(),
   haruchiroRouteImg.show(),
   yuujin.say("はるちろから、珍しく深刻そうな相談が来た。"),
   haruchiro.say("あの……DroidKaigiで登壇したあとに、話しかけてきた人がいて"),
@@ -39,6 +41,7 @@ haruchiroRouteMain.action([
       haruchiro.say("そ、そうですよね……わかりました。まずは卒研のタスクから消化します"),
       gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) + 4),
     ]),
+  haruchiroRouteBgm.stop(),
 
   Condition.If(() => {
     gameEvents.triggerChapterTitle("結果発表");
