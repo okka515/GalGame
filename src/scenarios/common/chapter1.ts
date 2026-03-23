@@ -75,6 +75,14 @@ ch1HaruchiroScene.action([
   haruchiro.say("あと卒研のタスク、ちょっとだけ積んでるの忘れてました"),
   haruchiroImg.hide(),
   Menu.prompt("どうツッコミを入れる？")
+    .choose("どっちにもいい顔しとけ", [
+      menuSelectSound.play(),
+      yuujin.say("「PowerPointでもMarkdownでもいいから完成させろ」"),
+      haruchiroImg.show(),
+      haruchiro.say("なるほど！完成ファーストで並列処理します！"),
+      haruchiroImg.hide(),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
+    ])
     .choose("早く卒研のタスクやれ", [
       menuSelectSound.play(),
       yuujin.say("「スライドの形式より卒研のタスクやれ」"),
@@ -91,14 +99,6 @@ ch1HaruchiroScene.action([
       haruchiroImg.hide(),
       yuujin.say("（そっちが優先じゃないと思うが）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
-    ])
-    .choose("どっちにもいい顔しとけ", [
-      menuSelectSound.play(),
-      yuujin.say("「PowerPointでもMarkdownでもいいから完成させろ」"),
-      haruchiroImg.show(),
-      haruchiro.say("なるほど！完成ファーストで並列処理します！"),
-      haruchiroImg.hide(),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
     ]),
   haruchiroBaseBgm.stop(),
   ch1HaruchiroScene.jumpTo(ch1TonapiScene),
@@ -118,15 +118,6 @@ ch1SaasanScene.action([
   saasanImg.hide(),
   yuujin.say("誰もが認める『黒ポロ』で頂点の存在。俺を容赦なく巻き込んで起業の計画が進んでいく。"),
   Menu.prompt("どう答える？")
-    .choose("「よし、一緒に世界を獲ろう」", [
-      menuSelectSound.play(),
-      yuujin.say("「よし、お前がCTOなら最強だな。一緒に世界を獲ろうぜ」"),
-      saasanImg.show(),
-      saasan.say("はっはっは！お前ならそう言うと思ったぜ。最高のプロダクト作ってやるよ"),
-      saasanImg.hide(),
-      yuujin.say("（肩を叩かれた。彼が技術トップなら本当にできそうな気がする）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
-    ])
     .choose("「じゃあ俺は何をすればいいんだ？」", [
       menuSelectSound.play(),
       yuujin.say("「力強いけど、じゃあ俺は何をすればいいんだ？」"),
@@ -144,6 +135,15 @@ ch1SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（お金の重圧がのしかかってきた。ビジネスパートナーとしての責任が重い）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
+    ])
+    .choose("「よし、一緒に世界を獲ろう」", [
+      menuSelectSound.play(),
+      yuujin.say("「よし、お前がCTOなら最強だな。一緒に世界を獲ろうぜ」"),
+      saasanImg.show(),
+      saasan.say("はっはっは！お前ならそう言うと思ったぜ。最高のプロダクト作ってやるよ"),
+      saasanImg.hide(),
+      yuujin.say("（肩を叩かれた。彼が技術トップなら本当にできそうな気がする）"),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
     ]),
   saasanBaseBgm.stop(),
   ch1SaasanScene.jumpTo(ch1HaruchiroScene),
@@ -163,14 +163,6 @@ ch1MassuScene.action([
   massuImg.hide(),
   yuujin.say("（「ちょっと」の感覚がおかしい）"),
   Menu.prompt("どうアドバイスする？")
-    .choose("ちゃんとスケジュール管理ツール入れろ", [
-      menuSelectSound.play(),
-      yuujin.say("「ちゃんとスケジュール管理ツール入れろ。目に見える形でタスクを整理するんだ」"),
-      massuImg.show(),
-      massu.say("うっ……そうだよね。Notionでちゃんと管理してみる！"),
-      massuImg.hide(),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
-    ])
     .choose("時間は有限だ、とりあえず寝ろ", [
       menuSelectSound.play(),
       yuujin.say("「時間は有限だ、考えるのをやめてとりあえず寝ろ」"),
@@ -179,6 +171,14 @@ ch1MassuScene.action([
       massuImg.hide(),
       yuujin.say("（問題は何も解決していない）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
+    ])
+    .choose("ちゃんとスケジュール管理ツール入れろ", [
+      menuSelectSound.play(),
+      yuujin.say("「ちゃんとスケジュール管理ツール入れろ。目に見える形でタスクを整理するんだ」"),
+      massuImg.show(),
+      massu.say("うっ……そうだよね。Notionでちゃんと管理してみる！"),
+      massuImg.hide(),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
     ])
     .choose("カメラに逃げるな！", [
       menuSelectSound.play(),
@@ -216,15 +216,6 @@ ch1PackScene.action([
       packImg.hide(),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
     ])
-    .choose("「両方全力で並行開発しろ！」", [
-      menuSelectSound.play(),
-      yuujin.say("「いけるいける！両方全力で並行開発しろ！」"),
-      packImg.show(),
-      pack.say("おっ、言うねえ！マルチスレッドで脳髄フル回転させてくるわ！"),
-      packImg.hide(),
-      yuujin.say("（彼は天才だが、確実に寿命を縮める選択をしてしまった気がする）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
-    ])
     .choose("「サークルのアプリ、面白そうだな」", [
       menuSelectSound.play(),
       yuujin.say("「サークルのアプリ、面白そうだな。そっち見せてよ」"),
@@ -233,6 +224,15 @@ ch1PackScene.action([
       packImg.hide(),
       yuujin.say("（楽しそうなぱっくを見て、起業の方は大丈夫かと一抹の不安を覚えた）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power - 1 })),
+    ])
+    .choose("「両方全力で並行開発しろ！」", [
+      menuSelectSound.play(),
+      yuujin.say("「いけるいける！両方全力で並行開発しろ！」"),
+      packImg.show(),
+      pack.say("おっ、言うねえ！マルチスレッドで脳髄フル回転させてくるわ！"),
+      packImg.hide(),
+      yuujin.say("（彼は天才だが、確実に寿命を縮める選択をしてしまった気がする）"),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
     ]),
   packBaseBgm.stop(),
   ch1PackScene.jumpTo(ch1MassuScene),

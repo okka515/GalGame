@@ -75,15 +75,6 @@ ch4TonapiScene.action([
       yuujin.say("論文は無事に提出された。その夜、となっぴーはライブ配信で推しのチームが優勝する瞬間を見て、静かに泣いていたという。"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ])
-    .choose("「現地で応援しながら書け」", [
-      menuSelectSound.play(),
-      yuujin.say("「現地で応援しながらノートPCで論文書け」"),
-      tonapiImg.show(),
-      tonapi.say("スポ根ですね！よし、タイピングの音がバレーのスパイクみたいに響かせてきます！"),
-      tonapiImg.hide(),
-      yuujin.say("（結果、推しのチームのスパイクで勢いよくEnterをたたいて提出したらしい）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
-    ])
     .choose("「俺も応援に行く」", [
       menuSelectSound.play(),
       yuujin.say("「よし、じゃあ俺も応援に行くか」"),
@@ -92,6 +83,15 @@ ch4TonapiScene.action([
       tonapiImg.hide(),
       yuujin.say("（結局、二人で論文そっちのけで応援してしまった。それでも、となっぴーの笑顔は本物だった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
+    ])
+    .choose("「現地で応援しながら書け」", [
+      menuSelectSound.play(),
+      yuujin.say("「現地で応援しながらノートPCで論文書け」"),
+      tonapiImg.show(),
+      tonapi.say("スポ根ですね！よし、タイピングの音がバレーのスパイクみたいに響かせてきます！"),
+      tonapiImg.hide(),
+      yuujin.say("（結果、推しのチームのスパイクで勢いよくEnterをたたいて提出したらしい）"),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
     ]),
   tonappiBaseBgm.stop(),
   Condition.If(() => {
@@ -116,6 +116,17 @@ ch4HaruchiroScene.action([
   haruchiro.say("でもここで行かないと、せっかくの継続的インテグレーションが……"),
   haruchiroImg.hide(),
   Menu.prompt("どうツッコミを入れる？")
+    .choose("俺が代わりに発表してやるよ", [
+      menuSelectSound.play(),
+      yuujin.say("「しょうがない。俺が代わりに発表してやるよ」"),
+      haruchiroImg.show(),
+      haruchiro.say("えっ！？代打ち！？ありがてええぇぇ！行ってきます！"),
+      haruchiroImg.hide(),
+      yuujin.say("（はるちろの卒業が完全に俺の手にかかってしまった）"),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
+      haruchiroLoveBgm.stop(),
+      ch4HaruchiroScene.jumpTo(ch4TonapiScene),
+    ])
     .choose("発表練習が最優先だろ", [
       menuSelectSound.play(),
       yuujin.say("「お前、卒業できなきゃデートどころじゃないだろ。発表練習が最優先だ」"),
@@ -134,17 +145,6 @@ ch4HaruchiroScene.action([
       haruchiroImg.hide(),
       yuujin.say("（デートが完全に学会発表の場になってしまったらしい）"),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
-      haruchiroLoveBgm.stop(),
-      ch4HaruchiroScene.jumpTo(ch4TonapiScene),
-    ])
-    .choose("俺が代わりに発表してやるよ", [
-      menuSelectSound.play(),
-      yuujin.say("「しょうがない。俺が代わりに発表してやるよ」"),
-      haruchiroImg.show(),
-      haruchiro.say("えっ！？代打ち！？ありがてええぇぇ！行ってきます！"),
-      haruchiroImg.hide(),
-      yuujin.say("（はるちろの卒業が完全に俺の手にかかってしまった）"),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
       haruchiroLoveBgm.stop(),
       ch4HaruchiroScene.jumpTo(ch4TonapiScene),
     ]),
@@ -166,17 +166,6 @@ ch4SaasanScene.action([
   yuujin.say("（完璧超人の唯一にして最大の弱点。ネギへの異常な憎悪と、ポンコツすぎる家事スキルだ）"),
   yuujin.say("そう思った矢先、さーさんが盛大にオレンジジュースを床にこぼした。"),
   Menu.prompt("どうする？")
-    .choose("「黙って床を拭く」", [
-      menuSelectSound.play(),
-      yuujin.say("（無言で雑巾を取り出し、オレンジジュースでベタベタの床を拭いた）"),
-      saasanImg.show(),
-      saasan.say("……悪いな。プログラミングならバグは出ないのに、現実世界はバグだらけだぜ"),
-      saasanImg.hide(),
-      yuujin.say("（名言風だが、ただのドジである）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
-      saasanBaseBgm.stop(),
-      ch4SaasanScene.jumpTo(ch4HaruchiroScene),
-    ])
     .choose("「炒り卵パスタには大盛り激辛ソースだろ」", [
       menuSelectSound.play(),
       yuujin.say("「この炒り卵パスタ、どうせなら大盛り激辛ソースでもかけるか？」"),
@@ -196,6 +185,17 @@ ch4SaasanScene.action([
       saasanImg.hide(),
       yuujin.say("（激怒された。ネギへの憎しみは本物だ）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
+      saasanBaseBgm.stop(),
+      ch4SaasanScene.jumpTo(ch4HaruchiroScene),
+    ])
+    .choose("「黙って床を拭く」", [
+      menuSelectSound.play(),
+      yuujin.say("（無言で雑巾を取り出し、オレンジジュースでベタベタの床を拭いた）"),
+      saasanImg.show(),
+      saasan.say("……悪いな。プログラミングならバグは出ないのに、現実世界はバグだらけだぜ"),
+      saasanImg.hide(),
+      yuujin.say("（名言風だが、ただのドジである）"),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
       saasanBaseBgm.stop(),
       ch4SaasanScene.jumpTo(ch4HaruchiroScene),
     ]),
@@ -218,14 +218,14 @@ ch4MassuScene.action([
   massu.say("カメラもなくなって、なんか急にいろいろ考えちゃって……どっちを選ぶべきかな"),
   massuImg.hide(),
   Menu.prompt("どう答える？")
-    .choose("「自分のキャリアを優先しろ」", [
+    .choose("「彼氏の近くに行け」", [
       menuSelectSound.play(),
-      yuujin.say("「カメラは直せる。東京でやりたいことがあるなら、自分のキャリアを優先しろ」"),
+      yuujin.say("「カメラも壊れたことだし、一回全部リセットして彼氏の近くでのんびり働けば？」"),
       massuImg.show(),
-      massu.say("……うん！そうだよね。自分の夢は諦めたくない！"),
+      massu.say("うーん……たしかにメンタルは安定するかも……内定辞退のメール書こっかな。"),
       massuImg.hide(),
-      yuujin.say("まっすーの目に力が宿った。"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
+      yuujin.say("（せっかくのキャリアを捨てさせてしまったかもしれない）"),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
       massuBaseBgm.stop(),
       ch4MassuScene.jumpTo(ch4SaasanScene),
     ])
@@ -240,14 +240,14 @@ ch4MassuScene.action([
       massuBaseBgm.stop(),
       ch4MassuScene.jumpTo(ch4SaasanScene),
     ])
-    .choose("「彼氏の近くに行け」", [
+    .choose("「自分のキャリアを優先しろ」", [
       menuSelectSound.play(),
-      yuujin.say("「カメラも壊れたことだし、一回全部リセットして彼氏の近くでのんびり働けば？」"),
+      yuujin.say("「カメラは直せる。東京でやりたいことがあるなら、自分のキャリアを優先しろ」"),
       massuImg.show(),
-      massu.say("うーん……たしかにメンタルは安定するかも……内定辞退のメール書こっかな。"),
+      massu.say("……うん！そうだよね。自分の夢は諦めたくない！"),
       massuImg.hide(),
-      yuujin.say("（せっかくのキャリアを捨てさせてしまったかもしれない）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
+      yuujin.say("まっすーの目に力が宿った。"),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 3 })),
       massuBaseBgm.stop(),
       ch4MassuScene.jumpTo(ch4SaasanScene),
     ]),
@@ -271,17 +271,6 @@ ch4PackScene.action([
   packImg.hide(),
   yuujin.say("（ガバガバすぎる国のシステムと、見事なオチである）"),
   Menu.prompt("どうアドバイスする？")
-    .choose("「グローバルな勉強代だと思え」", [
-      menuSelectSound.play(),
-      yuujin.say("「これもグローバルな経験の一部……高くついた勉強代だと思え」"),
-      packImg.show(),
-      pack.say("だよな！これでまた一つ、俺のスケールがでかくなったってことだ！"),
-      packImg.hide(),
-      yuujin.say("（ポジティブな解釈で落ち着いたようだ）"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
-      packBaseBgm.stop(),
-      ch4PackScene.jumpTo(ch4MassuScene),
-    ])
     .choose("「彼女に慰めてもらえよ」", [
       menuSelectSound.play(),
       yuujin.say("「ドンマイ。まあ、彼女に慰めてもらえよ」"),
@@ -290,6 +279,17 @@ ch4PackScene.action([
       packImg.hide(),
       yuujin.say("（思っていたより悲惨なオチだった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
+      packBaseBgm.stop(),
+      ch4PackScene.jumpTo(ch4MassuScene),
+    ])
+    .choose("「グローバルな勉強代だと思え」", [
+      menuSelectSound.play(),
+      yuujin.say("「これもグローバルな経験の一部……高くついた勉強代だと思え」"),
+      packImg.show(),
+      pack.say("だよな！これでまた一つ、俺のスケールがでかくなったってことだ！"),
+      packImg.hide(),
+      yuujin.say("（ポジティブな解釈で落ち着いたようだ）"),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
       packBaseBgm.stop(),
       ch4PackScene.jumpTo(ch4MassuScene),
     ])

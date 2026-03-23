@@ -17,10 +17,10 @@ haruchiroRouteMain.action([
   haruchiro.say("マチアプでやり取りしてた人だって気づいて。どうすればいいかわからなくて……プロフィールにgitリンク貼ったのも見てくれてたみたいで"),
   yuujin.say("（マチアプとDroidKaigiで同時に繋がっていたらしい。はるちろらしい巡り合わせだ）"),
   Menu.prompt("どう答える？")
-    .choose("ブレーキを踏んで卒研を優先させる", [
-      yuujin.say("まず卒研を終わらせろ。恋愛はその後だ"),
-      haruchiro.say("そ、そうですよね……わかりました。まずは卒研のタスクから消化します"),
-      gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) + 4),
+    .choose("恋愛だけを全力で応援する", [
+      yuujin.say("恋愛だ！卒研より大事なものがある！"),
+      haruchiro.say("そうですよね！！フルコミットしてきます！！"),
+      gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) - 3),
     ])
     .choose("両方うまくいくよう応援する", [
       yuujin.say("どちらも大事にしていこう。でも卒研だけは絶対に終わらせるんだぞ"),
@@ -33,10 +33,10 @@ haruchiroRouteMain.action([
       gameFlags.set("haruchiro_triangle", true),
       gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) - 1),
     ])
-    .choose("恋愛だけを全力で応援する", [
-      yuujin.say("恋愛だ！卒研より大事なものがある！"),
-      haruchiro.say("そうですよね！！フルコミットしてきます！！"),
-      gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) - 3),
+    .choose("ブレーキを踏んで卒研を優先させる", [
+      yuujin.say("まず卒研を終わらせろ。恋愛はその後だ"),
+      haruchiro.say("そ、そうですよね……わかりました。まずは卒研のタスクから消化します"),
+      gameFlags.set("haruchiro_graduation_power", (v) => (v || 0) + 4),
     ]),
 
   Condition.If(() => {

@@ -23,6 +23,15 @@ ch3TonapiScene.action([
   tonapiImg.hide(),
   yuujin.say("（フフと笑っているが、目は全く笑っていない。絶対にバレーに行きたい目をしている）"),
   Menu.prompt("どうアドバイスする？")
+    .choose("「バレーに行っていいよ」", [
+      menuSelectSound.play(),
+      yuujin.say("「バレーに行きなよ。中間報告は俺がうまく伝えておく」"),
+      tonapiImg.show(),
+      tonapi.say("……本当ですか！？ありがとうございます！！フフフ！"),
+      tonapiImg.hide(),
+      yuujin.say("（彼女は全力で推し活し、俺は後日、教員への説明に追われた）"),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
+    ])
     .choose("「卒研を最優先にしろ」", [
       menuSelectSound.play(),
       yuujin.say("「卒研の中間報告は一度しかないだろ。バレーは次もある」"),
@@ -40,15 +49,6 @@ ch3TonapiScene.action([
       tonapiImg.hide(),
       yuujin.say("（タイムテーブルの確認を手伝った。余裕で間に合った）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 1 })),
-    ])
-    .choose("「バレーに行っていいよ」", [
-      menuSelectSound.play(),
-      yuujin.say("「バレーに行きなよ。中間報告は俺がうまく伝えておく」"),
-      tonapiImg.show(),
-      tonapi.say("……本当ですか！？ありがとうございます！！フフフ！"),
-      tonapiImg.hide(),
-      yuujin.say("（彼女は全力で推し活し、俺は後日、教員への説明に追われた）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
     ]),
   tonappiBaseBgm.stop(),
   Condition.If(() => {
@@ -72,17 +72,6 @@ ch3HaruchiroScene.action([
   haruchiroImg.hide(),
   yuujin.say("……マチアプ始めていきなりこれか。"),
   Menu.prompt("どう返信する？")
-    .choose("「やばい。全部書き直せ」と止める", [
-      menuSelectSound.play(),
-      yuujin.say("「やばい。全部書き直せ。マチアプはGitHubじゃない」"),
-      haruchiroImg.show(),
-      haruchiro.say("え！？ダメですか？！コンパイルエラー出ますか？！"),
-      haruchiroImg.hide(),
-      yuujin.say("全力でダメだと伝えた。一緒にプロフィールを書き直した結果、まともになった。"),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
-      haruchiroLoveBgm.stop(),
-      ch3HaruchiroScene.jumpTo(ch3TonapiScene),
-    ])
     .choose("「gitリンクも貼れ」とさらに悪化させる", [
       menuSelectSound.play(),
       yuujin.say("「いっそgitのリンクも貼れ」"),
@@ -104,6 +93,17 @@ ch3HaruchiroScene.action([
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power - 1 })),
       haruchiroLoveBgm.stop(),
       ch3HaruchiroScene.jumpTo(ch3TonapiScene),
+    ])
+    .choose("「やばい。全部書き直せ」と止める", [
+      menuSelectSound.play(),
+      yuujin.say("「やばい。全部書き直せ。マチアプはGitHubじゃない」"),
+      haruchiroImg.show(),
+      haruchiro.say("え！？ダメですか？！コンパイルエラー出ますか？！"),
+      haruchiroImg.hide(),
+      yuujin.say("全力でダメだと伝えた。一緒にプロフィールを書き直した結果、まともになった。"),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
+      haruchiroLoveBgm.stop(),
+      ch3HaruchiroScene.jumpTo(ch3TonapiScene),
     ]),
 ]);
 
@@ -122,14 +122,14 @@ ch3SaasanScene.action([
   saasanImg.hide(),
   yuujin.say("（全てが完璧すぎる。彼には修羅場という概念が存在しないらしい）"),
   Menu.prompt("どう反応する？")
-    .choose("「先に俺たちの卒研を見てくれ」", [
+    .choose("「一人で行ってこい」", [
       menuSelectSound.play(),
-      yuujin.say("「カラオケの前に、俺たちの卒研のレビューをしてくれ」"),
+      yuujin.say("「いいからお前は一人で行ってこい。こっちは忙しいんだ」"),
       saasanImg.show(),
-      saasan.say("おう、任せとけ。一瞬で終わらせてやるから、そしたらカラオケな"),
+      saasan.say("なんだよ、ノリが悪いな。じゃあヒトカラで十八番叩き出してくるわ"),
       saasanImg.hide(),
-      yuujin.say("（的確すぎる指摘のおかげで、逆に全員の進捗が爆上がりした）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
+      yuujin.say("（嵐は去ったが、虚無感だけが残った）"),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
       saasanBaseBgm.stop(),
       ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ])
@@ -144,14 +144,14 @@ ch3SaasanScene.action([
       saasanBaseBgm.stop(),
       ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ])
-    .choose("「一人で行ってこい」", [
+    .choose("「先に俺たちの卒研を見てくれ」", [
       menuSelectSound.play(),
-      yuujin.say("「いいからお前は一人で行ってこい。こっちは忙しいんだ」"),
+      yuujin.say("「カラオケの前に、俺たちの卒研のレビューをしてくれ」"),
       saasanImg.show(),
-      saasan.say("なんだよ、ノリが悪いな。じゃあヒトカラで十八番叩き出してくるわ"),
+      saasan.say("おう、任せとけ。一瞬で終わらせてやるから、そしたらカラオケな"),
       saasanImg.hide(),
-      yuujin.say("（嵐は去ったが、虚無感だけが残った）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power - 1 })),
+      yuujin.say("（的確すぎる指摘のおかげで、逆に全員の進捗が爆上がりした）"),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
       saasanBaseBgm.stop(),
       ch3SaasanScene.jumpTo(ch3HaruchiroScene),
     ]),
@@ -181,17 +181,6 @@ ch3MassuScene.action([
       massuBaseBgm.stop(),
       ch3MassuScene.jumpTo(ch3SaasanScene),
     ])
-    .choose("「俺のカメラ貸そうか？」", [
-      menuSelectSound.play(),
-      yuujin.say("「傷くらいどうってことない。説明会は俺のOB繋ぎで再予約してやるよ」"),
-      massuImg.show(),
-      massu.say("えっ！？神！？一生ついていく！！"),
-      massuImg.hide(),
-      yuujin.say("（恩は売れたが、根本的な解決にはなっていない）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
-      massuBaseBgm.stop(),
-      ch3MassuScene.jumpTo(ch3SaasanScene),
-    ])
     .choose("「新しいの買えよ」", [
       menuSelectSound.play(),
       yuujin.say("「傷が気になるならもう新しいの買えよ。就活はまたやり直せる」"),
@@ -200,6 +189,17 @@ ch3MassuScene.action([
       massuImg.hide(),
       yuujin.say("（就活生にとんでもない発想をさせてしまった）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
+      massuBaseBgm.stop(),
+      ch3MassuScene.jumpTo(ch3SaasanScene),
+    ])
+    .choose("「俺のカメラ貸そうか？」", [
+      menuSelectSound.play(),
+      yuujin.say("「傷くらいどうってことない。説明会は俺のOB繋ぎで再予約してやるよ」"),
+      massuImg.show(),
+      massu.say("えっ！？神！？一生ついていく！！"),
+      massuImg.hide(),
+      yuujin.say("（恩は売れたが、根本的な解決にはなっていない）"),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
       massuBaseBgm.stop(),
       ch3MassuScene.jumpTo(ch3SaasanScene),
     ]),
@@ -220,17 +220,6 @@ ch3PackScene.action([
   packImg.hide(),
   yuujin.say("（ただの下心だ。最後のクリキャンを休む気なのだろうか）"),
   Menu.prompt("どうアドバイスする？")
-    .choose("「黙ってクリキャンに行け」", [
-      menuSelectSound.play(),
-      yuujin.say("「お前、最後のクリキャンだろ。黙ってアサインを出せ」"),
-      packImg.show(),
-      pack.say("……だよな。もう先輩だしアサインは出さないと……ううっ、グッドバイ、マドモアゼル……"),
-      packImg.hide(),
-      yuujin.say("ぱっくは血の涙を流しながら、クリキャンのアサインを提出した。"),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
-      packBaseBgm.stop(),
-      ch3PackScene.jumpTo(ch3MassuScene),
-    ])
     .choose("「午前だけ出迎えてから合流しろ」", [
       menuSelectSound.play(),
       yuujin.say("「じゃあ、午前中だけ出迎えて、午後からクリキャンに合流しろよ」"),
@@ -239,6 +228,17 @@ ch3PackScene.action([
       packImg.hide(),
       yuujin.say("（彼ならやり遂げそうだが、アサインは入れてもらえなさそうだ）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
+      packBaseBgm.stop(),
+      ch3PackScene.jumpTo(ch3MassuScene),
+    ])
+    .choose("「黙ってクリキャンに行け」", [
+      menuSelectSound.play(),
+      yuujin.say("「お前、最後のクリキャンだろ。黙ってアサインを出せ」"),
+      packImg.show(),
+      pack.say("……だよな。もう先輩だしアサインは出さないと……ううっ、グッドバイ、マドモアゼル……"),
+      packImg.hide(),
+      yuujin.say("ぱっくは血の涙を流しながら、クリキャンのアサインを提出した。"),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
       packBaseBgm.stop(),
       ch3PackScene.jumpTo(ch3MassuScene),
     ])

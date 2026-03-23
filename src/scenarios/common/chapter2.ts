@@ -26,15 +26,6 @@ tonapiFlashback.action([
   yuujin.say("（それを知りながら積んでいたのか）"),
   yuujin.say("翌朝、石塔は綺麗に崩れていた。となっぴーは静かに写真を撮っていた。"),
   Menu.prompt("どうツッコミを入れる？")
-    .choose("「なんで知りながら積んだんだ」", [
-      menuSelectSound.play(),
-      yuujin.say("「伝承を知ってて、なんで積んだんだ……」"),
-      tonapiImg.show(),
-      tonapi.say("だって、積みたくなったんですもん。でも次は気をつけます。フフ"),
-      tonapiImg.hide(),
-      yuujin.say("（全然気にしていないことがわかった）"),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
-    ])
     .choose("「崩れた写真、なんで撮ってるんだ」", [
       menuSelectSound.play(),
       yuujin.say("「崩れた後の写真、なんで楽しそうに撮ってるんだ」"),
@@ -52,6 +43,15 @@ tonapiFlashback.action([
       tonapiImg.hide(),
       yuujin.say("（背中を押してしまったが、そのとき俺たちはどこか楽しかった）"),
       gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power - 1 })),
+    ])
+    .choose("「なんで知りながら積んだんだ」", [
+      menuSelectSound.play(),
+      yuujin.say("「伝承を知ってて、なんで積んだんだ……」"),
+      tonapiImg.show(),
+      tonapi.say("だって、積みたくなったんですもん。でも次は気をつけます。フフ"),
+      tonapiImg.hide(),
+      yuujin.say("（全然気にしていないことがわかった）"),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 3 })),
     ]),
 
   Condition.If(() => {
@@ -79,14 +79,6 @@ haruchiroFlashback.action([
   haruchiroImg.hide(),
   yuujin.say("（なぜMarkdown……）"),
   Menu.prompt("どうアドバイスする？")
-    .choose("Markdownはやめとけ", [
-      menuSelectSound.play(),
-      yuujin.say("「頼むから、自己紹介にMarkdownを使うのはやめとけ」"),
-      haruchiroImg.show(),
-      haruchiro.say("えーっ。可読性上がるのに。……でもわかりました。普通に書きます。"),
-      haruchiroImg.hide(),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
-    ])
     .choose("むしろGitHubの草生やしたスクショ載せろ", [
       menuSelectSound.play(),
       yuujin.say("「中途半端にやるな。むしろGitHubの草生やしたスクショも見せてやれ」"),
@@ -103,6 +95,14 @@ haruchiroFlashback.action([
       haruchiro.say("えっ！？服買うんですか。……でもたしかに、ファッション全然わからないです"),
       haruchiroImg.hide(),
       gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 1 })),
+    ])
+    .choose("Markdownはやめとけ", [
+      menuSelectSound.play(),
+      yuujin.say("「頼むから、自己紹介にMarkdownを使うのはやめとけ」"),
+      haruchiroImg.show(),
+      haruchiro.say("えーっ。可読性上がるのに。……でもわかりました。普通に書きます。"),
+      haruchiroImg.hide(),
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 3 })),
     ]),
   haruchiroLoveBgm.stop(),
   haruchiroFlashback.jumpTo(tonapiFlashback),
@@ -124,15 +124,6 @@ saasanFlashback.action([
   saasanImg.hide(),
   yuujin.say("（全然よくない。コンプライアンスの概念が豪快に欠落している）"),
   Menu.prompt("どうツッコミを入れる？")
-    .choose("「今すぐ車を封印しろ」", [
-      menuSelectSound.play(),
-      yuujin.say("「今すぐその車を封印しろ。これ以上は犯罪だ」"),
-      saasanImg.show(),
-      saasan.say("厳しいな。まあ、今日から俺は徒歩勢になるわ"),
-      saasanImg.hide(),
-      yuujin.say("（素直に諦めてくれたので安堵した）"),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
-    ])
     .choose("「ミラー直すより先に車検通せ」", [
       menuSelectSound.play(),
       yuujin.say("「ミラー直すより先に車検通せよ」"),
@@ -141,6 +132,15 @@ saasanFlashback.action([
       saasanImg.hide(),
       yuujin.say("（行動力は随一だが、そもそも乗るなと言いたい）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 1 })),
+    ])
+    .choose("「今すぐ車を封印しろ」", [
+      menuSelectSound.play(),
+      yuujin.say("「今すぐその車を封印しろ。これ以上は犯罪だ」"),
+      saasanImg.show(),
+      saasan.say("厳しいな。まあ、今日から俺は徒歩勢になるわ"),
+      saasanImg.hide(),
+      yuujin.say("（素直に諦めてくれたので安堵した）"),
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
     ])
     .choose("「名古屋に海陽町のノリを持ち込むな」", [
       menuSelectSound.play(),
@@ -169,6 +169,15 @@ massuFlashback.action([
   massu.say("さーさんに恋愛相談してたのも、あの頃だったなあー。なんでさーさんだったんだろ？"),
   massuImg.hide(),
   Menu.prompt("どうコメントする？")
+    .choose("遠距離ならしょうがない", [
+      menuSelectSound.play(),
+      yuujin.say("「まあ、好きな人ができたなら仕方ない面もあるよな」"),
+      massuImg.show(),
+      massu.say("でしょー！？わかってくれるー！？彼氏が一番大事だからね！"),
+      massuImg.hide(),
+      yuujin.say("（完全に肯定してしまった）"),
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
+    ])
     .choose("さすがに発表前は電話切るべきだろ", [
       menuSelectSound.play(),
       yuujin.say("「さすがに発表の直前くらいは電話切るべきだろ……」"),
@@ -184,15 +193,6 @@ massuFlashback.action([
       massu.say("ね！さーさん、意外と真面目に答えてくれたんだよ！？あはは！"),
       massuImg.hide(),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
-    ])
-    .choose("遠距離ならしょうがない", [
-      menuSelectSound.play(),
-      yuujin.say("「まあ、好きな人ができたなら仕方ない面もあるよな」"),
-      massuImg.show(),
-      massu.say("でしょー！？わかってくれるー！？彼氏が一番大事だからね！"),
-      massuImg.hide(),
-      yuujin.say("（完全に肯定してしまった）"),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power - 1 })),
     ]),
   massuBaseBgm.stop(),
   massuFlashback.jumpTo(saasanFlashback),
@@ -223,14 +223,6 @@ packFlashback.action([
       packImg.hide(),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 3 })),
     ])
-    .choose("「なるほど、縁起いいな！」", [
-      menuSelectSound.play(),
-      yuujin.say("「なるほど、用水路を力強く泳ぐたいやき……縁起いいな！」"),
-      packImg.show(),
-      pack.say("おっ！お前もわかってきたか！あの泳ぎっぷりはまさにイノベーションの予兆だったね"),
-      packImg.hide(),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
-    ])
     .choose("「じゃあ今からもう一回泳がせるか？」", [
       menuSelectSound.play(),
       yuujin.say("「じゃあ今からもう一回泳がせるか？」"),
@@ -239,6 +231,14 @@ packFlashback.action([
       packImg.hide(),
       yuujin.say("（乗っかってしまったが、パシリにされそうになった）"),
       gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power - 1 })),
+    ])
+    .choose("「なるほど、縁起いいな！」", [
+      menuSelectSound.play(),
+      yuujin.say("「なるほど、用水路を力強く泳ぐたいやき……縁起いいな！」"),
+      packImg.show(),
+      pack.say("おっ！お前もわかってきたか！あの泳ぎっぷりはまさにイノベーションの予兆だったね"),
+      packImg.hide(),
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 1 })),
     ]),
   packHentekoBgm.stop(),
   packFlashback.jumpTo(massuFlashback),
