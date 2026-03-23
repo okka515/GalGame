@@ -1,4 +1,4 @@
-import { Scene, Menu, Condition } from "narraleaf-react";
+import { Scene, Menu, Condition, Sound } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saasanImg, haruchiroImg, tonapiImg } from "../../characters";
 import { gameFlags } from "../../store/gameState";
 import { packRouteMain } from "../routes/pack";
@@ -7,7 +7,7 @@ import { saasanRouteMain } from "../routes/saasan";
 import { haruchiroRouteMain } from "../routes/haruchiro";
 import { tonapiRouteMain } from "../routes/tonapi";
 import { gameEvents } from "../../store/gameEvents";
-import { haruchiroLoveBgm, massuBaseBgm, packBaseBgm, saasanBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
+import { haruchiroLoveBgm, massuBaseBgm, packBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
 import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
 // 第4章: 冬（12月〜）「最終追い込みと個別ルート確定」
@@ -155,8 +155,13 @@ ch4HaruchiroScene.action([
 const ch4SaasanScene = new Scene("ch4-saasan", {
   background: "/backgrounds/university_winter.png",
 });
+const saasanCookingBgm = new Sound({
+  src: "/audio/bgm/saasan_cooking_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+})
 ch4SaasanScene.action([
-  saasanBaseBgm.play(),
+  saasanCookingBgm.play(),
   yuujin.say("【冬の追い込み: 完璧超人の致命的弱点】"),
   yuujin.say("卒論の大詰め。徹夜明けの俺たちに、さーさんが得意料理を振る舞うと言い出した。"),
   saasanImg.show(),
@@ -194,7 +199,7 @@ ch4SaasanScene.action([
       yuujin.say("（名言風だが、ただのドジである）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
     ]),
-  saasanBaseBgm.stop(),
+  saasanCookingBgm.stop(),
   ch4SaasanScene.jumpTo(ch4HaruchiroScene),
 ]);
 

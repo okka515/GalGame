@@ -1,9 +1,9 @@
-import { Scene, Menu, Condition } from "narraleaf-react";
+import { Scene, Menu, Condition, Sound } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saasanImg, haruchiroImg, tonapiImg } from "../../characters";
 import { chapter4Scene } from "./chapter4";
 import { gameFlags } from "../../store/gameState";
 import { gameEvents } from "../../store/gameEvents";
-import { haruchiroLoveBgm, massuBaseBgm, packBaseBgm, saasanBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
+import { haruchiroLoveBgm, packBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
 import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
 // 第3章: 秋（10月〜）「卒研・進路の山場、秋の修羅場」
@@ -107,8 +107,13 @@ ch3HaruchiroScene.action([
 const ch3SaasanScene = new Scene("ch3-saasan", {
   background: "/backgrounds/university_fall.png",
 });
+const saasanBattleBgm = new Sound({
+  src: "/audio/bgm/saasan_battle_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+})
 ch3SaasanScene.action([
-  saasanBaseBgm.play(),
+  saasanBattleBgm.play(),
   yuujin.say("【秋の修羅場: 強者たちの休息】"),
   yuujin.say("卒研の中間発表直前。研究室の誰もが疲労困憊でピリピリしていた。"),
   saasanImg.show(),
@@ -145,7 +150,7 @@ ch3SaasanScene.action([
       yuujin.say("（的確すぎる指摘のおかげで、逆に全員の進捗が爆上がりした）"),
       gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 3 })),
     ]),
-  saasanBaseBgm.stop(),
+  saasanBattleBgm.stop(),
   ch3SaasanScene.jumpTo(ch3HaruchiroScene),
 ]);
 
@@ -153,8 +158,13 @@ ch3SaasanScene.action([
 const ch3MassuScene = new Scene("ch3-massu", {
   background: "/backgrounds/university_fall.png",
 });
+const massuSawagasiBgm = new Sound({
+  src: "/audio/bgm/massu_sawagasi_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+})
 ch3MassuScene.action([
-  massuBaseBgm.play(),
+  massuSawagasiBgm.play(),
   yuujin.say("【秋の修羅場: 就活説明会すっぽかし】"),
   yuujin.say("まっすーが青ざめた顔で研究室に駆け込んできた。"),
   massuImg.show(),
@@ -189,7 +199,7 @@ ch3MassuScene.action([
       yuujin.say("（恩は売れたが、根本的な解決にはなっていない）"),
       gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 1 })),
     ]),
-  massuBaseBgm.stop(),
+  massuSawagasiBgm.stop(),
   ch3MassuScene.jumpTo(ch3SaasanScene),
 ]);
 
