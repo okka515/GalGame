@@ -40,4 +40,16 @@ export const haruchiroLoveBgm = new Sound({
   src: "/audio/bgm/haruchiro_love_bgm.mp3",
   loop: true,
   volume: 0.3,
-})
+});
+
+export const finaleBgm = new Sound({
+  src: "/audio/bgm/finale_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
+export const beestGraduationBgm = new Sound({
+  src: "/audio/bgm/best_graduation_bgm.mp3",
+  loop: true,
+  volume: 0.6,
+});

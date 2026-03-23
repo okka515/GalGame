@@ -11,3 +11,9 @@ export const menuSelectSound = new Sound({
   loop: false,
   volume: 0.5,
 });
+
+export const resultAnnounceSound = new Sound({
+  src: "/audio/effect/result_announce_sound.mp3",
+  loop: false,
+  volume: 0.8,
+});

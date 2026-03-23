@@ -2,6 +2,7 @@ import { Scene, Condition, Image } from "narraleaf-react";
 import { yuujin, massu } from "../../../characters";
 import { gameFlags } from "../../../store/gameState";
 import { saasanResult } from "./saasanResult";
+import { beestGraduationBgm, finaleBgm } from "../../../store/gameBgm";
 
 const massuBestImg = new Image({ src: "/characters/massu/massu_best_graduation.png" });
 const massuGradImg = new Image({ src: "/characters/massu/massu_graduation.png" });
@@ -14,9 +15,13 @@ export const massuResult = new Scene(
 
 massuResult.action([
   Condition.If(gameFlags.evaluate("massu_graduation_power", (v) => (v || 0) >= 18), [
+    finaleBgm.pause(),
+    beestGraduationBgm.play(),
     massuBestImg.show(),
     massu.say("卒研、なんとか間に合ったー！東京の広告会社から内定ももらえたし、卒サプの写真は全部私が撮るね！あはは！"),
     yuujin.say("まっすーは東京就職。写真がSNSでバズり、キラキラ業界エンドへ。"),
+    beestGraduationBgm.stop(),
+    finaleBgm.resume(),
   ]).ElseIf(gameFlags.evaluate("massu_graduation_power", (v) => (v || 0) >= 7), [
     massuGradImg.show(),
     massu.say("ギリギリだったけど、卒業できたよー！よかったぁ！"),
