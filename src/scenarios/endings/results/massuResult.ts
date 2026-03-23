@@ -18,8 +18,8 @@ massuResult.action([
     finaleBgm.pause(),
     bestGraduationBgm.play(),
     massuBestImg.show(),
-    massu.say("卒研、なんとか間に合ったー！東京の広告会社から内定ももらえたし、卒サプの写真は全部私が撮るね！あはは！"),
-    yuujin.say("まっすーは東京就職。写真がSNSでバズり、キラキラ業界エンドへ。"),
+    massu.say("卒研、なんとか間に合ったー！東京の広告会社から内定ももらえたし、卒サプの写真は全部俺が撮るね！あはは！"),
+    yuujin.say("まっすーは東京就職。遠距離になった彼女とも関係は良好らしい。写真がSNSでバズり、キラキラ業界エンドへ。"),
     bestGraduationBgm.stop(),
     finaleBgm.resume(),
   ]).ElseIf(gameFlags.evaluate("massu_graduation_power", (v) => (v || 0) >= 7), [
