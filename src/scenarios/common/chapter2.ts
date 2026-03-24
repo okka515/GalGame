@@ -3,7 +3,7 @@ import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saas
 import { chapter3Scene } from "./chapter3";
 import { gameFlags } from "../../store/gameState";
 import { gameEvents } from "../../store/gameEvents";
-import { haruchiroLoveBgm, massuBaseBgm, packHentekoBgm, saasanBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
+import { haruchiroLoveBgm, massuBaseBgm, packHentekoBgm, saasanBaseBgm, summerBgm, tonappiBaseBgm } from "../../store/gameBgm";
 import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
 // 第2章: 夏（7月〜）「過去エピソード解放と夏のトラブル」
@@ -249,8 +249,10 @@ export const chapter2Scene = new Scene("chapter2", {
   background: "/backgrounds/university_summer.png",
 });
 chapter2Scene.action([
+  summerBgm.play(),
   yuujin.say("【第2章: 夏（7月〜）「過去エピソード解放と夏のトラブル」】"),
   yuujin.say("夏がやってきた。就活と研究の合間に、ふと思い出す。"),
   yuujin.say("そういえばこの6人、昔からずっとこんな感じでやらかしを繰り返していた。"),
+  summerBgm.stop(),
   chapter2Scene.jumpTo(packFlashback),
 ]);

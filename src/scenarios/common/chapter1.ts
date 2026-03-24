@@ -3,7 +3,7 @@ import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saas
 import { chapter2Scene } from "./chapter2";
 import { gameFlags } from "../../store/gameState";
 import { gameEvents } from "../../store/gameEvents";
-import { haruchiroBaseBgm, massuBaseBgm, packBaseBgm, saasanBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
+import { haruchiroBaseBgm, massuBaseBgm, packBaseBgm, saasanBaseBgm, springBgm, tonappiBaseBgm } from "../../store/gameBgm";
 import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
 // 第1章の順序制御用シーンの宣言
@@ -287,10 +287,12 @@ export const chapter1Scene = new Scene("chapter1", {
   background: "/backgrounds/opening.png",
 });
 chapter1Scene.action([
+  springBgm.play(),
   yuujin.say("【第1章: 春（4月〜）「全員ちょっと危ないスタート」】"),
   yuujin.say("いよいよ始まった最終学年。"),
   yuujin.say("しかし、就活や研究が本格化する春の初っ端から、5人から同時に連絡が来た。"),
   yuujin.say("……なんとなく、嫌な予感がした。"),
   gameFlags.assign(() => ({ ch1_progress_value: 5 })),
+  springBgm.stop(),
   chapter1Scene.jumpTo(ch1DispatchScene),
 ]);
