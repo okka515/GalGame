@@ -3,7 +3,7 @@ import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saas
 import { chapter4Scene } from "./chapter4";
 import { gameFlags } from "../../store/gameState";
 import { gameEvents } from "../../store/gameEvents";
-import { haruchiroLoveBgm, packBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
+import { autumnBgm, haruchiroLoveBgm, packBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
 import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
 // 第3章: 秋（10月〜）「卒研・進路の山場、秋の修羅場」
@@ -254,8 +254,10 @@ export const chapter3Scene = new Scene("chapter3", {
   background: "/backgrounds/university_fall.png",
 });
 chapter3Scene.action([
+  autumnBgm.play(),
   yuujin.say("【第3章: 秋（10月〜）「卒研・進路の山場、秋の修羅場」】"),
   yuujin.say("涼しくなってきた10月。卒研の中間報告や進路決定が容赦なく襲いかかってくる季節。"),
   yuujin.say("そして当然のごとく、こいつらから次々と修羅場の連絡が舞い込んできた。"),
+  autumnBgm.stop(),
   chapter3Scene.jumpTo(ch3PackScene),
 ]);

@@ -113,3 +113,27 @@ export const saasanRouteBgm = new Sound({
   loop: true,
   volume: 0.3,
 });
+
+export const springBgm = new Sound({
+  src: "/audio/bgm/spring_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
+export const summerBgm = new Sound({
+  src: "/audio/bgm/summer_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
+export const autumnBgm = new Sound({
+  src: "/audio/bgm/autumn_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+});
+
+export const winterBgm = new Sound({
+  src: "/audio/bgm/winter_bgm.mp3",
+  loop: true,
+  volume: 0.3,
+}); 

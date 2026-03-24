@@ -7,7 +7,7 @@ import { saasanRouteMain } from "../routes/saasan";
 import { haruchiroRouteMain } from "../routes/haruchiro";
 import { tonapiRouteMain } from "../routes/tonapi";
 import { gameEvents } from "../../store/gameEvents";
-import { haruchiroLoveBgm, massuBaseBgm, packBaseBgm, tonappiBaseBgm } from "../../store/gameBgm";
+import { haruchiroLoveBgm, massuBaseBgm, packBaseBgm, tonappiBaseBgm, winterBgm } from "../../store/gameBgm";
 import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
 
 // 第4章: 冬（12月〜）「最終追い込みと個別ルート確定」
@@ -305,9 +305,11 @@ export const chapter4Scene = new Scene("chapter4", {
   background: "/backgrounds/university_winter.png",
 });
 chapter4Scene.action([
+  winterBgm.play(),
   yuujin.say("【第4章: 冬（12月〜）「最終追い込みと個別ルート確定」】"),
   yuujin.say("凍えるような冬が来た。怒涛のような一年も、いよいよ大詰め。"),
   yuujin.say("卒論の提出、就活の決着、そして卒業できるかどうかの瀬戸際。"),
   yuujin.say("これが、学生生活最後の試練だ。"),
+  winterBgm.stop(),
   chapter4Scene.jumpTo(ch4PackScene),
 ]);
