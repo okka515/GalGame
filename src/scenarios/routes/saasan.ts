@@ -1,7 +1,7 @@
 import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, saasan } from "../../characters";
 import { gameFlags } from "../../store/gameState";
-import { finaleScene } from "../endings/finale";
+import { routeDispatcherScene } from "./dispatcher";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
 import { saasanRouteBgm } from "../../store/gameBgm";
@@ -52,5 +52,5 @@ saasanRouteMain.action([
   }, []),
   resultAnnounceSound.play(),
 
-  saasanRouteMain.jumpTo(finaleScene),
+  saasanRouteMain.jumpTo(routeDispatcherScene),
 ]);

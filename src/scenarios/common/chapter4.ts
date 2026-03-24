@@ -1,14 +1,11 @@
 import { Scene, Menu, Condition, Sound } from "narraleaf-react";
 import { yuujin, pack, massu, saasan, haruchiro, tonapi, packImg, massuImg, saasanImg, haruchiroImg, tonapiImg } from "../../characters";
 import { gameFlags } from "../../store/gameState";
-import { packRouteMain } from "../routes/pack";
-import { massuRouteMain } from "../routes/massu";
-import { saasanRouteMain } from "../routes/saasan";
-import { haruchiroRouteMain } from "../routes/haruchiro";
-import { tonapiRouteMain } from "../routes/tonapi";
+// Routes are now dispatched by routeDispatcherScene
 import { gameEvents } from "../../store/gameEvents";
 import { haruchiroLoveBgm, massuBaseBgm, packBaseBgm, tonappiBaseBgm, winterBgm } from "../../store/gameBgm";
 import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect";
+import { routeDispatcherScene } from "../routes/dispatcher";
 
 // 第4章: 冬（12月〜）「最終追い込みと個別ルート確定」
 // シーンを末端から定義して jumpTo で数珠つなぎにする
@@ -17,42 +14,51 @@ import { chapterTitleSound, menuSelectSound } from "../../store/gameSoundEffect"
 const chapter4RouteSelect = new Scene("chapter4-route-select", {
   background: "/backgrounds/university_winter.png",
 });
-chapter4RouteSelect.action([
+chapter4RouteSelect.action(() => [
   yuujin.say("冬が終わろうとしている。卒業と追いコンまで、あと少し。"),
   yuujin.say("5人全員、それぞれの問題を抱えながらも、なんとかここまで来た。"),
-  yuujin.say("……でも、一人だけ特別に最後まで面倒を見るとしたら？"),
-  yuujin.say("自分の中で、誰かの顔が浮かぶ。"),
+  yuujin.say("……でも、最後まで面倒を見るのは誰だろうか？（3人まで）"),
+  Condition.If(gameFlags.evaluate("route_selected_count", (v) => (v || 0) >= 3), [
+    yuujin.say("自分の中で、もうこれ以上は手が回らないと確信した。"),
+    yuujin.say("よし、このメンバーでいくぞ！"),
+    chapter4RouteSelect.jumpTo(routeDispatcherScene),
+  ]),
   Menu.prompt("誰の個別ルートへ？")
     .choose("ぱっくに全力で向き合う", [
       menuSelectSound.play(),
       gameFlags.set("route_pack", true),
-      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2 })), // ルート選択ボーナス
-      chapter4RouteSelect.jumpTo(packRouteMain),
-    ])
+      gameFlags.assign((s) => ({ pack_graduation_power: s.pack_graduation_power + 2, route_selected_count: s.route_selected_count + 1 })), // ルート選択ボーナス
+      chapter4RouteSelect.jumpTo(chapter4RouteSelect),
+    ]).hideIf(gameFlags.isTrue("route_pack"))
     .choose("まっすーに全力で向き合う", [
       menuSelectSound.play(),
       gameFlags.set("route_massu", true),
-      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2 })),
-      chapter4RouteSelect.jumpTo(massuRouteMain),
-    ])
+      gameFlags.assign((s) => ({ massu_graduation_power: s.massu_graduation_power + 2, route_selected_count: s.route_selected_count + 1 })),
+      chapter4RouteSelect.jumpTo(chapter4RouteSelect),
+    ]).hideIf(gameFlags.isTrue("route_massu"))
     .choose("さーさんに全力で向き合う", [
       menuSelectSound.play(),
       gameFlags.set("route_saasan", true),
-      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2 })),
-      chapter4RouteSelect.jumpTo(saasanRouteMain),
-    ])
+      gameFlags.assign((s) => ({ saasan_graduation_power: s.saasan_graduation_power + 2, route_selected_count: s.route_selected_count + 1 })),
+      chapter4RouteSelect.jumpTo(chapter4RouteSelect),
+    ]).hideIf(gameFlags.isTrue("route_saasan"))
     .choose("はるちろに全力で向き合う", [
       menuSelectSound.play(),
       gameFlags.set("route_haruchiro", true),
-      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2 })),
-      chapter4RouteSelect.jumpTo(haruchiroRouteMain),
-    ])
+      gameFlags.assign((s) => ({ haruchiro_graduation_power: s.haruchiro_graduation_power + 2, route_selected_count: s.route_selected_count + 1 })),
+      chapter4RouteSelect.jumpTo(chapter4RouteSelect),
+    ]).hideIf(gameFlags.isTrue("route_haruchiro"))
     .choose("となっぴーに全力で向き合う", [
       menuSelectSound.play(),
       gameFlags.set("route_tonapi", true),
-      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2 })),
-      chapter4RouteSelect.jumpTo(tonapiRouteMain),
-    ]),
+      gameFlags.assign((s) => ({ tonapi_graduation_power: s.tonapi_graduation_power + 2, route_selected_count: s.route_selected_count + 1 })),
+      chapter4RouteSelect.jumpTo(chapter4RouteSelect),
+    ]).hideIf(gameFlags.isTrue("route_tonapi"))
+    .choose("これで確定する", [
+      menuSelectSound.play(),
+      yuujin.say("よし、この決断で間違いない。"),
+      chapter4RouteSelect.jumpTo(routeDispatcherScene),
+    ]).hideIf(gameFlags.evaluate("route_selected_count", (v) => v === 0)),
 ]);
 
 // となっぴーの冬 → ルート選択へ

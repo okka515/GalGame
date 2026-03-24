@@ -1,11 +1,10 @@
 import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, pack } from "../../characters";
 import { gameFlags } from "../../store/gameState";
-import { finaleScene } from "../endings/finale";
+import { routeDispatcherScene } from "./dispatcher";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
 import { packRouteBgm } from "../../store/gameBgm";
-
 
 // ぱっくルート: メインシーン
 export const packRouteMain = new Scene("pack-route-main", {
@@ -51,5 +50,5 @@ packRouteMain.action([
   }, []),
   resultAnnounceSound.play(),
 
-  packRouteMain.jumpTo(finaleScene),
+  packRouteMain.jumpTo(routeDispatcherScene),
 ]);

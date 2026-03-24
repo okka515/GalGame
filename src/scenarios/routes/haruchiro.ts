@@ -1,7 +1,7 @@
 import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, haruchiro } from "../../characters";
 import { gameFlags } from "../../store/gameState";
-import { finaleScene } from "../endings/finale";
+import { routeDispatcherScene } from "./dispatcher";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
 import { haruchiroRouteBgm } from "../../store/gameBgm";
@@ -47,5 +47,5 @@ haruchiroRouteMain.action([
   }, []),
   resultAnnounceSound.play(),
 
-  haruchiroRouteMain.jumpTo(finaleScene),
+  haruchiroRouteMain.jumpTo(routeDispatcherScene),
 ]);

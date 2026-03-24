@@ -1,7 +1,7 @@
 import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, tonapi } from "../../characters";
 import { gameFlags } from "../../store/gameState";
-import { finaleScene } from "../endings/finale";
+import { routeDispatcherScene } from "./dispatcher";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
 import { tonappiRouteBgm } from "../../store/gameBgm";
@@ -53,5 +53,5 @@ tonapiRouteMain.action([
   }, []),
   resultAnnounceSound.play(),
 
-  tonapiRouteMain.jumpTo(finaleScene),
+  tonapiRouteMain.jumpTo(routeDispatcherScene),
 ]);

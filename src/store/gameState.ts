@@ -25,6 +25,14 @@ type GameFlags = {
   route_saasan: boolean;
   route_haruchiro: boolean;
   route_tonapi: boolean;
+  route_selected_count: number;
+
+  // 各ルートの完了フラグ
+  route_pack_done: boolean;
+  route_massu_done: boolean;
+  route_saasan_done: boolean;
+  route_haruchiro_done: boolean;
+  route_tonapi_done: boolean;
 
   // 各キャラの卒業力（0〜10）
   // 0〜3: バッドエンド（卒業不可）
@@ -58,6 +66,12 @@ export const gameFlags = new Persistent<GameFlags>("galgame_flags", {
   route_saasan: false,
   route_haruchiro: false,
   route_tonapi: false,
+  route_selected_count: 0,
+  route_pack_done: false,
+  route_massu_done: false,
+  route_saasan_done: false,
+  route_haruchiro_done: false,
+  route_tonapi_done: false,
   pack_graduation_power: 3,
   massu_graduation_power: 3,
   saasan_graduation_power: 3,

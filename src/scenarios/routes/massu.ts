@@ -1,7 +1,7 @@
 import { Scene, Menu, Condition } from "narraleaf-react";
 import { yuujin, massu } from "../../characters";
 import { gameFlags } from "../../store/gameState";
-import { finaleScene } from "../endings/finale";
+import { routeDispatcherScene } from "./dispatcher";
 import { gameEvents } from "../../store/gameEvents";
 import { resultAnnounceSound } from "../../store/gameSoundEffect";
 import { massuRouteBgm } from "../../store/gameBgm";
@@ -41,5 +41,5 @@ massuRouteMain.action([
   }, []),
   resultAnnounceSound.play(),
 
-  massuRouteMain.jumpTo(finaleScene),
+  massuRouteMain.jumpTo(routeDispatcherScene),
 ]);
